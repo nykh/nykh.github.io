@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="python, cs224u," />
 
 
 
@@ -57,15 +57,19 @@
 
 
 
-<meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="nykh :: log">
-<meta property="og:url" content="http://nykh.github.io/index.html">
+<meta name="description" content="Here is a way to run the CS224U notebooks without using Anaconda, especially if you already have python installed and don’t want to be bound to Anaconda.
+SetupFirst of all I run a 64bit *nix system (L">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How ot set up CS224U sans Anaconda">
+<meta property="og:url" content="http://nykh.github.io/2016/03/30/How-ot-set-up-CS224U-sans-Anaconda/index.html">
 <meta property="og:site_name" content="nykh :: log">
-<meta property="og:description">
+<meta property="og:description" content="Here is a way to run the CS224U notebooks without using Anaconda, especially if you already have python installed and don’t want to be bound to Anaconda.
+SetupFirst of all I run a 64bit *nix system (L">
+<meta property="og:updated_time" content="2016-03-31T04:21:09.103Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nykh :: log">
-<meta name="twitter:description">
+<meta name="twitter:title" content="How ot set up CS224U sans Anaconda">
+<meta name="twitter:description" content="Here is a way to run the CS224U notebooks without using Anaconda, especially if you already have python installed and don’t want to be bound to Anaconda.
+SetupFirst of all I run a 64bit *nix system (L">
 
 
 
@@ -83,7 +87,7 @@
   };
 </script>
 
-  <title> nykh :: log </title>
+  <title> How ot set up CS224U sans Anaconda | nykh :: log </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -102,9 +106,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -183,15 +185,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
 
+  <div id="posts" class="posts-expand">
     
-
-    
-    
-
-    
-      
 
   
   
@@ -211,10 +207,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/03/30/How-ot-set-up-CS224U-sans-Anaconda/" itemprop="url">
-                  How ot set up CS224U sans Anaconda
-                </a>
+                How ot set up CS224U sans Anaconda
               
             
           </h1>
@@ -252,9 +245,7 @@
       
 
       
-        
-          
-            <p>Here is a way to run the CS224U notebooks without using Anaconda, especially if you already have python installed and don’t want to be bound to Anaconda.</p>
+        <p>Here is a way to run the CS224U notebooks without using Anaconda, especially if you already have python installed and don’t want to be bound to Anaconda.</p>
 <h2 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h2><p>First of all I run a 64bit <strong>*nix</strong> system (Linux, Mac is proabably find too) and have Python2.7 preinstalled (which is why I don’t want to have to install Anaconda). This means we will be mostly using the <code>pip</code> and <code>virtualenv</code> cli tool of native python.</p>
 <p>Python2.7 comes with <code>pip</code> in the box. If you don’t have <code>virtualenv</code>, install it via<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; sudo pip install virtualenv</span><br></pre></td></tr></table></figure></p>
 <p><a href="https://realpython.com/blog/python/python-virtual-environments-a-primer/" target="_blank" rel="external">Here</a> is a good introduction to the idea of Virtual Environment for Python. Basically I use it because I primarily use Python3.5 and don’t want the packages used in this course to interfere with other usecases.</p>
@@ -275,126 +266,45 @@
 <p>This <code>Wheel file</code> probably comes with all the dependencies packaged in and thus bypassed the problem earlier.</p>
 <h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>This is able to run the first notebook without problem. I have not tried a notebook with <strong>TensorFlow</strong>, but if there is any problem I will update accordingly. Until then.</p>
 
-          
-        
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/22/Hello-world/" itemprop="url">
-                  My first post
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">發表於</span>
-            <time itemprop="dateCreated" datetime="2016-01-22T21:33:11-08:00" content="2016-01-22">
-              2016-01-22
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-
-          
-            
-          
-
-          
-
-          
+            <a href="/tags/python-cs224u/" rel="tag">#python, cs224u</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>Test <strong>Markdown Features</strong></p>
-<hr>
-<h2 id="Todos"><a href="#Todos" class="headerlink" title="Todos"></a>Todos</h2><p>Setting up the log is just the first step. I still need to</p>
-<ul>
-<li>[x] deploy to the web</li>
-<li>[ ] set up tool chain to write log using haroopad</li>
-<li>[ ] add link to this log site</li>
-</ul>
-<hr>
-<h2 id="Planned_contents"><a href="#Planned_contents" class="headerlink" title="Planned contents"></a>Planned contents</h2><ol>
-<li>upload my notes for various courses and tech-talks.</li>
-<li>keep track of paper reading progress</li>
-<li>notes on Machine Learning</li>
-</ol>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/22/Hello-world/" rel="next" title="My first post">
+                <i class="fa fa-chevron-left"></i> My first post
+              </a>
+            
+          </div>
 
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
 
-  </section>
-
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -402,6 +312,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -421,8 +335,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/default_avatar.jpg"
@@ -487,6 +410,23 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Setup"><span class="nav-number">1.</span> <span class="nav-text">Setup</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Open_a_virutal_environment"><span class="nav-number">1.1.</span> <span class="nav-text">Open a virutal environment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install_required_packages"><span class="nav-number">1.2.</span> <span class="nav-text">Install required packages</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Install_tensorflow"><span class="nav-number">1.2.1.</span> <span class="nav-text">Install tensorflow</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conclusion"><span class="nav-number">1.3.</span> <span class="nav-text">Conclusion</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
       
 
     </div>
@@ -561,6 +501,167 @@
   
 
   
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
 
   
 
