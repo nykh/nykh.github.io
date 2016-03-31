@@ -60,14 +60,14 @@
 <meta name="description" content="Here is a way to run the CS224U notebooks without using Anaconda, especially if you already have python installed and don’t want to be bound to Anaconda.
 SetupFirst of all I run a 64bit *nix system (L">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How ot set up CS224U sans Anaconda">
-<meta property="og:url" content="http://nykh.github.io/2016/03/30/How-ot-set-up-CS224U-sans-Anaconda/index.html">
+<meta property="og:title" content="How to set up CS224U sans Anaconda">
+<meta property="og:url" content="http://nykh.github.io/2016/03/30/How-to-set-up-CS224U-sans-Anaconda/index.html">
 <meta property="og:site_name" content="nykh :: log">
 <meta property="og:description" content="Here is a way to run the CS224U notebooks without using Anaconda, especially if you already have python installed and don’t want to be bound to Anaconda.
 SetupFirst of all I run a 64bit *nix system (L">
-<meta property="og:updated_time" content="2016-03-31T04:26:50.670Z">
+<meta property="og:updated_time" content="2016-03-31T21:25:08.651Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How ot set up CS224U sans Anaconda">
+<meta name="twitter:title" content="How to set up CS224U sans Anaconda">
 <meta name="twitter:description" content="Here is a way to run the CS224U notebooks without using Anaconda, especially if you already have python installed and don’t want to be bound to Anaconda.
 SetupFirst of all I run a 64bit *nix system (L">
 
@@ -87,7 +87,7 @@ SetupFirst of all I run a 64bit *nix system (L">
   };
 </script>
 
-  <title> How ot set up CS224U sans Anaconda | nykh :: log </title>
+  <title> How to set up CS224U sans Anaconda | nykh :: log </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -207,7 +207,7 @@ SetupFirst of all I run a 64bit *nix system (L">
             
             
               
-                How ot set up CS224U sans Anaconda
+                How to set up CS224U sans Anaconda
               
             
           </h1>
@@ -248,7 +248,7 @@ SetupFirst of all I run a 64bit *nix system (L">
         <p>Here is a way to run the CS224U notebooks without using Anaconda, especially if you already have python installed and don’t want to be bound to Anaconda.</p>
 <h2 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h2><p>First of all I run a 64bit <strong>*nix</strong> system (Linux, Mac is proabably find too) and have Python2.7 preinstalled (which is why I don’t want to have to install Anaconda). This means we will be mostly using the <code>pip</code> and <code>virtualenv</code> cli tool of native python.</p>
 <p>Python2.7 comes with <code>pip</code> in the box. If you don’t have <code>virtualenv</code>, install it via<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; sudo pip install virtualenv</span><br></pre></td></tr></table></figure></p>
-<p><a href="https://realpython.com/blog/python/python-virtual-environments-a-primer/" target="_blank" rel="external">Here</a> is a good introduction to the idea of Virtual Environment for Python. Basically I use it because I primarily use Python3.5 and don’t want the packages used in this course to interfere with other usecases.</p>
+<p><a href="https://realpython.com/blog/python/python-virtual-environments-a-primer/" target="_blank" rel="external">Here</a> is a good introduction to the idea of Virtual Environment for Python. Basically I use it because I primarily use Python3.5 and don’t want the packages used in this course to interfere with other use cases.</p>
 <h3 id="Open_a_virutal_environment"><a href="#Open_a_virutal_environment" class="headerlink" title="Open a virutal environment"></a>Open a virutal environment</h3><p><strong>Clone</strong> the project<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/cgpotts/cs224u.git &amp;&amp; <span class="built_in">cd</span> cs224u</span><br></pre></td></tr></table></figure></p>
 <p>We are now inside the <code>cs224u</code> directory. Make a virtual environment, or <strong><em>venv</em></strong> here.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; virtualenv .</span><br></pre></td></tr></table></figure></p>
 <p>This will create some additional files and directories, like <code>bin/</code>, <code>lib/</code> (where the packages will be installed). If you are bothered, add those files into the <code>.gitignore</code> ignore list so <code>git</code> won’t track them.</p>
@@ -260,7 +260,7 @@ SetupFirst of all I run a 64bit *nix system (L">
 <p><s>After some trial and error</s> Actually somebody pointed it out in <a href="https://github.com/cgpotts/cs224u/pull/1" target="_blank" rel="external">this pull request</a>, this file seems to be the correct list for <code>pip</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python &#62;= 2.7.10&#10;numpy &#62;= 1.10&#10;scipy &#62;= 0.11.0&#10;matplotlib &#62;= 1.5.1&#10;scikit-learn &#62;= 0.17&#10;nltk &#62;= 3.0&#10;python-dateutil &#62;= 2.4&#10;unicodecsv &#62;= 0.14&#10;jupyter&#62;=1.0.0&#10;# tensorflow==0.7.1</span><br></pre></td></tr></table></figure>
 <p>Overwrite <code>requirement.txt</code> as above and it should install all the packages for you without problem. It might take a while though.</p>
-<h4 id="Install_tensorflow"><a href="#Install_tensorflow" class="headerlink" title="Install tensorflow"></a>Install <code>tensorflow</code></h4><p>You must have noticed how <code>tensorflow</code> is taken out in the requirement document. This is because the package does not reside on PyPI for some reason. If you follow the link given in <code>setup.ipnb</code> and try<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; pip install -i https://pypi.anaconda.org/jjhelmus/simple tensorflow</span><br></pre></td></tr></table></figure></p>
+<h4 id="Install_tensorflow"><a href="#Install_tensorflow" class="headerlink" title="Install tensorflow"></a>Install <code>tensorflow</code></h4><p>You must have noticed how <code>tensorflow</code> was commented out in <code>requirement.txt</code>. This is because the package does not reside on PyPI for some reason. If you follow the link given in <code>setup.ipnb</code> and try<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; pip install -i https://pypi.anaconda.org/jjhelmus/simple tensorflow</span><br></pre></td></tr></table></figure></p>
 <p>It will download the package, before failing to find a dependency called <code>protobuf</code> and fails. Turns out, although the <code>tensorflow</code> package resides on Anaconda, this <code>protobuf</code> package is not hosted up to the required version, causing the fetching to fail.</p>
 <p>I was able to bypass the problem by following <a href="https://www.tensorflow.org/versions/r0.7/get_started/os_setup.html#pip-installation" target="_blank" rel="external">a different instruction here</a> on the TensorFlow official website. This fetches from the Google repo<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; pip install https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-<span class="number">0.7</span>.<span class="number">1</span>-cp27-none-linux_x86_64.whl</span><br></pre></td></tr></table></figure></p>
 <p>This <code>Wheel file</code> probably comes with all the dependencies packaged in and thus bypassed the problem earlier.</p>
