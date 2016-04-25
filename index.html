@@ -254,7 +254,7 @@
       
         
           
-            <h1 id="Installing_16-04"><a href="#Installing_16-04" class="headerlink" title="Installing 16.04"></a>Installing 16.04</h1><h2 id="Backup"><a href="#Backup" class="headerlink" title="Backup"></a>Backup</h2><p>Folders to back up</p>
+            <h1 id="Backup"><a href="#Backup" class="headerlink" title="Backup"></a>Backup</h1><p>Folders to back up</p>
 <p>Ubuntu Side</p>
 <ul>
 <li>~/Documents</li>
@@ -276,8 +276,8 @@
 <li>Atom packages</li>
 <li>Atom snippets</li>
 </ul>
-<h2 id="Prepare_16-04_installation"><a href="#Prepare_16-04_installation" class="headerlink" title="Prepare 16.04 installation"></a>Prepare 16.04 installation</h2><p>I ended up wiping out the Windows installation.</p>
-<h2 id="Set_up_system"><a href="#Set_up_system" class="headerlink" title="Set up system"></a>Set up system</h2><ul>
+<h1 id="Prepare_16-04_installation"><a href="#Prepare_16-04_installation" class="headerlink" title="Prepare 16.04 installation"></a>Prepare 16.04 installation</h1><p>I ended up wiping out the Windows installation.</p>
+<h1 id="Set_up_system"><a href="#Set_up_system" class="headerlink" title="Set up system"></a>Set up system</h1><ul>
 <li><s>Firefox</s> (Comes prepackaged with it)</li>
 <li>Dropbox</li>
 <li>Atom (with packages)</li>
@@ -288,18 +288,18 @@
 <li>Skype</li>
 <li>KMPlayer</li>
 </ul>
-<h3 id="Input_method"><a href="#Input_method" class="headerlink" title="Input method"></a>Input method</h3><ul>
+<h2 id="Input_method"><a href="#Input_method" class="headerlink" title="Input method"></a>Input method</h2><ul>
 <li><p>fcitx<br><a href="https://blogs.fsfe.org/stefan.a/2014/09/23/set-up-fcitx-chinese-and-japanese-language-input-ubuntu-14-04/" target="_blank" rel="external">This page</a> talks about how to config system to use fcitx</p>
 </li>
 <li><p>Use emacs key<br>Use Tweak Tool (found at Software Store), go to Typing &gt; Caplocks Behavior &gt; select “as additional Ctrl”</p>
 </li>
 <li>in the System setting Keyboard &gt; shortcuts &gt; Typing, Disable Ctrl+Space for switching input methods, as this conflicts with emacs’ C-SPACE selection key-binding.</li>
 </ul>
-<h3 id="Switch_default_shell_from_bash__26gt_3B_zsh"><a href="#Switch_default_shell_from_bash__26gt_3B_zsh" class="headerlink" title="Switch default shell from bash &gt; zsh"></a>Switch default shell from bash &gt; zsh</h3><ol>
+<h2 id="Switch_default_shell_from_bash__26gt_3B_zsh"><a href="#Switch_default_shell_from_bash__26gt_3B_zsh" class="headerlink" title="Switch default shell from bash &gt; zsh"></a>Switch default shell from bash &gt; zsh</h2><ol>
 <li>install zsh in package manager</li>
 <li><code>sudo usermod -s /bin/zsh $USER</code></li>
 </ol>
-<h3 id="Python_environment"><a href="#Python_environment" class="headerlink" title="Python environment"></a>Python environment</h3><p>Turns out, most system modules are now in python3, unlike in Ubuntu 15.10 when they were under python2. So now it’s the pip3 that gets all the mess. Good thing is the system comes pre-packaged with python3.5.</p>
+<h2 id="Python_environment"><a href="#Python_environment" class="headerlink" title="Python environment"></a>Python environment</h2><p>Turns out, most system modules are now in python3, unlike in Ubuntu 15.10 when they were under python2. So now it’s the pip3 that gets all the mess. Good thing is the system comes pre-packaged with python3.5.</p>
 <p>Problem: The packaged python doesn’t contain</p>
 <ul>
 <li>pip (pip2, pip3)<br>go to pip website, download <code>get_pip.py</code> and run it with sudo for both python2 and python3. This will install pip2 and pip3 respectively. I don’t know whether the order matters, but I ran 2 and then 3.</li>
@@ -307,6 +307,9 @@
 <li>Also find <code>python-dev</code> and <code>python3-dev</code> package in Synaptic, because some python libraries require compiling with <code>Python.h</code>.</li>
 <li>Matplotlib requires the dev portions of <code>libfreetype</code> and <code>libpng</code> to be installed</li>
 </ul>
+<h1 id="Permission_Problem"><a href="#Permission_Problem" class="headerlink" title="Permission Problem"></a>Permission Problem</h1><p>Turns out the mobile hard drive I used to backup my files is NTFS or something and this messed up all the permission codes (All become <code>777</code>)…</p>
+<p>I wrote a script to recursively change all the directory and executable files permission to <code>755</code>, all the normal file permission to <code>644</code>. The way it differentiates executable files and non-executable is first by extension name: those ending in <code>bin</code>, <code>sh</code>, <code>exe</code> are usually executable files. The trickier part is those executables without extension, which is a norm under Linux. To tackle those types of files (and differentiatbe them from normal files without extension like <code>Makefile</code>) I leveraged the <code>file</code> system program, which will usually tell you whether something is an executable binary. However it also has the bad habbit of saying executalbe on python script file, even those without shebang. Therefore I can’t trust it completely.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3.5</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"><span class="keyword">from</span> subprocess <span class="keyword">import</span> run <span class="comment"># &gt;= py3.5</span></span><br><span class="line"></span><br><span class="line">file_uuid = <span class="number">0o664</span></span><br><span class="line">exec_uuid = <span class="number">0o755</span></span><br><span class="line">dir_uuid  = <span class="number">0o755</span></span><br><span class="line"></span><br><span class="line">exec_file_types = [</span><br><span class="line">  <span class="string">"exe"</span>, <span class="string">"sh"</span>, <span class="string">"bin"</span>,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">path = os.getcwd()</span><br><span class="line"><span class="keyword">if</span> len(sys.argv) &gt; <span class="number">1</span>:</span><br><span class="line">    path = sys.argv[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> folder, dirs, files <span class="keyword">in</span> os.walk(path):</span><br><span class="line">    <span class="keyword">for</span> d <span class="keyword">in</span> dirs:</span><br><span class="line">        p = os.path.join(folder, d)</span><br><span class="line">        os.chmod(p, dir_uuid)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> f <span class="keyword">in</span> files:</span><br><span class="line">        p = os.path.join(folder, f)</span><br><span class="line">        ext = os.path.splitext(f)[<span class="number">1</span>][<span class="number">1</span>:]  <span class="comment"># skip the dot</span></span><br><span class="line">        <span class="keyword">if</span> ext:</span><br><span class="line">            uuid = exec_uuid <span class="keyword">if</span> ext <span class="keyword">in</span> exec_file_types <span class="keyword">else</span> file_uuid</span><br><span class="line">        <span class="keyword">else</span>: <span class="comment"># there is no extension, this may be a executable file</span></span><br><span class="line">            res = run([<span class="string">"file"</span>, p], stdout=subprocess.PIPE)</span><br><span class="line">            res_str = res.stdout.decode()</span><br><span class="line">            uuid = exec_uuid <span class="keyword">if</span> <span class="string">"executable"</span> <span class="keyword">in</span> res_str <span class="keyword">else</span> file_uuid</span><br><span class="line"></span><br><span class="line">        os.chmod(p, uuid)</span><br></pre></td></tr></table></figure>
 
           
         
