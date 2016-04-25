@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>nykh :: log</title>
+  <subtitle>Study, Thought, Discovery</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://nykh.github.io/"/>
+  <updated>2016-04-25T22:22:50.755Z</updated>
+  <id>http://nykh.github.io/</id>
+  
+  <author>
+    <name>nykh</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[流水帳] Reinstalling 16.06</title>
+    <link href="http://nykh.github.io/2016/04/25/%E6%B5%81%E6%B0%B4%E5%B8%B3-Reinstalling-16-06/"/>
+    <id>http://nykh.github.io/2016/04/25/流水帳-Reinstalling-16-06/</id>
+    <published>2016-04-25T20:20:28.000Z</published>
+    <updated>2016-04-25T22:22:50.755Z</updated>
+    
+    <content type="html">&lt;p&gt;記一次系統重裝&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h1 id=&quot;Backup&quot;&gt;&lt;a href=&quot;#Backup&quot; class=&quot;headerlink&quot; title=&quot;Backup&quot;&gt;&lt;/a&gt;Backup&lt;/h1&gt;&lt;p&gt;Folders to back up&lt;/p&gt;
+&lt;p&gt;Ubuntu Side&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;~/Documents&lt;/li&gt;
+&lt;li&gt;~/workspace&lt;/li&gt;
+&lt;li&gt;~/dotfiles&lt;/li&gt;
+&lt;li&gt;~/.emacs.d&lt;/li&gt;
+&lt;li&gt;~/.ipython/kernels&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Windows Side&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Videos&lt;/li&gt;
+&lt;li&gt;Pictures&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Other files&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;python installation&lt;/li&gt;
+&lt;li&gt;&lt;s&gt;Firefox bookmarks&lt;/s&gt; (Firefox sync takes care of all these)&lt;/li&gt;
+&lt;li&gt;&lt;s&gt;Firefo.x saved passwords&lt;/s&gt;&lt;/li&gt;
+&lt;li&gt;Atom packages&lt;/li&gt;
+&lt;li&gt;Atom snippets&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;Prepare_16-04_installation&quot;&gt;&lt;a href=&quot;#Prepare_16-04_installation&quot; class=&quot;headerlink&quot; title=&quot;Prepare 16.04 installation&quot;&gt;&lt;/a&gt;Prepare 16.04 installation&lt;/h1&gt;&lt;p&gt;I ended up wiping out the Windows installation.&lt;/p&gt;
+&lt;h1 id=&quot;Set_up_system&quot;&gt;&lt;a href=&quot;#Set_up_system&quot; class=&quot;headerlink&quot; title=&quot;Set up system&quot;&gt;&lt;/a&gt;Set up system&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;s&gt;Firefox&lt;/s&gt; (Comes prepackaged with it)&lt;/li&gt;
+&lt;li&gt;Dropbox&lt;/li&gt;
+&lt;li&gt;Atom (with packages)&lt;/li&gt;
+&lt;li&gt;Emacs (with package)&lt;/li&gt;
+&lt;li&gt;Scala&lt;/li&gt;
+&lt;li&gt;DB Browser&lt;/li&gt;
+&lt;li&gt;Haroopad&lt;/li&gt;
+&lt;li&gt;Skype&lt;/li&gt;
+&lt;li&gt;KMPlayer&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Input_method&quot;&gt;&lt;a href=&quot;#Input_method&quot; class=&quot;headerlink&quot; title=&quot;Input method&quot;&gt;&lt;/a&gt;Input method&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;fcitx&lt;br&gt;&lt;a href=&quot;https://blogs.fsfe.org/stefan.a/2014/09/23/set-up-fcitx-chinese-and-japanese-language-input-ubuntu-14-04/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;This page&lt;/a&gt; talks about how to config system to use fcitx&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Use emacs key&lt;br&gt;Use Tweak Tool (found at Software Store), go to Typing &amp;gt; Caplocks Behavior &amp;gt; select “as additional Ctrl”&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;in the System setting Keyboard &amp;gt; shortcuts &amp;gt; Typing, Disable Ctrl+Space for switching input methods, as this conflicts with emacs’ C-SPACE selection key-binding.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Switch_default_shell_from_bash__26gt_3B_zsh&quot;&gt;&lt;a href=&quot;#Switch_default_shell_from_bash__26gt_3B_zsh&quot; class=&quot;headerlink&quot; title=&quot;Switch default shell from bash &amp;gt; zsh&quot;&gt;&lt;/a&gt;Switch default shell from bash &amp;gt; zsh&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;install zsh in package manager&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo usermod -s /bin/zsh $USER&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;Python_environment&quot;&gt;&lt;a href=&quot;#Python_environment&quot; class=&quot;headerlink&quot; title=&quot;Python environment&quot;&gt;&lt;/a&gt;Python environment&lt;/h2&gt;&lt;p&gt;Turns out, most system modules are now in python3, unlike in Ubuntu 15.10 when they were under python2. So now it’s the pip3 that gets all the mess. Good thing is the system comes pre-packaged with python3.5.&lt;/p&gt;
+&lt;p&gt;Problem: The packaged python doesn’t contain&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;pip (pip2, pip3)&lt;br&gt;go to pip website, download &lt;code&gt;get_pip.py&lt;/code&gt; and run it with sudo for both python2 and python3. This will install pip2 and pip3 respectively. I don’t know whether the order matters, but I ran 2 and then 3.&lt;/li&gt;
+&lt;li&gt;virtualenv&lt;br&gt;Find &lt;code&gt;python-virtualenv&lt;/code&gt; package in Synaptic&lt;/li&gt;
+&lt;li&gt;Also find &lt;code&gt;python-dev&lt;/code&gt; and &lt;code&gt;python3-dev&lt;/code&gt; package in Synaptic, because some python libraries require compiling with &lt;code&gt;Python.h&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Matplotlib requires the dev portions of &lt;code&gt;libfreetype&lt;/code&gt; and &lt;code&gt;libpng&lt;/code&gt; to be installed&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;Permission_Problem&quot;&gt;&lt;a href=&quot;#Permission_Problem&quot; class=&quot;headerlink&quot; title=&quot;Permission Problem&quot;&gt;&lt;/a&gt;Permission Problem&lt;/h1&gt;&lt;p&gt;Turns out the mobile hard drive I used to backup my files is NTFS or something and this messed up all the permission codes (All become &lt;code&gt;777&lt;/code&gt;)…&lt;/p&gt;
+&lt;p&gt;I wrote a script to recursively change all the directory and executable files permission to &lt;code&gt;755&lt;/code&gt;, all the normal file permission to &lt;code&gt;644&lt;/code&gt;. The way it differentiates executable files and non-executable is first by extension name: those ending in &lt;code&gt;bin&lt;/code&gt;, &lt;code&gt;sh&lt;/code&gt;, &lt;code&gt;exe&lt;/code&gt; are usually executable files. The trickier part is those executables without extension, which is a norm under Linux. To tackle those types of files (and differentiatbe them from normal files without extension like &lt;code&gt;Makefile&lt;/code&gt;) I leveraged the &lt;code&gt;file&lt;/code&gt; system program, which will usually tell you whether something is an executable binary. However it also has the bad habbit of saying executalbe on python script file, even those without shebang. Therefore I can’t trust it completely.&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#!/usr/bin/python3.5&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; os&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; sys&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; subprocess&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; subprocess &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; run &lt;span class=&quot;comment&quot;&gt;# &amp;gt;= py3.5&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;file_uuid = &lt;span class=&quot;number&quot;&gt;0o664&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;exec_uuid = &lt;span class=&quot;number&quot;&gt;0o755&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;dir_uuid  = &lt;span class=&quot;number&quot;&gt;0o755&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;exec_file_types = [&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;string&quot;&gt;&quot;exe&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;sh&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;bin&quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;path = os.getcwd()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; len(sys.argv) &amp;gt; &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    path = sys.argv[&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; folder, dirs, files &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; os.walk(path):&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; d &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; dirs:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        p = os.path.join(folder, d)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        os.chmod(p, dir_uuid)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; f &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; files:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        p = os.path.join(folder, f)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        ext = os.path.splitext(f)[&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;][&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;:]  &lt;span class=&quot;comment&quot;&gt;# skip the dot&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; ext:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            uuid = exec_uuid &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; ext &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; exec_file_types &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; file_uuid&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;: &lt;span class=&quot;comment&quot;&gt;# there is no extension, this may be a executable file&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            res = run([&lt;span class=&quot;string&quot;&gt;&quot;file&quot;&lt;/span&gt;, p], stdout=subprocess.PIPE)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            res_str = res.stdout.decode()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            uuid = exec_uuid &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;executable&quot;&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; res_str &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; file_uuid&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        os.chmod(p, uuid)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;記一次系統重裝&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://nykh.github.io/tags/python/"/>
+    
+      <category term="ubuntu" scheme="http://nykh.github.io/tags/ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python最最佳指南</title>
+    <link href="http://nykh.github.io/2016/03/31/Python-BoBP-guide-zh/"/>
+    <id>http://nykh.github.io/2016/03/31/Python-BoBP-guide-zh/</id>
+    <published>2016-03-31T07:32:34.000Z</published>
+    <updated>2016-04-25T22:23:06.672Z</updated>
+    
+    <content type="html">&lt;p&gt;Python 的「最最佳作法」（the Best of Best Practices）指南。（&lt;a href=&quot;https://gist.github.com/sloria/7001839&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;原文&lt;/a&gt; by @Sloria）&lt;/p&gt;
+&lt;h2 id=&quot;u6982_u8AD6&quot;&gt;&lt;a href=&quot;#u6982_u8AD6&quot; class=&quot;headerlink&quot; title=&quot;概論&quot;&gt;&lt;/a&gt;概論&lt;/h2&gt;&lt;h3 id=&quot;u50F9_u503C_u89C0&quot;&gt;&lt;a href=&quot;#u50F9_u503C_u89C0&quot; class=&quot;headerlink&quot; title=&quot;價值觀&quot;&gt;&lt;/a&gt;價值觀&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;「不要做己所不欲的工具給人用」 - Kenneth Reitz&lt;/li&gt;
+&lt;li&gt;「簡單永遠勝過多功能」 - Pieter Hintjens&lt;/li&gt;
+&lt;li&gt;「滿足 90% 的使用情境，不要管奧客」 - Kenneth Reitz&lt;/li&gt;
+&lt;li&gt;「優美勝過醜陋」 - &lt;a href=&quot;https://wiki.python.org/moin/PythonZenChineseTranslate&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PEP 20&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;「為開源貢獻」（即便最終是為了閉源項目）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;u4E00_u822C_u958B_u767C_u6E96_u5247&quot;&gt;&lt;a href=&quot;#u4E00_u822C_u958B_u767C_u6E96_u5247&quot; class=&quot;headerlink&quot; title=&quot;一般開發準則&quot;&gt;&lt;/a&gt;一般開發準則&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;「顯明勝過隱含」 - &lt;a href=&quot;https://wiki.python.org/moin/PythonZenChineseTranslate&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PEP 20&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;「可讀性很重要」 - &lt;a href=&quot;https://wiki.python.org/moin/PythonZenChineseTranslate&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PEP 20&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;「所有人都可以解決所有問題」 - &lt;a href=&quot;https://sites.google.com/a/khanacademy.org/forge/for-developers&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Khan Academy Development Docs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;「一旦發現&lt;a href=&quot;http://www.artima.com/intv/fixit2.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;破窗&lt;/a&gt;（糟糕的設計、錯誤的決定、劣質代碼）立刻修復」&lt;/li&gt;
+&lt;li&gt;「現在就做好過一直不做」 - &lt;a href=&quot;https://wiki.python.org/moin/PythonZenChineseTranslate&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PEP 20&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;無情地測試，為新功能寫文檔&lt;/li&gt;
+&lt;li&gt;比測試驅動開發更重要的是&lt;strong&gt;人類驅動開發&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;這些準則也許，很可能，會改變&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;u7279_u5225&quot;&gt;&lt;a href=&quot;#u7279_u5225&quot; class=&quot;headerlink&quot; title=&quot;特別&quot;&gt;&lt;/a&gt;特別&lt;/h2&gt;&lt;h3 id=&quot;u98A8_u683C&quot;&gt;&lt;a href=&quot;#u98A8_u683C&quot; class=&quot;headerlink&quot; title=&quot;風格&quot;&gt;&lt;/a&gt;風格&lt;/h3&gt;&lt;p&gt;除非有適當理由，遵循 &lt;a href=&quot;http://www.python.org/dev/peps/pep-0008/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PEP 8&lt;/a&gt;。&lt;/p&gt;
+&lt;h4 id=&quot;u547D_u540D&quot;&gt;&lt;a href=&quot;#u547D_u540D&quot; class=&quot;headerlink&quot; title=&quot;命名&quot;&gt;&lt;/a&gt;命名&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;變量，函數，方法，包，模塊&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;lower_case_with_underscores&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;類與例外&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;CapWords&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;保護或內部方法&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;_single_leading_underscore(self, ...)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;私有方法&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;__double_leading_underscore(self, ...)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;常數&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ALL_CAPS_WITH_UNDERSCORES&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h6 id=&quot;u4E00_u822C_u547D_u540D_u6E96_u5247&quot;&gt;&lt;a href=&quot;#u4E00_u822C_u547D_u540D_u6E96_u5247&quot; class=&quot;headerlink&quot; title=&quot;一般命名準則&quot;&gt;&lt;/a&gt;一般命名準則&lt;/h6&gt;&lt;p&gt;不要用單字母變量（特別是 &lt;code&gt;l&lt;/code&gt;, &lt;code&gt;O&lt;/code&gt;, &lt;code&gt;I&lt;/code&gt;）（譯註：容易與數字搞混）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;例外：&lt;/strong&gt; 在非常短的塊裡，其含意從附近上下文很明顯時可以接受。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;這樣可以&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; e &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; elements:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    e.mutate()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;不要無用的標籤&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;用&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; audio&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;core = audio.Core()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;controller = audio.Controller()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;不要&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; audio&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;core = audio.AudioCore()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;controller = audio.AudioController()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;偏好「倒裝命名法」&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;要&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;elements = ...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;elements_active = ...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;elements_defunct = ...&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;不要&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;elements = ...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;active_elements = ...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;defunct_elements ...&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;不要 getter、setter 方法。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;要&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;person.age = &lt;span class=&quot;number&quot;&gt;42&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;不要&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;person.set_age(&lt;span class=&quot;number&quot;&gt;42&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h4 id=&quot;u7E2E_u9032&quot;&gt;&lt;a href=&quot;#u7E2E_u9032&quot; class=&quot;headerlink&quot; title=&quot;縮進&quot;&gt;&lt;/a&gt;縮進&lt;/h4&gt;&lt;p&gt;用 4 個空格，絕對不要用 Tab。以上。&lt;/p&gt;
+&lt;h4 id=&quot;import&quot;&gt;&lt;a href=&quot;#import&quot; class=&quot;headerlink&quot; title=&quot;import&quot;&gt;&lt;/a&gt;import&lt;/h4&gt;&lt;p&gt;import 整個模塊而不是單獨的符號。例如如果頂層模組 &lt;code&gt;canteen&lt;/code&gt; 下有 &lt;code&gt;canteen/sessions.py&lt;/code&gt;，&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;要&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; canteen&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; canteen.sessions&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; canteen &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; sessions&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;不要&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; canteen &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; get_user  &lt;span class=&quot;comment&quot;&gt;# Symbol from canteen/__init__.py&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; canteen.sessions &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; get_session  &lt;span class=&quot;comment&quot;&gt;# Symbol from canteen/sessions.py&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;例外：&lt;/strong&gt; 除非某些第三方代碼的文件中明確指示 import 單個符號。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;理由：&lt;/strong&gt; 這可以避免循環 import，見&lt;a href=&quot;https://sites.google.com/a/khanacademy.org/forge/for-developers/styleguide/python#TOC-Imports&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;這個例子&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;把所有 import 放在文件頂部，分三小節，每小節用一個空行隔開，三個小節分別是&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;系統 import&lt;/li&gt;
+&lt;li&gt;第三方 import&lt;/li&gt;
+&lt;li&gt;本地源 import&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;理由：&lt;/strong&gt; 容易看出模塊出自哪裡。&lt;/p&gt;
+&lt;h4 id=&quot;u6587_u6A94&quot;&gt;&lt;a href=&quot;#u6587_u6A94&quot; class=&quot;headerlink&quot; title=&quot;文檔&quot;&gt;&lt;/a&gt;文檔&lt;/h4&gt;&lt;p&gt;遵循 &lt;a href=&quot;http://www.python.org/dev/peps/pep-0257/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PEP 257&lt;/a&gt; 的文檔字串規範。 &lt;a href=&quot;http://docutils.sourceforge.net/docs/user/rst/quickref.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reStructured Text&lt;/a&gt; 和 &lt;a href=&quot;http://sphinx-doc.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Sphinx&lt;/a&gt; 可以幫你強制這些規範。&lt;/p&gt;
+&lt;p&gt;功能明顯的函數只需要一行文檔字串。&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;&quot;&quot;&quot;Return the pathname of ``foo``.&quot;&quot;&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;多行文檔字串應包括&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一行總結&lt;/li&gt;
+&lt;li&gt;使用情境，若適合&lt;/li&gt;
+&lt;li&gt;參數&lt;/li&gt;
+&lt;li&gt;回傳值的類型與意思，除非回傳值是 &lt;code&gt;None&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;&quot;&quot;&quot;Train a model to classify Foos and Bars.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Usage::&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;gt;&amp;gt;&amp;gt; import klassify&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;gt;&amp;gt;&amp;gt; data = [(&quot;green&quot;, &quot;foo&quot;), (&quot;orange&quot;, &quot;bar&quot;)]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;gt;&amp;gt;&amp;gt; classifier = klassify.train(data)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;:param train_data: A list of tuples of the form ``(color, label)``.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;:rtype: A :class:`Classifier &amp;lt;Classifier&amp;gt;`&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&quot;&quot;&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;備註&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用命令體（”Return”）不要記敘體（”Returns”）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__init__&lt;/code&gt;方法的文檔放在類的文檔字串中&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(object)&lt;/span&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&quot;&quot;&quot;A simple representation of a human being.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    :param name: A string, the person&#39;s name.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    :param age: An int, the person&#39;s age.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &quot;&quot;&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(self, name, age)&lt;/span&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        self.name = name&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        self.age = age&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h5 id=&quot;u8A3B_u89E3&quot;&gt;&lt;a href=&quot;#u8A3B_u89E3&quot; class=&quot;headerlink&quot; title=&quot;註解&quot;&gt;&lt;/a&gt;註解&lt;/h5&gt;&lt;p&gt;謹慎使用。偏好可讀的代碼而不是依賴大量註解，短小的方法常常比註解更有用。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;不要&lt;/em&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# If the sign is a stop sign&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; sign.color == &lt;span class=&quot;string&quot;&gt;&#39;red&#39;&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;and&lt;/span&gt; sign.sides == &lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    stop()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;em&gt;要&lt;/em&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;is_stop_sign&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(sign)&lt;/span&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; sign.color == &lt;span class=&quot;string&quot;&gt;&#39;red&#39;&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;and&lt;/span&gt; sign.sides == &lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; is_stop_sign(sign):&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    stop()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;非得寫註解的時候，記得遵循「&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E8%8B%B1%E6%96%87%E5%86%99%E4%BD%9C%E6%8C%87%E5%8D%97&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;英文寫作指南&lt;/a&gt;」（&lt;a href=&quot;http://www.python.org/dev/peps/pep-0008/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PEP 8&lt;/a&gt;說的）&lt;/p&gt;
+&lt;h4 id=&quot;u884C_u9577_u5EA6&quot;&gt;&lt;a href=&quot;#u884C_u9577_u5EA6&quot; class=&quot;headerlink&quot; title=&quot;行長度&quot;&gt;&lt;/a&gt;行長度&lt;/h4&gt;&lt;p&gt;不要太在意，80-100 個字符在可接受範圍內。&lt;/p&gt;
+&lt;p&gt;用括號延續很長的行&lt;/p&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;wiki = (&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&quot;The Colt Python is a .357 Magnum caliber revolver formerly manufactured &quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&quot;by Colt&#39;s Manufacturing Company of Hartford, Connecticut. It is sometimes &quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&#39;referred to as a &quot;Combat Magnum&quot;. It was first introduced in 1955, the &#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&quot;same year as Smith &amp;amp; Wesson&#39;s M29 .44 Magnum.&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;u6E2C_u8A66&quot;&gt;&lt;a href=&quot;#u6E2C_u8A66&quot; class=&quot;headerlink&quot; title=&quot;測試&quot;&gt;&lt;/a&gt;測試&lt;/h3&gt;&lt;p&gt;追求 100% 覆蓋，但不要太執著。&lt;/p&gt;
+&lt;h4 id=&quot;u4E00_u822C_u6E2C_u8A66_u6E96_u5247&quot;&gt;&lt;a href=&quot;#u4E00_u822C_u6E2C_u8A66_u6E96_u5247&quot; class=&quot;headerlink&quot; title=&quot;一般測試準則&quot;&gt;&lt;/a&gt;一般測試準則&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;用長而描述性的名字命名用例。這樣通常就不需要在測試裡寫文檔字串。&lt;/li&gt;
+&lt;li&gt;用例應該彼此分離，不要在用例間共享一個資料庫或網路連接，為每個用例使用一個單獨的測試用資料庫並在用完後拆除，或是使用模擬。&lt;/li&gt;
+&lt;li&gt;偏好用&lt;a href=&quot;https://github.com/rbarrois/factory_boy&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;工廠&lt;/a&gt;來控制變量。&lt;/li&gt;
+&lt;li&gt;絕對不要讓沒寫完的用例通過，否則你可能會忘記他們。相反，預留一個 &lt;code&gt;assert False, &amp;quot;TODO: 完成我&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;u55AE_u5143_u6E2C_u8A66&quot;&gt;&lt;a href=&quot;#u55AE_u5143_u6E2C_u8A66&quot; class=&quot;headerlink&quot; title=&quot;單元測試&quot;&gt;&lt;/a&gt;單元測試&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;每次關注一個小功能&lt;/li&gt;
+&lt;li&gt;最好很快完成，但一個跑得很慢的測試勝過沒測試&lt;/li&gt;
+&lt;li&gt;一個用例的類對應一個類或模型通常是合理的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; unittest&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; factories&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;PersonTest&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(unittest.TestCase)&lt;/span&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;setUp&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(self)&lt;/span&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        self.person = factories.PersonFactory()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;test_has_age_in_dog_years&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(self)&lt;/span&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        self.assertEqual(self.person.dog_years, self.person.age / &lt;span class=&quot;number&quot;&gt;7&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;u529F_u80FD_u6E2C_u8A66&quot;&gt;&lt;a href=&quot;#u529F_u80FD_u6E2C_u8A66&quot; class=&quot;headerlink&quot; title=&quot;功能測試&quot;&gt;&lt;/a&gt;功能測試&lt;/h4&gt;&lt;p&gt;功能測試是更高級的測試，接近使用者使用你的應用的方式。通常在網路跟圖形界面應用上使用。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;把用例寫成場景，用例跟測試方法應該描述場景中發生的事情。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;在寫測試代碼之前&lt;/strong&gt;先用註解講故事&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; unittest&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;TestAUser&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(unittest.TestCase)&lt;/span&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;test_can_write_a_blog_post&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(self)&lt;/span&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;# Goes to the her dashboard&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        ...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;# Clicks &quot;New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        ...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;# Fills out the post form&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        ...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;# Clicks &quot;Submit&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        ...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;# Can see the new post&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        ...&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;注意測試用例跟測試方法合起來是一句話「Test A User can write a blog post」。&lt;/p&gt;
+&lt;h2 id=&quot;u9748_u611F_u4F86_u81EA_u2026&quot;&gt;&lt;a href=&quot;#u9748_u611F_u4F86_u81EA_u2026&quot; class=&quot;headerlink&quot; title=&quot;靈感來自…&quot;&gt;&lt;/a&gt;靈感來自…&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://wiki.python.org/moin/PythonZenChineseTranslate&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PEP 20（Python 之禪）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.python.org/dev/peps/pep-0008/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PEP 8（Python 風格指南）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://docs.python-guide.org/en/latest/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;The Hitchiker’s Guide to Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://sites.google.com/a/khanacademy.org/forge/for-developers&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Khan Academy Development Docs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://youtu.be/GZNUfkVIHAY&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Python Best Practice Patterns&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.nilunder.com/blog/2013/08/03/pythonic-sensibilities/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Pythonic Sensibilities&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.amazon.com/The-Pragmatic-Programmer-Journeyman-Master/dp/020161622X/ref=sr_1_1?ie=UTF8&amp;amp;qid=1381886835&amp;amp;sr=8-1&amp;amp;keywords=pragmatic+programmer&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;The Pragmatic Programmer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;還有各種其他來源&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Python 的「最最佳作法」（the Best of Best Practices）指南。（&lt;a href=&quot;https://gist.github.com/sloria/7001839&quot;&gt;原文&lt;/a&gt; by @Sloria）&lt;/p&gt;
+&lt;h2 id=&quot;u6982_u8AD6&quot;&gt;&lt;a href=&quot;#u6982_u8AD6&quot; class=&quot;headerlink&quot; title=&quot;概論&quot;&gt;&lt;/a&gt;概論&lt;/h2&gt;&lt;h3 id=&quot;u50F9_u503C_u89C0&quot;&gt;&lt;a href=&quot;#u50F9_u503C_u89C0&quot; class=&quot;headerlink&quot; title=&quot;價值觀&quot;&gt;&lt;/a&gt;價值觀&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;「不要做己所不欲的工具給人用」 - Kenneth Reitz&lt;/li&gt;
+&lt;li&gt;「簡單永遠勝過多功能」 - Pieter Hintjens&lt;/li&gt;
+&lt;li&gt;「滿足 90% 的使用情境，不要管奧客」 - Kenneth Reitz&lt;/li&gt;
+&lt;li&gt;「優美勝過醜陋」 - &lt;a href=&quot;https://wiki.python.org/moin/PythonZenChineseTranslate&quot;&gt;PEP 20&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;「為開源貢獻」（即便最終是為了閉源項目）&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://nykh.github.io/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>How to set up CS224U sans Anaconda</title>
+    <link href="http://nykh.github.io/2016/03/30/How-to-set-up-CS224U-sans-Anaconda/"/>
+    <id>http://nykh.github.io/2016/03/30/How-to-set-up-CS224U-sans-Anaconda/</id>
+    <published>2016-03-31T03:36:50.000Z</published>
+    <updated>2016-04-25T22:22:15.830Z</updated>
+    
+    <content type="html">&lt;p&gt;Here is a way to run the CS224U notebooks without using Anaconda, especially if you already have python installed and don’t want to be bound to Anaconda.&lt;/p&gt;
+ &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;Setup&quot;&gt;&lt;a href=&quot;#Setup&quot; class=&quot;headerlink&quot; title=&quot;Setup&quot;&gt;&lt;/a&gt;Setup&lt;/h2&gt;&lt;p&gt;First of all I run a 64bit &lt;strong&gt;*nix&lt;/strong&gt; system (Linux, Mac is proabably find too) and have Python2.7 preinstalled (which is why I don’t want to have to install Anaconda). This means we will be mostly using the &lt;code&gt;pip&lt;/code&gt; and &lt;code&gt;virtualenv&lt;/code&gt; cli tool of native python.&lt;/p&gt;
+&lt;p&gt;Python2.7 comes with &lt;code&gt;pip&lt;/code&gt; in the box. If you don’t have &lt;code&gt;virtualenv&lt;/code&gt;, install it via&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;&amp;gt; sudo pip install virtualenv&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://realpython.com/blog/python/python-virtual-environments-a-primer/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Here&lt;/a&gt; is a good introduction to the idea of Virtual Environment for Python. Basically I use it because I primarily use Python3.5 and don’t want the packages used in this course to interfere with other use cases.&lt;/p&gt;
+&lt;h3 id=&quot;Open_a_virutal_environment&quot;&gt;&lt;a href=&quot;#Open_a_virutal_environment&quot; class=&quot;headerlink&quot; title=&quot;Open a virutal environment&quot;&gt;&lt;/a&gt;Open a virutal environment&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Clone&lt;/strong&gt; the project&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git &lt;span class=&quot;built_in&quot;&gt;clone&lt;/span&gt; https://github.com/cgpotts/cs224u.git &amp;amp;&amp;amp; &lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; cs224u&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;We are now inside the &lt;code&gt;cs224u&lt;/code&gt; directory. Make a virtual environment, or &lt;strong&gt;&lt;em&gt;venv&lt;/em&gt;&lt;/strong&gt; here.&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;&amp;gt; virtualenv .&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;This will create some additional files and directories, like &lt;code&gt;bin/&lt;/code&gt;, &lt;code&gt;lib/&lt;/code&gt; (where the packages will be installed). If you are bothered, add those files into the &lt;code&gt;.gitignore&lt;/code&gt; ignore list so &lt;code&gt;git&lt;/code&gt; won’t track them.&lt;/p&gt;
+&lt;p&gt;Now we can enter the virtual environment by&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;&amp;gt; &lt;span class=&quot;built_in&quot;&gt;source&lt;/span&gt; bin/activate&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;activate&lt;/code&gt; is a script, by sourcing (running) it you change the python path and a few other properties to cut you away from the system global setting. You are now in a clean state, whatever you install in this environment won’t affect the system global &lt;code&gt;site_packages&lt;/code&gt;. Also notice your prompt will display the name of the venv to remind you you are now &lt;em&gt;virtual&lt;/em&gt;. To see for yourself&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;(venv) &amp;gt;&amp;gt; pip list&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pip (&lt;span class=&quot;number&quot;&gt;8.1&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;setuptools (&lt;span class=&quot;number&quot;&gt;20.6&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;wheel (&lt;span class=&quot;number&quot;&gt;0.29&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;Nothing else!&lt;/p&gt;
+&lt;h3 id=&quot;Install_required_packages&quot;&gt;&lt;a href=&quot;#Install_required_packages&quot; class=&quot;headerlink&quot; title=&quot;Install required packages&quot;&gt;&lt;/a&gt;Install required packages&lt;/h3&gt;&lt;p&gt;If you become lazy and just&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;(venv) &amp;gt;&amp;gt; pip install -r requirements.txt&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;You will run into problem while fetching. Apparently, this is because the package names in this file correspond to those on the &lt;strong&gt;Anaconda&lt;/strong&gt; package repository, and are different from PyPI repo, which &lt;code&gt;pip&lt;/code&gt; fetches from.&lt;/p&gt;
+&lt;p&gt;&lt;s&gt;After some trial and error&lt;/s&gt; Actually somebody pointed it out in &lt;a href=&quot;https://github.com/cgpotts/cs224u/pull/1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;this pull request&lt;/a&gt;, this file seems to be the correct list for &lt;code&gt;pip&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;python &amp;#62;= 2.7.10&amp;#10;numpy &amp;#62;= 1.10&amp;#10;scipy &amp;#62;= 0.11.0&amp;#10;matplotlib &amp;#62;= 1.5.1&amp;#10;scikit-learn &amp;#62;= 0.17&amp;#10;nltk &amp;#62;= 3.0&amp;#10;python-dateutil &amp;#62;= 2.4&amp;#10;unicodecsv &amp;#62;= 0.14&amp;#10;jupyter&amp;#62;=1.0.0&amp;#10;# tensorflow==0.7.1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Overwrite &lt;code&gt;requirement.txt&lt;/code&gt; as above and it should install all the packages for you without problem. It might take a while though.&lt;/p&gt;
+&lt;h4 id=&quot;Install_tensorflow&quot;&gt;&lt;a href=&quot;#Install_tensorflow&quot; class=&quot;headerlink&quot; title=&quot;Install tensorflow&quot;&gt;&lt;/a&gt;Install &lt;code&gt;tensorflow&lt;/code&gt;&lt;/h4&gt;&lt;p&gt;You must have noticed how &lt;code&gt;tensorflow&lt;/code&gt; was commented out in &lt;code&gt;requirement.txt&lt;/code&gt;. This is because the package does not reside on PyPI for some reason. If you follow the link given in &lt;code&gt;setup.ipnb&lt;/code&gt; and try&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;&amp;gt; pip install -i https://pypi.anaconda.org/jjhelmus/simple tensorflow&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;It will download the package, before failing to find a dependency called &lt;code&gt;protobuf&lt;/code&gt; and fails. Turns out, although the &lt;code&gt;tensorflow&lt;/code&gt; package resides on Anaconda, this &lt;code&gt;protobuf&lt;/code&gt; package is not hosted up to the required version, causing the fetching to fail.&lt;/p&gt;
+&lt;p&gt;I was able to bypass the problem by following &lt;a href=&quot;https://www.tensorflow.org/versions/r0.7/get_started/os_setup.html#pip-installation&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;a different instruction here&lt;/a&gt; on the TensorFlow official website. This fetches from the Google repo&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;&amp;gt; pip install https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-&lt;span class=&quot;number&quot;&gt;0.7&lt;/span&gt;.&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;-cp27-none-linux_x86_64.whl&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;This &lt;code&gt;Wheel file&lt;/code&gt; probably comes with all the dependencies packaged in and thus bypassed the problem earlier.&lt;/p&gt;
+&lt;h3 id=&quot;Conclusion&quot;&gt;&lt;a href=&quot;#Conclusion&quot; class=&quot;headerlink&quot; title=&quot;Conclusion&quot;&gt;&lt;/a&gt;Conclusion&lt;/h3&gt;&lt;p&gt;This is able to run the first notebook without problem. I have not tried a notebook with &lt;strong&gt;TensorFlow&lt;/strong&gt;, but if there is any problem I will update accordingly. Until then.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Here is a way to run the CS224U notebooks without using Anaconda, especially if you already have python installed and don’t want to be bound to Anaconda.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="cs224u" scheme="http://nykh.github.io/tags/cs224u/"/>
+    
+      <category term="python" scheme="http://nykh.github.io/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>My first post</title>
+    <link href="http://nykh.github.io/2016/01/22/Hello-world/"/>
+    <id>http://nykh.github.io/2016/01/22/Hello-world/</id>
+    <published>2016-01-23T05:33:11.000Z</published>
+    <updated>2016-01-23T05:50:24.186Z</updated>
+    
+    <content type="html">&lt;p&gt;Test &lt;strong&gt;Markdown Features&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;Todos&quot;&gt;&lt;a href=&quot;#Todos&quot; class=&quot;headerlink&quot; title=&quot;Todos&quot;&gt;&lt;/a&gt;Todos&lt;/h2&gt;&lt;p&gt;Setting up the log is just the first step. I still need to&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;[x] deploy to the web&lt;/li&gt;
+&lt;li&gt;[ ] set up tool chain to write log using haroopad&lt;/li&gt;
+&lt;li&gt;[ ] add link to this log site&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;Planned_contents&quot;&gt;&lt;a href=&quot;#Planned_contents&quot; class=&quot;headerlink&quot; title=&quot;Planned contents&quot;&gt;&lt;/a&gt;Planned contents&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;upload my notes for various courses and tech-talks.&lt;/li&gt;
+&lt;li&gt;keep track of paper reading progress&lt;/li&gt;
+&lt;li&gt;notes on Machine Learning&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Test &lt;strong&gt;Markdown Features&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;Todos&quot;&gt;&lt;a href=&quot;#Todos&quot; class=&quot;headerlink&quot; title=&quot;Todos&quot;&gt;&lt;/a&gt;Todos&lt;/h2&gt;&lt;p&gt;Settin
+    
+    </summary>
+    
+    
+      <category term="meta" scheme="http://nykh.github.io/tags/meta/"/>
+    
+  </entry>
+  
+</feed>
