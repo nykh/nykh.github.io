@@ -73,7 +73,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
+    sidebar: {"position":"left","display":"always"},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -253,65 +253,12 @@
 
       
         
-          
-            <h1 id="Backup"><a href="#Backup" class="headerlink" title="Backup"></a>Backup</h1><p>Folders to back up</p>
-<p>Ubuntu Side</p>
-<ul>
-<li>~/Documents</li>
-<li>~/workspace</li>
-<li>~/dotfiles</li>
-<li>~/.emacs.d</li>
-<li>~/.ipython/kernels</li>
-</ul>
-<p>Windows Side</p>
-<ul>
-<li>Videos</li>
-<li>Pictures</li>
-</ul>
-<p>Other files</p>
-<ul>
-<li>python installation</li>
-<li><s>Firefox bookmarks</s> (Firefox sync takes care of all these)</li>
-<li><s>Firefo.x saved passwords</s></li>
-<li>Atom packages</li>
-<li>Atom snippets</li>
-</ul>
-<h1 id="Prepare_16-04_installation"><a href="#Prepare_16-04_installation" class="headerlink" title="Prepare 16.04 installation"></a>Prepare 16.04 installation</h1><p>I ended up wiping out the Windows installation.</p>
-<h1 id="Set_up_system"><a href="#Set_up_system" class="headerlink" title="Set up system"></a>Set up system</h1><ul>
-<li><s>Firefox</s> (Comes prepackaged with it)</li>
-<li>Dropbox</li>
-<li>Atom (with packages)</li>
-<li>Emacs (with package)</li>
-<li>Scala</li>
-<li>DB Browser</li>
-<li>Haroopad</li>
-<li>Skype</li>
-<li>KMPlayer</li>
-</ul>
-<h2 id="Input_method"><a href="#Input_method" class="headerlink" title="Input method"></a>Input method</h2><ul>
-<li><p>fcitx<br><a href="https://blogs.fsfe.org/stefan.a/2014/09/23/set-up-fcitx-chinese-and-japanese-language-input-ubuntu-14-04/" target="_blank" rel="external">This page</a> talks about how to config system to use fcitx</p>
-</li>
-<li><p>Use emacs key<br>Use Tweak Tool (found at Software Store), go to Typing &gt; Caplocks Behavior &gt; select “as additional Ctrl”</p>
-</li>
-<li>in the System setting Keyboard &gt; shortcuts &gt; Typing, Disable Ctrl+Space for switching input methods, as this conflicts with emacs’ C-SPACE selection key-binding.</li>
-</ul>
-<h2 id="Switch_default_shell_from_bash__26gt_3B_zsh"><a href="#Switch_default_shell_from_bash__26gt_3B_zsh" class="headerlink" title="Switch default shell from bash &gt; zsh"></a>Switch default shell from bash &gt; zsh</h2><ol>
-<li>install zsh in package manager</li>
-<li><code>sudo usermod -s /bin/zsh $USER</code></li>
-</ol>
-<h2 id="Python_environment"><a href="#Python_environment" class="headerlink" title="Python environment"></a>Python environment</h2><p>Turns out, most system modules are now in python3, unlike in Ubuntu 15.10 when they were under python2. So now it’s the pip3 that gets all the mess. Good thing is the system comes pre-packaged with python3.5.</p>
-<p>Problem: The packaged python doesn’t contain</p>
-<ul>
-<li>pip (pip2, pip3)<br>go to pip website, download <code>get_pip.py</code> and run it with sudo for both python2 and python3. This will install pip2 and pip3 respectively. I don’t know whether the order matters, but I ran 2 and then 3.</li>
-<li>virtualenv<br>Find <code>python-virtualenv</code> package in Synaptic</li>
-<li>Also find <code>python-dev</code> and <code>python3-dev</code> package in Synaptic, because some python libraries require compiling with <code>Python.h</code>.</li>
-<li>Matplotlib requires the dev portions of <code>libfreetype</code> and <code>libpng</code> to be installed</li>
-</ul>
-<h1 id="Permission_Problem"><a href="#Permission_Problem" class="headerlink" title="Permission Problem"></a>Permission Problem</h1><p>Turns out the mobile hard drive I used to backup my files is NTFS or something and this messed up all the permission codes (All become <code>777</code>)…</p>
-<p>I wrote a script to recursively change all the directory and executable files permission to <code>755</code>, all the normal file permission to <code>644</code>. The way it differentiates executable files and non-executable is first by extension name: those ending in <code>bin</code>, <code>sh</code>, <code>exe</code> are usually executable files. The trickier part is those executables without extension, which is a norm under Linux. To tackle those types of files (and differentiatbe them from normal files without extension like <code>Makefile</code>) I leveraged the <code>file</code> system program, which will usually tell you whether something is an executable binary. However it also has the bad habbit of saying executalbe on python script file, even those without shebang. Therefore I can’t trust it completely.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3.5</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"><span class="keyword">from</span> subprocess <span class="keyword">import</span> run <span class="comment"># &gt;= py3.5</span></span><br><span class="line"></span><br><span class="line">file_uuid = <span class="number">0o664</span></span><br><span class="line">exec_uuid = <span class="number">0o755</span></span><br><span class="line">dir_uuid  = <span class="number">0o755</span></span><br><span class="line"></span><br><span class="line">exec_file_types = [</span><br><span class="line">  <span class="string">"exe"</span>, <span class="string">"sh"</span>, <span class="string">"bin"</span>,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">path = os.getcwd()</span><br><span class="line"><span class="keyword">if</span> len(sys.argv) &gt; <span class="number">1</span>:</span><br><span class="line">    path = sys.argv[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> folder, dirs, files <span class="keyword">in</span> os.walk(path):</span><br><span class="line">    <span class="keyword">for</span> d <span class="keyword">in</span> dirs:</span><br><span class="line">        p = os.path.join(folder, d)</span><br><span class="line">        os.chmod(p, dir_uuid)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> f <span class="keyword">in</span> files:</span><br><span class="line">        p = os.path.join(folder, f)</span><br><span class="line">        ext = os.path.splitext(f)[<span class="number">1</span>][<span class="number">1</span>:]  <span class="comment"># skip the dot</span></span><br><span class="line">        <span class="keyword">if</span> ext:</span><br><span class="line">            uuid = exec_uuid <span class="keyword">if</span> ext <span class="keyword">in</span> exec_file_types <span class="keyword">else</span> file_uuid</span><br><span class="line">        <span class="keyword">else</span>: <span class="comment"># there is no extension, this may be a executable file</span></span><br><span class="line">            res = run([<span class="string">"file"</span>, p], stdout=subprocess.PIPE)</span><br><span class="line">            res_str = res.stdout.decode()</span><br><span class="line">            uuid = exec_uuid <span class="keyword">if</span> <span class="string">"executable"</span> <span class="keyword">in</span> res_str <span class="keyword">else</span> file_uuid</span><br><span class="line"></span><br><span class="line">        os.chmod(p, uuid)</span><br></pre></td></tr></table></figure>
-
-          
+          <p>記一次系統重裝</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/25/流水帳-Reinstalling-16-06/#more" rel="contents">
+              閱讀全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -392,133 +339,19 @@
 
       
         
-          
-            <p>Python 的「最最佳作法」（the Best of Best Practices）指南。（<a href="https://gist.github.com/sloria/7001839" target="_blank" rel="external">原文</a> by @Sloria）</p>
+          <p>Python 的「最最佳作法」（the Best of Best Practices）指南。（<a href="https://gist.github.com/sloria/7001839">原文</a> by @Sloria）</p>
 <h2 id="u6982_u8AD6"><a href="#u6982_u8AD6" class="headerlink" title="概論"></a>概論</h2><h3 id="u50F9_u503C_u89C0"><a href="#u50F9_u503C_u89C0" class="headerlink" title="價值觀"></a>價值觀</h3><ul>
 <li>「不要做己所不欲的工具給人用」 - Kenneth Reitz</li>
 <li>「簡單永遠勝過多功能」 - Pieter Hintjens</li>
 <li>「滿足 90% 的使用情境，不要管奧客」 - Kenneth Reitz</li>
-<li>「優美勝過醜陋」 - <a href="https://wiki.python.org/moin/PythonZenChineseTranslate" target="_blank" rel="external">PEP 20</a></li>
+<li>「優美勝過醜陋」 - <a href="https://wiki.python.org/moin/PythonZenChineseTranslate">PEP 20</a></li>
 <li>「為開源貢獻」（即便最終是為了閉源項目）</li>
 </ul>
-<h3 id="u4E00_u822C_u958B_u767C_u6E96_u5247"><a href="#u4E00_u822C_u958B_u767C_u6E96_u5247" class="headerlink" title="一般開發準則"></a>一般開發準則</h3><ul>
-<li>「顯明勝過隱含」 - <a href="https://wiki.python.org/moin/PythonZenChineseTranslate" target="_blank" rel="external">PEP 20</a></li>
-<li>「可讀性很重要」 - <a href="https://wiki.python.org/moin/PythonZenChineseTranslate" target="_blank" rel="external">PEP 20</a></li>
-<li>「所有人都可以解決所有問題」 - <a href="https://sites.google.com/a/khanacademy.org/forge/for-developers" target="_blank" rel="external">Khan Academy Development Docs</a></li>
-<li>「一旦發現<a href="http://www.artima.com/intv/fixit2.html" target="_blank" rel="external">破窗</a>（糟糕的設計、錯誤的決定、劣質代碼）立刻修復」</li>
-<li>「現在就做好過一直不做」 - <a href="https://wiki.python.org/moin/PythonZenChineseTranslate" target="_blank" rel="external">PEP 20</a></li>
-<li>無情地測試，為新功能寫文檔</li>
-<li>比測試驅動開發更重要的是<strong>人類驅動開發</strong></li>
-<li>這些準則也許，很可能，會改變</li>
-</ul>
-<h2 id="u7279_u5225"><a href="#u7279_u5225" class="headerlink" title="特別"></a>特別</h2><h3 id="u98A8_u683C"><a href="#u98A8_u683C" class="headerlink" title="風格"></a>風格</h3><p>除非有適當理由，遵循 <a href="http://www.python.org/dev/peps/pep-0008/" target="_blank" rel="external">PEP 8</a>。</p>
-<h4 id="u547D_u540D"><a href="#u547D_u540D" class="headerlink" title="命名"></a>命名</h4><ul>
-<li>變量，函數，方法，包，模塊<ul>
-<li><code>lower_case_with_underscores</code></li>
-</ul>
-</li>
-<li>類與例外<ul>
-<li><code>CapWords</code></li>
-</ul>
-</li>
-<li>保護或內部方法<ul>
-<li><code>_single_leading_underscore(self, ...)</code></li>
-</ul>
-</li>
-<li>私有方法<ul>
-<li><code>__double_leading_underscore(self, ...)</code></li>
-</ul>
-</li>
-<li>常數<ul>
-<li><code>ALL_CAPS_WITH_UNDERSCORES</code></li>
-</ul>
-</li>
-</ul>
-<h6 id="u4E00_u822C_u547D_u540D_u6E96_u5247"><a href="#u4E00_u822C_u547D_u540D_u6E96_u5247" class="headerlink" title="一般命名準則"></a>一般命名準則</h6><p>不要用單字母變量（特別是 <code>l</code>, <code>O</code>, <code>I</code>）（譯註：容易與數字搞混）</p>
-<p><strong>例外：</strong> 在非常短的塊裡，其含意從附近上下文很明顯時可以接受。</p>
-<p><strong>這樣可以</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> e <span class="keyword">in</span> elements:</span><br><span class="line">    e.mutate()</span><br></pre></td></tr></table></figure></p>
-<p>不要無用的標籤</p>
-<p><strong>用</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> audio</span><br><span class="line"></span><br><span class="line">core = audio.Core()</span><br><span class="line">controller = audio.Controller()</span><br></pre></td></tr></table></figure></p>
-<p><strong>不要</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> audio</span><br><span class="line"></span><br><span class="line">core = audio.AudioCore()</span><br><span class="line">controller = audio.AudioController()</span><br></pre></td></tr></table></figure></p>
-<p>偏好「倒裝命名法」</p>
-<p><strong>要</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">elements = ...</span><br><span class="line">elements_active = ...</span><br><span class="line">elements_defunct = ...</span><br></pre></td></tr></table></figure></p>
-<p><strong>不要</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">elements = ...</span><br><span class="line">active_elements = ...</span><br><span class="line">defunct_elements ...</span><br></pre></td></tr></table></figure></p>
-<p>不要 getter、setter 方法。</p>
-<p><strong>要</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">person.age = <span class="number">42</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>不要</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">person.set_age(<span class="number">42</span>)</span><br></pre></td></tr></table></figure></p>
-<h4 id="u7E2E_u9032"><a href="#u7E2E_u9032" class="headerlink" title="縮進"></a>縮進</h4><p>用 4 個空格，絕對不要用 Tab。以上。</p>
-<h4 id="import"><a href="#import" class="headerlink" title="import"></a>import</h4><p>import 整個模塊而不是單獨的符號。例如如果頂層模組 <code>canteen</code> 下有 <code>canteen/sessions.py</code>，</p>
-<p><strong>要</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> canteen</span><br><span class="line"><span class="keyword">import</span> canteen.sessions</span><br><span class="line"><span class="keyword">from</span> canteen <span class="keyword">import</span> sessions</span><br></pre></td></tr></table></figure>
-<p><strong>不要</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> canteen <span class="keyword">import</span> get_user  <span class="comment"># Symbol from canteen/__init__.py</span></span><br><span class="line"><span class="keyword">from</span> canteen.sessions <span class="keyword">import</span> get_session  <span class="comment"># Symbol from canteen/sessions.py</span></span><br></pre></td></tr></table></figure>
-<p><strong>例外：</strong> 除非某些第三方代碼的文件中明確指示 import 單個符號。</p>
-<p><strong>理由：</strong> 這可以避免循環 import，見<a href="https://sites.google.com/a/khanacademy.org/forge/for-developers/styleguide/python#TOC-Imports" target="_blank" rel="external">這個例子</a>。</p>
-<p>把所有 import 放在文件頂部，分三小節，每小節用一個空行隔開，三個小節分別是</p>
-<ol>
-<li>系統 import</li>
-<li>第三方 import</li>
-<li>本地源 import</li>
-</ol>
-<p><strong>理由：</strong> 容易看出模塊出自哪裡。</p>
-<h4 id="u6587_u6A94"><a href="#u6587_u6A94" class="headerlink" title="文檔"></a>文檔</h4><p>遵循 <a href="http://www.python.org/dev/peps/pep-0257/" target="_blank" rel="external">PEP 257</a> 的文檔字串規範。 <a href="http://docutils.sourceforge.net/docs/user/rst/quickref.html" target="_blank" rel="external">reStructured Text</a> 和 <a href="http://sphinx-doc.org/" target="_blank" rel="external">Sphinx</a> 可以幫你強制這些規範。</p>
-<p>功能明顯的函數只需要一行文檔字串。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""Return the pathname of ``foo``."""</span></span><br></pre></td></tr></table></figure>
-<p>多行文檔字串應包括</p>
-<ul>
-<li>一行總結</li>
-<li>使用情境，若適合</li>
-<li>參數</li>
-<li>回傳值的類型與意思，除非回傳值是 <code>None</code></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""Train a model to classify Foos and Bars.</span><br><span class="line"></span><br><span class="line">Usage::</span><br><span class="line"></span><br><span class="line">    &gt;&gt;&gt; import klassify</span><br><span class="line">    &gt;&gt;&gt; data = [("green", "foo"), ("orange", "bar")]</span><br><span class="line">    &gt;&gt;&gt; classifier = klassify.train(data)</span><br><span class="line"></span><br><span class="line">:param train_data: A list of tuples of the form ``(color, label)``.</span><br><span class="line">:rtype: A :class:`Classifier &lt;Classifier&gt;`</span><br><span class="line">"""</span></span><br></pre></td></tr></table></figure>
-<p>備註</p>
-<ul>
-<li>使用命令體（”Return”）不要記敘體（”Returns”）</li>
-<li><code>__init__</code>方法的文檔放在類的文檔字串中</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""A simple representation of a human being.</span><br><span class="line"></span><br><span class="line">    :param name: A string, the person's name.</span><br><span class="line">    :param age: An int, the person's age.</span><br><span class="line">    """</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br></pre></td></tr></table></figure>
-<h5 id="u8A3B_u89E3"><a href="#u8A3B_u89E3" class="headerlink" title="註解"></a>註解</h5><p>謹慎使用。偏好可讀的代碼而不是依賴大量註解，短小的方法常常比註解更有用。</p>
-<p><em>不要</em></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># If the sign is a stop sign</span></span><br><span class="line"><span class="keyword">if</span> sign.color == <span class="string">'red'</span> <span class="keyword">and</span> sign.sides == <span class="number">8</span>:</span><br><span class="line">    stop()</span><br></pre></td></tr></table></figure>
-<p><em>要</em></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_stop_sign</span><span class="params">(sign)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> sign.color == <span class="string">'red'</span> <span class="keyword">and</span> sign.sides == <span class="number">8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> is_stop_sign(sign):</span><br><span class="line">    stop()</span><br></pre></td></tr></table></figure>
-<p>非得寫註解的時候，記得遵循「<a href="https://zh.wikipedia.org/wiki/%E8%8B%B1%E6%96%87%E5%86%99%E4%BD%9C%E6%8C%87%E5%8D%97" target="_blank" rel="external">英文寫作指南</a>」（<a href="http://www.python.org/dev/peps/pep-0008/" target="_blank" rel="external">PEP 8</a>說的）</p>
-<h4 id="u884C_u9577_u5EA6"><a href="#u884C_u9577_u5EA6" class="headerlink" title="行長度"></a>行長度</h4><p>不要太在意，80-100 個字符在可接受範圍內。</p>
-<p>用括號延續很長的行</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wiki = (</span><br><span class="line">    <span class="string">"The Colt Python is a .357 Magnum caliber revolver formerly manufactured "</span></span><br><span class="line">    <span class="string">"by Colt's Manufacturing Company of Hartford, Connecticut. It is sometimes "</span></span><br><span class="line">    <span class="string">'referred to as a "Combat Magnum". It was first introduced in 1955, the '</span></span><br><span class="line">    <span class="string">"same year as Smith &amp; Wesson's M29 .44 Magnum."</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h3 id="u6E2C_u8A66"><a href="#u6E2C_u8A66" class="headerlink" title="測試"></a>測試</h3><p>追求 100% 覆蓋，但不要太執著。</p>
-<h4 id="u4E00_u822C_u6E2C_u8A66_u6E96_u5247"><a href="#u4E00_u822C_u6E2C_u8A66_u6E96_u5247" class="headerlink" title="一般測試準則"></a>一般測試準則</h4><ul>
-<li>用長而描述性的名字命名用例。這樣通常就不需要在測試裡寫文檔字串。</li>
-<li>用例應該彼此分離，不要在用例間共享一個資料庫或網路連接，為每個用例使用一個單獨的測試用資料庫並在用完後拆除，或是使用模擬。</li>
-<li>偏好用<a href="https://github.com/rbarrois/factory_boy" target="_blank" rel="external">工廠</a>來控制變量。</li>
-<li>絕對不要讓沒寫完的用例通過，否則你可能會忘記他們。相反，預留一個 <code>assert False, &quot;TODO: 完成我&quot;</code></li>
-</ul>
-<h4 id="u55AE_u5143_u6E2C_u8A66"><a href="#u55AE_u5143_u6E2C_u8A66" class="headerlink" title="單元測試"></a>單元測試</h4><ul>
-<li>每次關注一個小功能</li>
-<li>最好很快完成，但一個跑得很慢的測試勝過沒測試</li>
-<li>一個用例的類對應一個類或模型通常是合理的。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> unittest</span><br><span class="line"><span class="keyword">import</span> factories</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonTest</span><span class="params">(unittest.TestCase)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setUp</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.person = factories.PersonFactory()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_has_age_in_dog_years</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.assertEqual(self.person.dog_years, self.person.age / <span class="number">7</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="u529F_u80FD_u6E2C_u8A66"><a href="#u529F_u80FD_u6E2C_u8A66" class="headerlink" title="功能測試"></a>功能測試</h4><p>功能測試是更高級的測試，接近使用者使用你的應用的方式。通常在網路跟圖形界面應用上使用。</p>
-<ul>
-<li>把用例寫成場景，用例跟測試方法應該描述場景中發生的事情。</li>
-<li><strong>在寫測試代碼之前</strong>先用註解講故事</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> unittest</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestAUser</span><span class="params">(unittest.TestCase)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_can_write_a_blog_post</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># Goes to the her dashboard</span></span><br><span class="line">        ...</span><br><span class="line">        <span class="comment"># Clicks "New Post"</span></span><br><span class="line">        ...</span><br><span class="line">        <span class="comment"># Fills out the post form</span></span><br><span class="line">        ...</span><br><span class="line">        <span class="comment"># Clicks "Submit"</span></span><br><span class="line">        ...</span><br><span class="line">        <span class="comment"># Can see the new post</span></span><br><span class="line">        ...</span><br></pre></td></tr></table></figure>
-<p>注意測試用例跟測試方法合起來是一句話「Test A User can write a blog post」。</p>
-<h2 id="u9748_u611F_u4F86_u81EA_u2026"><a href="#u9748_u611F_u4F86_u81EA_u2026" class="headerlink" title="靈感來自…"></a>靈感來自…</h2><ul>
-<li><a href="https://wiki.python.org/moin/PythonZenChineseTranslate" target="_blank" rel="external">PEP 20（Python 之禪）</a></li>
-<li><a href="http://www.python.org/dev/peps/pep-0008/" target="_blank" rel="external">PEP 8（Python 風格指南）</a></li>
-<li><a href="http://docs.python-guide.org/en/latest/" target="_blank" rel="external">The Hitchiker’s Guide to Python</a></li>
-<li><a href="https://sites.google.com/a/khanacademy.org/forge/for-developers" target="_blank" rel="external">Khan Academy Development Docs</a></li>
-<li><a href="http://youtu.be/GZNUfkVIHAY" target="_blank" rel="external">Python Best Practice Patterns</a></li>
-<li><a href="http://www.nilunder.com/blog/2013/08/03/pythonic-sensibilities/" target="_blank" rel="external">Pythonic Sensibilities</a></li>
-<li><a href="http://www.amazon.com/The-Pragmatic-Programmer-Journeyman-Master/dp/020161622X/ref=sr_1_1?ie=UTF8&amp;qid=1381886835&amp;sr=8-1&amp;keywords=pragmatic+programmer" target="_blank" rel="external">The Pragmatic Programmer</a></li>
-<li>還有各種其他來源</li>
-</ul>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/31/Python-BoBP-guide-zh/#more" rel="contents">
+              閱讀全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -599,29 +432,12 @@
 
       
         
-          
-            <p>Here is a way to run the CS224U notebooks without using Anaconda, especially if you already have python installed and don’t want to be bound to Anaconda.</p>
-<h2 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h2><p>First of all I run a 64bit <strong>*nix</strong> system (Linux, Mac is proabably find too) and have Python2.7 preinstalled (which is why I don’t want to have to install Anaconda). This means we will be mostly using the <code>pip</code> and <code>virtualenv</code> cli tool of native python.</p>
-<p>Python2.7 comes with <code>pip</code> in the box. If you don’t have <code>virtualenv</code>, install it via<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; sudo pip install virtualenv</span><br></pre></td></tr></table></figure></p>
-<p><a href="https://realpython.com/blog/python/python-virtual-environments-a-primer/" target="_blank" rel="external">Here</a> is a good introduction to the idea of Virtual Environment for Python. Basically I use it because I primarily use Python3.5 and don’t want the packages used in this course to interfere with other use cases.</p>
-<h3 id="Open_a_virutal_environment"><a href="#Open_a_virutal_environment" class="headerlink" title="Open a virutal environment"></a>Open a virutal environment</h3><p><strong>Clone</strong> the project<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/cgpotts/cs224u.git &amp;&amp; <span class="built_in">cd</span> cs224u</span><br></pre></td></tr></table></figure></p>
-<p>We are now inside the <code>cs224u</code> directory. Make a virtual environment, or <strong><em>venv</em></strong> here.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; virtualenv .</span><br></pre></td></tr></table></figure></p>
-<p>This will create some additional files and directories, like <code>bin/</code>, <code>lib/</code> (where the packages will be installed). If you are bothered, add those files into the <code>.gitignore</code> ignore list so <code>git</code> won’t track them.</p>
-<p>Now we can enter the virtual environment by<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; <span class="built_in">source</span> bin/activate</span><br></pre></td></tr></table></figure></p>
-<p><code>activate</code> is a script, by sourcing (running) it you change the python path and a few other properties to cut you away from the system global setting. You are now in a clean state, whatever you install in this environment won’t affect the system global <code>site_packages</code>. Also notice your prompt will display the name of the venv to remind you you are now <em>virtual</em>. To see for yourself<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(venv) &gt;&gt; pip list</span><br><span class="line">pip (<span class="number">8.1</span>.<span class="number">1</span>)</span><br><span class="line">setuptools (<span class="number">20.6</span>.<span class="number">6</span>)</span><br><span class="line">wheel (<span class="number">0.29</span>.<span class="number">0</span>)</span><br></pre></td></tr></table></figure></p>
-<p>Nothing else!</p>
-<h3 id="Install_required_packages"><a href="#Install_required_packages" class="headerlink" title="Install required packages"></a>Install required packages</h3><p>If you become lazy and just<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(venv) &gt;&gt; pip install -r requirements.txt</span><br></pre></td></tr></table></figure></p>
-<p>You will run into problem while fetching. Apparently, this is because the package names in this file correspond to those on the <strong>Anaconda</strong> package repository, and are different from PyPI repo, which <code>pip</code> fetches from.</p>
-<p><s>After some trial and error</s> Actually somebody pointed it out in <a href="https://github.com/cgpotts/cs224u/pull/1" target="_blank" rel="external">this pull request</a>, this file seems to be the correct list for <code>pip</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python &#62;= 2.7.10&#10;numpy &#62;= 1.10&#10;scipy &#62;= 0.11.0&#10;matplotlib &#62;= 1.5.1&#10;scikit-learn &#62;= 0.17&#10;nltk &#62;= 3.0&#10;python-dateutil &#62;= 2.4&#10;unicodecsv &#62;= 0.14&#10;jupyter&#62;=1.0.0&#10;# tensorflow==0.7.1</span><br></pre></td></tr></table></figure>
-<p>Overwrite <code>requirement.txt</code> as above and it should install all the packages for you without problem. It might take a while though.</p>
-<h4 id="Install_tensorflow"><a href="#Install_tensorflow" class="headerlink" title="Install tensorflow"></a>Install <code>tensorflow</code></h4><p>You must have noticed how <code>tensorflow</code> was commented out in <code>requirement.txt</code>. This is because the package does not reside on PyPI for some reason. If you follow the link given in <code>setup.ipnb</code> and try<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; pip install -i https://pypi.anaconda.org/jjhelmus/simple tensorflow</span><br></pre></td></tr></table></figure></p>
-<p>It will download the package, before failing to find a dependency called <code>protobuf</code> and fails. Turns out, although the <code>tensorflow</code> package resides on Anaconda, this <code>protobuf</code> package is not hosted up to the required version, causing the fetching to fail.</p>
-<p>I was able to bypass the problem by following <a href="https://www.tensorflow.org/versions/r0.7/get_started/os_setup.html#pip-installation" target="_blank" rel="external">a different instruction here</a> on the TensorFlow official website. This fetches from the Google repo<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; pip install https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-<span class="number">0.7</span>.<span class="number">1</span>-cp27-none-linux_x86_64.whl</span><br></pre></td></tr></table></figure></p>
-<p>This <code>Wheel file</code> probably comes with all the dependencies packaged in and thus bypassed the problem earlier.</p>
-<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>This is able to run the first notebook without problem. I have not tried a notebook with <strong>TensorFlow</strong>, but if there is any problem I will update accordingly. Until then.</p>
-
-          
+          <p>Here is a way to run the CS224U notebooks without using Anaconda, especially if you already have python installed and don’t want to be bound to Anaconda.</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/30/How-to-set-up-CS224U-sans-Anaconda/#more" rel="contents">
+              閱讀全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
