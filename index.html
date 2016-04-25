@@ -212,6 +212,142 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/25/流水帳-Reinstalling-16-06/" itemprop="url">
+                  [流水帳] Reinstalling 16.06
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">發表於</span>
+            <time itemprop="dateCreated" datetime="2016-04-25T13:20:28-07:00" content="2016-04-25">
+              2016-04-25
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Installing_16-04"><a href="#Installing_16-04" class="headerlink" title="Installing 16.04"></a>Installing 16.04</h1><h2 id="Backup"><a href="#Backup" class="headerlink" title="Backup"></a>Backup</h2><p>Folders to back up</p>
+<p>Ubuntu Side</p>
+<ul>
+<li>~/Documents</li>
+<li>~/workspace</li>
+<li>~/dotfiles</li>
+<li>~/.emacs.d</li>
+<li>~/.ipython/kernels</li>
+</ul>
+<p>Windows Side</p>
+<ul>
+<li>Videos</li>
+<li>Pictures</li>
+</ul>
+<p>Other files</p>
+<ul>
+<li>python installation</li>
+<li><s>Firefox bookmarks</s> (Firefox sync takes care of all these)</li>
+<li><s>Firefo.x saved passwords</s></li>
+<li>Atom packages</li>
+<li>Atom snippets</li>
+</ul>
+<h2 id="Prepare_16-04_installation"><a href="#Prepare_16-04_installation" class="headerlink" title="Prepare 16.04 installation"></a>Prepare 16.04 installation</h2><p>I ended up wiping out the Windows installation.</p>
+<h2 id="Set_up_system"><a href="#Set_up_system" class="headerlink" title="Set up system"></a>Set up system</h2><ul>
+<li><s>Firefox</s> (Comes prepackaged with it)</li>
+<li>Dropbox</li>
+<li>Atom (with packages)</li>
+<li>Emacs (with package)</li>
+<li>Scala</li>
+<li>DB Browser</li>
+<li>Haroopad</li>
+<li>Skype</li>
+<li>KMPlayer</li>
+</ul>
+<h3 id="Input_method"><a href="#Input_method" class="headerlink" title="Input method"></a>Input method</h3><ul>
+<li><p>fcitx<br><a href="https://blogs.fsfe.org/stefan.a/2014/09/23/set-up-fcitx-chinese-and-japanese-language-input-ubuntu-14-04/" target="_blank" rel="external">This page</a> talks about how to config system to use fcitx</p>
+</li>
+<li><p>Use emacs key<br>Use Tweak Tool (found at Software Store), go to Typing &gt; Caplocks Behavior &gt; select “as additional Ctrl”</p>
+</li>
+<li>in the System setting Keyboard &gt; shortcuts &gt; Typing, Disable Ctrl+Space for switching input methods, as this conflicts with emacs’ C-SPACE selection key-binding.</li>
+</ul>
+<h3 id="Switch_default_shell_from_bash__26gt_3B_zsh"><a href="#Switch_default_shell_from_bash__26gt_3B_zsh" class="headerlink" title="Switch default shell from bash &gt; zsh"></a>Switch default shell from bash &gt; zsh</h3><ol>
+<li>install zsh in package manager</li>
+<li><code>sudo usermod -s /bin/zsh $USER</code></li>
+</ol>
+<h3 id="Python_environment"><a href="#Python_environment" class="headerlink" title="Python environment"></a>Python environment</h3><p>Turns out, most system modules are now in python3, unlike in Ubuntu 15.10 when they were under python2. So now it’s the pip3 that gets all the mess. Good thing is the system comes pre-packaged with python3.5.</p>
+<p>Problem: The packaged python doesn’t contain</p>
+<ul>
+<li>pip (pip2, pip3)<br>go to pip website, download <code>get_pip.py</code> and run it with sudo for both python2 and python3. This will install pip2 and pip3 respectively. I don’t know whether the order matters, but I ran 2 and then 3.</li>
+<li>virtualenv<br>Find <code>python-virtualenv</code> package in Synaptic</li>
+<li>Also find <code>python-dev</code> and <code>python3-dev</code> package in Synaptic, because some python libraries require compiling with <code>Python.h</code>.</li>
+<li>Matplotlib requires the dev portions of <code>libfreetype</code> and <code>libpng</code> to be installed</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/31/Python-BoBP-guide-zh/" itemprop="url">
                   Python最最佳指南
                 </a>
@@ -640,7 +776,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -654,7 +790,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>
