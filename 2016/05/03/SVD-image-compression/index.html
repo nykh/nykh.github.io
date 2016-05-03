@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="meta," />
+  <meta name="keywords" content="linalg,python," />
 
 
 
@@ -59,43 +59,21 @@
 
 
 
-<meta name="description" content="Test Markdown Features
-
-TodosSetting up the log is just the first step. I still need to
-
-[x] deploy to the web
-[ ] set up tool chain to write log using haroopad
-[ ] add link to this log site
-
-
-Planned">
+<meta name="description" content="123from skimage import data, filterimport matplotlib.pyplot as plt%matplotlib inline
+1234image = data.camera()# Ignore the Gaussian filter, for now.# (This is explained at the end of the article.)plt.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="My first post">
-<meta property="og:url" content="http://nykh.github.io/2016/01/22/Hello-world/index.html">
+<meta property="og:title" content="SVD Image Compression">
+<meta property="og:url" content="http://nykh.github.io/2016/05/03/SVD-image-compression/index.html">
 <meta property="og:site_name" content="nykh :: log">
-<meta property="og:description" content="Test Markdown Features
-
-TodosSetting up the log is just the first step. I still need to
-
-[x] deploy to the web
-[ ] set up tool chain to write log using haroopad
-[ ] add link to this log site
-
-
-Planned">
-<meta property="og:updated_time" content="2016-01-23T05:50:24.186Z">
+<meta property="og:description" content="123from skimage import data, filterimport matplotlib.pyplot as plt%matplotlib inline
+1234image = data.camera()# Ignore the Gaussian filter, for now.# (This is explained at the end of the article.)plt.">
+<meta property="og:image" content="http://nykh.github.io/SVD-image-compression/SVD-compression_1_0.png">
+<meta property="og:image" content="http://nykh.github.io/SVD-image-compression/SVD-compression_6_1.png">
+<meta property="og:updated_time" content="2016-05-03T22:35:11.531Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My first post">
-<meta name="twitter:description" content="Test Markdown Features
-
-TodosSetting up the log is just the first step. I still need to
-
-[x] deploy to the web
-[ ] set up tool chain to write log using haroopad
-[ ] add link to this log site
-
-
-Planned">
+<meta name="twitter:title" content="SVD Image Compression">
+<meta name="twitter:description" content="123from skimage import data, filterimport matplotlib.pyplot as plt%matplotlib inline
+1234image = data.camera()# Ignore the Gaussian filter, for now.# (This is explained at the end of the article.)plt.">
 
 
 
@@ -113,7 +91,7 @@ Planned">
   };
 </script>
 
-  <title> My first post | nykh :: log </title>
+  <title> SVD Image Compression | nykh :: log </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -233,7 +211,7 @@ Planned">
             
             
               
-                My first post
+                SVD Image Compression
               
             
           </h1>
@@ -245,8 +223,8 @@ Planned">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">發表於</span>
-            <time itemprop="dateCreated" datetime="2016-01-22T21:33:11-08:00" content="2016-01-22">
-              2016-01-22
+            <time itemprop="dateCreated" datetime="2016-05-03T15:31:16-07:00" content="2016-05-03">
+              2016-05-03
             </time>
           </span>
 
@@ -271,20 +249,18 @@ Planned">
       
 
       
-        <p>Test <strong>Markdown Features</strong></p>
-<hr>
-<h2 id="Todos"><a href="#Todos" class="headerlink" title="Todos"></a>Todos</h2><p>Setting up the log is just the first step. I still need to</p>
-<ul>
-<li>[x] deploy to the web</li>
-<li>[ ] set up tool chain to write log using haroopad</li>
-<li>[ ] add link to this log site</li>
-</ul>
-<hr>
-<h2 id="Planned_contents"><a href="#Planned_contents" class="headerlink" title="Planned contents"></a>Planned contents</h2><ol>
-<li>upload my notes for various courses and tech-talks.</li>
-<li>keep track of paper reading progress</li>
-<li>notes on Machine Learning</li>
-</ol>
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> skimage <span class="keyword">import</span> data, filter</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">image = data.camera()</span><br><span class="line"><span class="comment"># Ignore the Gaussian filter, for now.</span></span><br><span class="line"><span class="comment"># (This is explained at the end of the article.)</span></span><br><span class="line">plt.imshow(image);</span><br></pre></td></tr></table></figure>
+<p><img src="/SVD-image-compression/SVD-compression_1_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">image.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(512, 512)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> linalg</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">U, s, Vh = linalg.svd(image)</span><br><span class="line"><span class="keyword">assert</span>(x &gt; x2 <span class="keyword">for</span> x, x2 <span class="keyword">in</span> zip(s, s[<span class="number">1</span>:])) <span class="comment"># the singular values are returned in descending order!</span></span><br></pre></td></tr></table></figure>
+<p>SVD can be used to compress image (“Introduction to Linear Algebra”, G. Strang, 4ed, p.365).</p>
+<p>Before the image is $512 \times 512$ pixels.<br>After the image can be stored as $\text{Rank} \times (512 + 512)$ pixels</p>
+<p>When Rank is something like 50 there is essentially no big difference from original image.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">R = <span class="number">50</span></span><br><span class="line"></span><br><span class="line">Sigma = np.diag(s[:R])</span><br><span class="line">compressed_image = U[:, :R] @ Sigma @ Vh[:R, :]</span><br><span class="line">plt.imshow(compressed_image)</span><br></pre></td></tr></table></figure>
+<p><img src="/SVD-image-compression/SVD-compression_6_1.png" alt="png"></p>
 
       
     </div>
@@ -293,7 +269,9 @@ Planned">
       
         <div class="post-tags">
           
-            <a href="/tags/meta/" rel="tag">#meta</a>
+            <a href="/tags/linalg/" rel="tag">#linalg</a>
+          
+            <a href="/tags/python/" rel="tag">#python</a>
           
         </div>
       
@@ -302,13 +280,13 @@ Planned">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/05/01/Replace-DASH-with-Synapse/" rel="next" title="Replace DASH with Synapse">
+                <i class="fa fa-chevron-left"></i> Replace DASH with Synapse
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/03/30/How-to-set-up-CS224U-sans-Anaconda/" rel="prev" title="How to set up CS224U sans Anaconda">
-                How to set up CS224U sans Anaconda <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -447,7 +425,7 @@ Planned">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Todos"><span class="nav-number">1.</span> <span class="nav-text">Todos</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Planned_contents"><span class="nav-number">2.</span> <span class="nav-text">Planned contents</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目錄</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

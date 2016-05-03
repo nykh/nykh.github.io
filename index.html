@@ -214,6 +214,101 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/03/SVD-image-compression/" itemprop="url">
+                  SVD Image Compression
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">發表於</span>
+            <time itemprop="dateCreated" datetime="2016-05-03T15:31:16-07:00" content="2016-05-03">
+              2016-05-03
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> skimage <span class="keyword">import</span> data, filter</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">image = data.camera()</span><br><span class="line"><span class="comment"># Ignore the Gaussian filter, for now.</span></span><br><span class="line"><span class="comment"># (This is explained at the end of the article.)</span></span><br><span class="line">plt.imshow(image);</span><br></pre></td></tr></table></figure>
+<p><img src="/SVD-image-compression/SVD-compression_1_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">image.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(512, 512)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> linalg</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">U, s, Vh = linalg.svd(image)</span><br><span class="line"><span class="keyword">assert</span>(x &gt; x2 <span class="keyword">for</span> x, x2 <span class="keyword">in</span> zip(s, s[<span class="number">1</span>:])) <span class="comment"># the singular values are returned in descending order!</span></span><br></pre></td></tr></table></figure>
+<p>SVD can be used to compress image (“Introduction to Linear Algebra”, G. Strang, 4ed, p.365).</p>
+<p>Before the image is $512 \times 512$ pixels.<br>After the image can be stored as $\text{Rank} \times (512 + 512)$ pixels</p>
+<p>When Rank is something like 50 there is essentially no big difference from original image.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">R = <span class="number">50</span></span><br><span class="line"></span><br><span class="line">Sigma = np.diag(s[:R])</span><br><span class="line">compressed_image = U[:, :R] @ Sigma @ Vh[:R, :]</span><br><span class="line">plt.imshow(compressed_image)</span><br></pre></td></tr></table></figure>
+<p><img src="/SVD-image-compression/SVD-compression_6_1.png" alt="png"></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/01/Replace-DASH-with-Synapse/" itemprop="url">
                   Replace DASH with Synapse
                 </a>
@@ -683,7 +778,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
@@ -697,7 +792,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">標籤</span>
               </a>
           </div>
