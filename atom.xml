@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://nykh.github.io/"/>
-  <updated>2016-05-04T01:39:57.369Z</updated>
+  <updated>2016-05-04T01:45:05.319Z</updated>
   <id>http://nykh.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://nykh.github.io/2016/05/03/SVD-image-compression/"/>
     <id>http://nykh.github.io/2016/05/03/SVD-image-compression/</id>
     <published>2016-05-03T22:31:16.000Z</published>
-    <updated>2016-05-04T01:39:57.369Z</updated>
+    <updated>2016-05-04T01:45:05.319Z</updated>
     
     <content type="html">&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; skimage &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; data, filter&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; matplotlib.pyplot &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; plt&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;%matplotlib inline&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;image = data.camera()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;plt.imshow(image);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -30,7 +30,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; scipy &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; linalg&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; numpy &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; np&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;U, s, Vh = linalg.svd(image)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;assert&lt;/span&gt;(x &amp;gt; x2 &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; x, x2 &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; zip(s, s[&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;:])) &lt;span class=&quot;comment&quot;&gt;# the singular values are returned in descending order!&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;SVD can be used to compress image (“Introduction to Linear Algebra”, G. Strang, 4ed, p.365).&lt;/p&gt;
-&lt;p&gt;Before the image is $512 \times 512$ pixels.&lt;br&gt;After the image can be stored as $\text{Rank} \times (512 + 512)$ pixels&lt;/p&gt;
+&lt;p&gt;Before the image is 512×512 pixels.&lt;br&gt;After the image can be stored as Rank×512×512 pixels&lt;/p&gt;
 &lt;p&gt;When Rank is something like 50 there is essentially no big difference from original image.&lt;/p&gt;
 &lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;R = &lt;span class=&quot;number&quot;&gt;50&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Sigma = np.diag(s[:R])&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;compressed_image = U[:, :R] @ Sigma @ Vh[:R, :]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;plt.imshow(compressed_image)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;img src=&quot;/2016/05/03/SVD-image-compression/SVD-compression_6_1.png&quot; alt=&quot;png&quot;&gt;&lt;/p&gt;
