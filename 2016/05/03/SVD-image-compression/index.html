@@ -60,20 +60,35 @@
 
 
 <meta name="description" content="123from skimage import data, filterimport matplotlib.pyplot as plt%matplotlib inline
-1234image = data.camera()# Ignore the Gaussian filter, for now.# (This is explained at the end of the article.)plt.">
+12image = data.camera()plt.imshow(image);
+
+1image.shape
+(512, 512)
+12from scipy import linalgimport numpy as np
+12U">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SVD Image Compression">
 <meta property="og:url" content="http://nykh.github.io/2016/05/03/SVD-image-compression/index.html">
 <meta property="og:site_name" content="nykh :: log">
 <meta property="og:description" content="123from skimage import data, filterimport matplotlib.pyplot as plt%matplotlib inline
-1234image = data.camera()# Ignore the Gaussian filter, for now.# (This is explained at the end of the article.)plt.">
+12image = data.camera()plt.imshow(image);
+
+1image.shape
+(512, 512)
+12from scipy import linalgimport numpy as np
+12U">
 <meta property="og:image" content="http://nykh.github.io/2016/05/03/SVD-image-compression/SVD-compression_1_0.png">
 <meta property="og:image" content="http://nykh.github.io/2016/05/03/SVD-image-compression/SVD-compression_6_1.png">
-<meta property="og:updated_time" content="2016-05-03T22:54:52.418Z">
+<meta property="og:updated_time" content="2016-05-04T01:39:57.369Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SVD Image Compression">
 <meta name="twitter:description" content="123from skimage import data, filterimport matplotlib.pyplot as plt%matplotlib inline
-1234image = data.camera()# Ignore the Gaussian filter, for now.# (This is explained at the end of the article.)plt.">
+12image = data.camera()plt.imshow(image);
+
+1image.shape
+(512, 512)
+12from scipy import linalgimport numpy as np
+12U">
 
 
 
@@ -250,7 +265,7 @@
 
       
         <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> skimage <span class="keyword">import</span> data, filter</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">image = data.camera()</span><br><span class="line"><span class="comment"># Ignore the Gaussian filter, for now.</span></span><br><span class="line"><span class="comment"># (This is explained at the end of the article.)</span></span><br><span class="line">plt.imshow(image);</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">image = data.camera()</span><br><span class="line">plt.imshow(image);</span><br></pre></td></tr></table></figure>
 <p><img src="/2016/05/03/SVD-image-compression/SVD-compression_1_0.png" alt="png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">image.shape</span><br></pre></td></tr></table></figure>
 <pre><code>(512, 512)
