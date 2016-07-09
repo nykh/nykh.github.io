@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://nykh.github.io/"/>
-  <updated>2016-07-09T18:12:35.407Z</updated>
+  <updated>2016-07-09T18:29:09.299Z</updated>
   <id>http://nykh.github.io/</id>
   
   <author>
@@ -16,13 +16,16 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>17行代码写出原生响应式试算表（翻译）</title>
+    <title>【Red】17行代码写出原生响应式试算表（翻译）</title>
     <link href="http://nykh.github.io/2016/07/08/red-lang-excel-sheet/"/>
     <id>http://nykh.github.io/2016/07/08/red-lang-excel-sheet/</id>
     <published>2016-07-09T03:18:46.000Z</published>
-    <updated>2016-07-09T18:12:35.407Z</updated>
+    <updated>2016-07-09T18:29:09.299Z</updated>
     
-    <content type="html">&lt;p&gt;我们响应式框架发布几天了，我们决定做一个常见的试算表范例，展示一下用 Red&lt;br&gt;现在的功能来写需要几行。虽然Red没有网格部件，结果我们只花17行（紧缩但仍可读的）代码&lt;br&gt;就可以做出一个试算表范例了，把代码最小化甚至可以缩小到14行1053字节。&lt;br&gt;这个范例使用原生widget，能输入同时实时更新关联单元格。&lt;/p&gt;
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;原文　&lt;a href=&quot;http://www.red-lang.org/2016/07/native-reactive-spreadsheet-in-17-loc.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.red-lang.org/2016/07/native-reactive-spreadsheet-in-17-loc.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;我们响应式框架发布几天了，我们决定做一个常见的试算表范例，展示一下用 Red&lt;br&gt;现在的功能来写需要几行。虽然Red没有网格部件，结果我们只花17行（紧缩但仍可读的）代码&lt;br&gt;就可以做出一个试算表范例了，把代码最小化甚至可以缩小到14行1053字节。&lt;br&gt;这个范例使用原生widget，能输入同时实时更新关联单元格。&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;Red [] L: charset &amp;quot;ABCDEFGHI&amp;quot; D: union N: charset &amp;quot;123456789&amp;quot; charset &amp;quot;0&amp;quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;repeat y 9 [repeat x 9 [col: either x = 1 [#&amp;quot; &amp;quot;][#&amp;quot;A&amp;quot; + (x - 2)]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  append p: [] set ref: (to word! rejoin [col y - 1]) make face! [size: 90x24&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    type:    pick [text field] header?: (y = 1) or (x = 1)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    offset:  -20x10 + as-pair ((x - 1) * size/x + 2) ((y - 1) * size/y + 1)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    text:    form case [y = 1 [col] x = 1 [y - 1] &amp;apos;else [copy &amp;quot;&amp;quot;]]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    para:    make para! [align: pick [center right] header?]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    extra:   object [name: form ref formula: old: none]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    actors:  context [on-create: on-unfocus: function [f e][f/color: none&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      if rel: f/extra/old [react/unlink rel &amp;apos;all]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      if #&amp;quot;=&amp;quot; = first f/extra/formula: copy text: copy f/text [parse remove text&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;          [any [p: L N not [&amp;quot;/&amp;quot; skip not N] insert p &amp;quot; &amp;quot; insert &amp;quot;/data &amp;quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;          | L skip | p: some D opt [dot some D] insert p &amp;quot; &amp;quot; insert &amp;quot; &amp;quot; | skip]]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        f/text: rejoin [f/extra/name &amp;quot;/data: any [math/safe [&amp;quot; text &amp;#123;] &amp;quot;#UND&amp;quot;]&amp;#125;]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;       if f/data [any [react f/extra/old: f/data do f/data]]]]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      on-focus: func [f e][f/text: any [f/extra/formula f/text] f/color: yello]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;]]]] view make face! [type: &amp;apos;window text: &amp;quot;PicoSheet&amp;quot; size: 840x250 pane: p]&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;你可以复制黏贴上面的代码到 Windows 用 Red 终端，使用&lt;a href=&quot;http://static.red-lang.org/dl/auto/win/red-07jul16-54380a0.exe&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;最新工具链　build&lt;/a&gt; (950KB)。更好的选项是&lt;a href=&quot;http://static.red-lang.org/dl/win/gui-console.exe&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;prebuilt版本终端&lt;/a&gt; (247 KB)。&lt;br&gt;没错，我们还在用KB计算大小 ;-)&lt;/p&gt;
 &lt;p&gt;功能：&lt;/p&gt;
@@ -119,7 +122,8 @@
     
     <summary type="html">
     
-      &lt;p&gt;我们响应式框架发布几天了，我们决定做一个常见的试算表范例，展示一下用 Red&lt;br&gt;现在的功能来写需要几行。虽然Red没有网格部件，结果我们只花17行（紧缩但仍可读的）代码&lt;br&gt;就可以做出一个试算表范例了，把代码最小化甚至可以缩小到14行1053字节。&lt;br&gt;这个范例使用
+      &lt;blockquote&gt;
+&lt;p&gt;原文　&lt;a href=&quot;http://www.red-lang.org/2016/07/native-reactive-spreadsheet-in-17-loc.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http:
     
     </summary>
     

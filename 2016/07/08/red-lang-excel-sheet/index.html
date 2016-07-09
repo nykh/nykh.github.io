@@ -59,21 +59,24 @@
 
 
 
-<meta name="description" content="我们响应式框架发布几天了，我们决定做一个常见的试算表范例，展示一下用 Red现在的功能来写需要几行。虽然Red没有网格部件，结果我们只花17行（紧缩但仍可读的）代码就可以做出一个试算表范例了，把代码最小化甚至可以缩小到14行1053字节。这个范例使用原生widget，能输入同时实时更新关联单元格。
-1234567891011121314151617Red [] L: charset &amp;quot;A">
+<meta name="description" content="原文　http://www.red-lang.org/2016/07/native-reactive-spreadsheet-in-17-loc.html
+
+我们响应式框架发布几天了，我们决定做一个常见的试算表范例，展示一下用 Red现在的功能来写需要几行。虽然Red没有网格部件，结果我们只花17行（紧缩但仍可读的）代码就可以做出一个试算表范例了，把代码最小化甚至可以缩小到14行1053字节。这">
 <meta property="og:type" content="article">
-<meta property="og:title" content="17行代码写出原生响应式试算表（翻译）">
+<meta property="og:title" content="【Red】17行代码写出原生响应式试算表（翻译）">
 <meta property="og:url" content="http://nykh.github.io/2016/07/08/red-lang-excel-sheet/index.html">
 <meta property="og:site_name" content="nykh :: log">
-<meta property="og:description" content="我们响应式框架发布几天了，我们决定做一个常见的试算表范例，展示一下用 Red现在的功能来写需要几行。虽然Red没有网格部件，结果我们只花17行（紧缩但仍可读的）代码就可以做出一个试算表范例了，把代码最小化甚至可以缩小到14行1053字节。这个范例使用原生widget，能输入同时实时更新关联单元格。
-1234567891011121314151617Red [] L: charset &amp;quot;A">
+<meta property="og:description" content="原文　http://www.red-lang.org/2016/07/native-reactive-spreadsheet-in-17-loc.html
+
+我们响应式框架发布几天了，我们决定做一个常见的试算表范例，展示一下用 Red现在的功能来写需要几行。虽然Red没有网格部件，结果我们只花17行（紧缩但仍可读的）代码就可以做出一个试算表范例了，把代码最小化甚至可以缩小到14行1053字节。这">
 <meta property="og:image" content="https://4.bp.blogspot.com/-F4RveTcxHdQ/V34-uOhivRI/AAAAAAAAAOw/384PetWCd-ssVkMJXZVp7IBJp60PuBT2QCLcB/s1600/picosheets2.gif">
 <meta property="og:image" content="https://2.bp.blogspot.com/-RCJCZf0BEKE/V35Ql3TDJmI/AAAAAAAAAPA/amgD6KfWsKs6Zy7MrybiBb_R0cryJ3D-QCLcB/s1600/picosheets3.gif">
-<meta property="og:updated_time" content="2016-07-09T18:12:35.407Z">
+<meta property="og:updated_time" content="2016-07-09T18:29:09.299Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="17行代码写出原生响应式试算表（翻译）">
-<meta name="twitter:description" content="我们响应式框架发布几天了，我们决定做一个常见的试算表范例，展示一下用 Red现在的功能来写需要几行。虽然Red没有网格部件，结果我们只花17行（紧缩但仍可读的）代码就可以做出一个试算表范例了，把代码最小化甚至可以缩小到14行1053字节。这个范例使用原生widget，能输入同时实时更新关联单元格。
-1234567891011121314151617Red [] L: charset &amp;quot;A">
+<meta name="twitter:title" content="【Red】17行代码写出原生响应式试算表（翻译）">
+<meta name="twitter:description" content="原文　http://www.red-lang.org/2016/07/native-reactive-spreadsheet-in-17-loc.html
+
+我们响应式框架发布几天了，我们决定做一个常见的试算表范例，展示一下用 Red现在的功能来写需要几行。虽然Red没有网格部件，结果我们只花17行（紧缩但仍可读的）代码就可以做出一个试算表范例了，把代码最小化甚至可以缩小到14行1053字节。这">
 <meta name="twitter:image" content="https://4.bp.blogspot.com/-F4RveTcxHdQ/V34-uOhivRI/AAAAAAAAAOw/384PetWCd-ssVkMJXZVp7IBJp60PuBT2QCLcB/s1600/picosheets2.gif">
 
 
@@ -92,7 +95,7 @@
   };
 </script>
 
-  <title> 17行代码写出原生响应式试算表（翻译） | nykh :: log </title>
+  <title> 【Red】17行代码写出原生响应式试算表（翻译） | nykh :: log </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -212,7 +215,7 @@
             
             
               
-                17行代码写出原生响应式试算表（翻译）
+                【Red】17行代码写出原生响应式试算表（翻译）
               
             
           </h1>
@@ -250,7 +253,10 @@
       
 
       
-        <p>我们响应式框架发布几天了，我们决定做一个常见的试算表范例，展示一下用 Red<br>现在的功能来写需要几行。虽然Red没有网格部件，结果我们只花17行（紧缩但仍可读的）代码<br>就可以做出一个试算表范例了，把代码最小化甚至可以缩小到14行1053字节。<br>这个范例使用原生widget，能输入同时实时更新关联单元格。</p>
+        <blockquote>
+<p>原文　<a href="http://www.red-lang.org/2016/07/native-reactive-spreadsheet-in-17-loc.html" target="_blank" rel="external">http://www.red-lang.org/2016/07/native-reactive-spreadsheet-in-17-loc.html</a></p>
+</blockquote>
+<p>我们响应式框架发布几天了，我们决定做一个常见的试算表范例，展示一下用 Red<br>现在的功能来写需要几行。虽然Red没有网格部件，结果我们只花17行（紧缩但仍可读的）代码<br>就可以做出一个试算表范例了，把代码最小化甚至可以缩小到14行1053字节。<br>这个范例使用原生widget，能输入同时实时更新关联单元格。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Red [] L: charset &quot;ABCDEFGHI&quot; D: union N: charset &quot;123456789&quot; charset &quot;0&quot;</div><div class="line">repeat y 9 [repeat x 9 [col: either x = 1 [#&quot; &quot;][#&quot;A&quot; + (x - 2)]</div><div class="line">  append p: [] set ref: (to word! rejoin [col y - 1]) make face! [size: 90x24</div><div class="line">    type:    pick [text field] header?: (y = 1) or (x = 1)</div><div class="line">    offset:  -20x10 + as-pair ((x - 1) * size/x + 2) ((y - 1) * size/y + 1)</div><div class="line">    text:    form case [y = 1 [col] x = 1 [y - 1] &apos;else [copy &quot;&quot;]]</div><div class="line">    para:    make para! [align: pick [center right] header?]</div><div class="line">    extra:   object [name: form ref formula: old: none]</div><div class="line">    actors:  context [on-create: on-unfocus: function [f e][f/color: none</div><div class="line">      if rel: f/extra/old [react/unlink rel &apos;all]</div><div class="line">      if #&quot;=&quot; = first f/extra/formula: copy text: copy f/text [parse remove text</div><div class="line">          [any [p: L N not [&quot;/&quot; skip not N] insert p &quot; &quot; insert &quot;/data &quot;</div><div class="line">          | L skip | p: some D opt [dot some D] insert p &quot; &quot; insert &quot; &quot; | skip]]</div><div class="line">        f/text: rejoin [f/extra/name &quot;/data: any [math/safe [&quot; text &#123;] &quot;#UND&quot;]&#125;]</div><div class="line">       if f/data [any [react f/extra/old: f/data do f/data]]]]</div><div class="line">      on-focus: func [f e][f/text: any [f/extra/formula f/text] f/color: yello]</div><div class="line">]]]] view make face! [type: &apos;window text: &quot;PicoSheet&quot; size: 840x250 pane: p]</div></pre></td></tr></table></figure>
 <p>你可以复制黏贴上面的代码到 Windows 用 Red 终端，使用<a href="http://static.red-lang.org/dl/auto/win/red-07jul16-54380a0.exe" target="_blank" rel="external">最新工具链　build</a> (950KB)。更好的选项是<a href="http://static.red-lang.org/dl/win/gui-console.exe" target="_blank" rel="external">prebuilt版本终端</a> (247 KB)。<br>没错，我们还在用KB计算大小 ;-)</p>
 <p>功能：</p>
