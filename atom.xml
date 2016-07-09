@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://nykh.github.io/"/>
-  <updated>2016-05-04T01:45:05.319Z</updated>
+  <updated>2016-07-09T17:52:08.520Z</updated>
   <id>http://nykh.github.io/</id>
   
   <author>
@@ -14,6 +14,119 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>17行代码写出原生响应式试算表（翻译）</title>
+    <link href="http://nykh.github.io/2016/07/08/red-lang-excel-sheet/"/>
+    <id>http://nykh.github.io/2016/07/08/red-lang-excel-sheet/</id>
+    <published>2016-07-09T03:18:46.000Z</published>
+    <updated>2016-07-09T17:52:08.520Z</updated>
+    
+    <content type="html">&lt;p&gt;我们响应式框架发布几天了，我们决定做一个常见的试算表范例，展示一下用 Red&lt;br&gt;现在的功能来写需要几行。虽然Red没有网格部件，结果我们只花17行（紧缩但仍可读的）代码&lt;br&gt;就可以做出一个试算表范例了，把代码最小化甚至可以缩小到14行1053字节。&lt;br&gt;这个范例使用原生widget，能输入同时实时更新关联单元格。&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Red [] L: charset &amp;#34;ABCDEFGHI&amp;#34; D: union N: charset &amp;#34;123456789&amp;#34; charset &amp;#34;0&amp;#34;&amp;#10;repeat y 9 [repeat x 9 [col: either x = 1 [#&amp;#34; &amp;#34;][#&amp;#34;A&amp;#34; + (x - 2)]&amp;#10;  append p: [] set ref: (to word! rejoin [col y - 1]) make face! [size: 90x24&amp;#10;    type:    pick [text field] header?: (y = 1) or (x = 1)&amp;#10;    offset:  -20x10 + as-pair ((x - 1) * size/x + 2) ((y - 1) * size/y + 1)&amp;#10;    text:    form case [y = 1 [col] x = 1 [y - 1] &amp;#39;else [copy &amp;#34;&amp;#34;]]&amp;#10;    para:    make para! [align: pick [center right] header?]&amp;#10;    extra:   object [name: form ref formula: old: none]&amp;#10;    actors:  context [on-create: on-unfocus: function [f e][f/color: none&amp;#10;      if rel: f/extra/old [react/unlink rel &amp;#39;all]&amp;#10;      if #&amp;#34;=&amp;#34; = first f/extra/formula: copy text: copy f/text [parse remove text&amp;#10;          [any [p: L N not [&amp;#34;/&amp;#34; skip not N] insert p &amp;#34; &amp;#34; insert &amp;#34;/data &amp;#34;&amp;#10;          | L skip | p: some D opt [dot some D] insert p &amp;#34; &amp;#34; insert &amp;#34; &amp;#34; | skip]]&amp;#10;        f/text: rejoin [f/extra/name &amp;#34;/data: any [math/safe [&amp;#34; text &amp;#123;] &amp;#34;#UND&amp;#34;]&amp;#125;]&amp;#10;       if f/data [any [react f/extra/old: f/data do f/data]]]]&amp;#10;      on-focus: func [f e][f/text: any [f/extra/formula f/text] f/color: yello]&amp;#10;]]]] view make face! [type: &amp;#39;window text: &amp;#34;PicoSheet&amp;#34; size: 840x250 pane: p]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;你可以复制黏贴上面的代码到 Windows 用 Red 终端，使用&lt;a href=&quot;http://static.red-lang.org/dl/auto/win/red-07jul16-54380a0.exe&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;最新工具链　build&lt;/a&gt; (950KB)。更好的选项是&lt;a href=&quot;http://static.red-lang.org/dl/win/gui-console.exe&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;prebuilt版本终端&lt;/a&gt; (247 KB)。&lt;br&gt;没错，我们还在用KB计算大小 ;-)&lt;/p&gt;
+&lt;p&gt;功能：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;100% 原生窗口构件，使用内建GUI引擎（没有第三方库。目前仅支持Windows，&lt;br&gt;OSX与GTK制作中）&lt;/li&gt;
+&lt;li&gt;支持任意Excel式公式 (&lt;code&gt;=A1+2*C3&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;支持公式中夹杂任意Red代码&lt;/li&gt;
+&lt;li&gt;输入同时实时更新&lt;/li&gt;
+&lt;li&gt;编辑公式时，相关单元格会显示&lt;code&gt;#UND&lt;/code&gt;（”undefined”）&lt;/li&gt;
+&lt;li&gt;如果公式语法出错，单元格显示&lt;code&gt;#UND&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;代码紧缩以减少行数，但每行不超过82个字符（去掉缩进只要77个）&lt;/li&gt;
+&lt;li&gt;建构试算表花了&lt;strong&gt;6行代码&lt;/strong&gt;，把公式编译成Red表达式花了&lt;strong&gt;3行代码&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;每行一个表达式（或是嵌套表达式）。不算Red的头部，不算最后一行把选中单元格&lt;br&gt;背景设为黄色，那行只是为了让动画截屏容易看懂。&lt;/li&gt;
+&lt;li&gt;不使用GUI用的 &lt;a href=&quot;http://doc.red-lang.org/gui/VID.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;VID&lt;/a&gt; 方言，这部份留给读者作为练习 ;-)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以下是范例的截图&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://4.bp.blogspot.com/-F4RveTcxHdQ/V34-uOhivRI/AAAAAAAAAOw/384PetWCd-ssVkMJXZVp7IBJp60PuBT2QCLcB/s1600/picosheets2.gif&quot; alt=&quot;盗链XD&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果你想用这个资料集试试看，使用&lt;a href=&quot;https://gist.github.com/dockimbel/08e40961e5f7836d29591dd06d1a56f9&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这个脚本&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;第二个范例展示怎么利用Red&lt;a href=&quot;http://rebol.com/docs/core23/rebolcore-16.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;丰富的资料型态&lt;/a&gt;。&lt;br&gt;这也展示了你可以从单元格里存取、修改face物件的属性&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://2.bp.blogspot.com/-RCJCZf0BEKE/V35Ql3TDJmI/AAAAAAAAAPA/amgD6KfWsKs6Zy7MrybiBb_R0cryJ3D-QCLcB/s1600/picosheets3.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果你想用这个资料集，使用&lt;a href=&quot;https://gist.github.com/dockimbel/9ff2fd10e6310d1c4baf2336c6928cf0&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这个脚本&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这些影片是在Windows上录的。目前Windows是我们最先进的GUI后端。OSX跟GTK后端还在开发中。&lt;/p&gt;
+&lt;p&gt;这个展示是承袭Tcl/tk那个用了30行的&lt;a href=&quot;http://wiki.tcl.tk/41294&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;类似范例&lt;/a&gt;。&lt;br&gt;那个范例有利用内建的网格构件以及一个C风格的解析求值表达式的库叫&lt;a href=&quot;http://www.tcl.tk/man/tcl/TclCmd/expr.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;expr&lt;/a&gt;。&lt;br&gt;即便如此，Tcl/tk能用这么少行还是不错的。&lt;br&gt;但真正的王者是这个&lt;a href=&quot;http://xem.github.io/sheet/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;220比特&lt;/a&gt;的JS程序。&lt;br&gt;虽然这与其说是展示JS的&lt;a href=&quot;http://redmonk.com/dberkholz/2013/03/25/programming-languages-ranked-by-expressiveness/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;表达力&lt;/a&gt;&lt;br&gt;不如说是展示了DOM的厉害（后面有个100MB+的runtime）。&lt;br&gt;不管怎样，这个Red的范例是目前所知使用原生GUI的最小程序。包括可执行文件的大小也是最小的。&lt;br&gt;编译过后（头部加上Needs: View）只有&lt;a href=&quot;http://static.red-lang.org/dl/win/picosheet.exe&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;655KB&lt;/a&gt;，&lt;br&gt;&lt;a href=&quot;http://upx.sourceforge.net/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;压缩&lt;/a&gt;过后剩下&lt;a href=&quot;http://static.red-lang.org/dl/win/picosheet-packed.exe&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;221KB&lt;/a&gt;，&lt;br&gt;并且如同之前说的，&lt;strong&gt;没有任何依赖&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;以上源代码为了用最少行经过紧缩，但仍然可读。Red代码就算故意要混淆也是很难的。&lt;br&gt;Red代码记号之间必须要有空格，这就没办法做C那样偏激的事情。&lt;br&gt;要用Red赢一场每个字节都算分的&lt;a href=&quot;https://en.wikipedia.org/wiki/Code_golf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;代码高尔夫&lt;/a&gt;也很难……&lt;br&gt;除非你用Red的DSL功能&lt;a href=&quot;http://rebmu.hostilefork.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;写一个最少长度的DSL&lt;/a&gt;。&lt;br&gt;那也没问题，基本上就是个为Red/Rebol设计的压缩标准。 ;-)&lt;/p&gt;
+&lt;p&gt;怎么作到的？&lt;/p&gt;
+&lt;p&gt;这个程序利用了&lt;a href=&quot;http://doc.red-lang.org/gui/View.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Red/View&lt;/a&gt;　GUI引擎、&lt;a href=&quot;http://www.red-lang.org/2016/06/061-reactive-programming.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;响应式&lt;/a&gt;&lt;a href=&quot;http://doc.red-lang.org/reactivity.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;框架&lt;/a&gt;、&lt;a href=&quot;http://www.red-lang.org/2013/11/041-introducing-parse.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Parse&lt;/a&gt; DSL和Red语言核心。&lt;br&gt;很多人可能第一次听说，Red语言核心是&lt;a href=&quot;http://rebol.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Rebol&lt;/a&gt;语言的衍生，有编程语言中最高的表达力之一。&lt;/p&gt;
+&lt;p&gt;想要搞懂上面代码的人可以看这个&lt;a href=&quot;https://gist.github.com/dockimbel/b0a413342dc39568696207412a2ef5e7&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;更可读的版本&lt;/a&gt;。&lt;br&gt;接下来是详解。其实这个程序比看起来的简单多了，开始吧：&lt;/p&gt;
+&lt;p&gt;第一行&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;L: charset &amp;#34;ABCDEFGHI&amp;#34; D: union N: charset &amp;#34;123456789&amp;#34; charset &amp;#34;0&amp;#34;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;跳过Red的[]头部，这行定义几个&lt;a href=&quot;http://www.rebol.com/r3/docs/datatypes/bitset.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;bitsets&lt;/a&gt;，&lt;br&gt;会用来解析。我们合并N和”0”来生成&lt;br&gt;D &lt;a href=&quot;http://www.rebol.com/docs/words/wcharset.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;charset&lt;/a&gt;，&lt;br&gt;这样可以省下空间&lt;/p&gt;
+&lt;p&gt;第二行&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;repeat y 9 [repeat x 9 [col: either x = 1 [#&amp;#34; &amp;#34;][#&amp;#34;A&amp;#34; + (x - 2)]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;双重循环产生所有需要的小窗口构件，如果该列是个表头&lt;code&gt;col&lt;/code&gt;设成一个空格&lt;br&gt;否則设成A到G之间的一个字母。等下用来生成单元格名称和第一行的标签。&lt;/p&gt;
+&lt;p&gt;第三行&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;append p: [] set ref: (to word! rejoin [col y - 1]) make face! [size: 90x24&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这裡我们开始建构face。在&lt;code&gt;p&lt;/code&gt;区块里面累积。&lt;code&gt;p: []&lt;/code&gt;是一种静态分配，而且不用&lt;br&gt;换行很方便。&lt;code&gt;set ref: (to word! rejoin [col y - 1])&lt;/code&gt;这部份很好懂，&lt;br&gt;是把&lt;code&gt;make face!&lt;/code&gt;生成的face加到&lt;code&gt;p&lt;/code&gt;列表中。这个表达式创建单元格的名称（一个&lt;br&gt;字母表示列然后一个数字表示行），这被转换成一个word然后引用新创建的face。&lt;br&gt;有这些词才能支持试算表公式引用。最后没关闭的区块接受一个嵌套表达式，&lt;br&gt;&lt;code&gt;size&lt;/code&gt;定义是属性定义裡面最短的，所以可以加在这裡。&lt;/p&gt;
+&lt;p&gt;第四行&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;type:    pick [text field] header?: (y = 1) or (x = 1)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;第一行/列的face类型可以是&lt;code&gt;text&lt;/code&gt;，否则可以是&lt;code&gt;field&lt;/code&gt;。&lt;code&gt;header?&lt;/code&gt;这个word之后还有用处，来检查一个单元格是否只是标签或是个域。如果你好奇为什么用&lt;code&gt;or&lt;/code&gt;而不是更常见的&lt;code&gt;any&lt;/code&gt;，这是因为那样的话&lt;code&gt;pick&lt;/code&gt;会要求把结果转换成&lt;code&gt;logic!&lt;/code&gt;，这会花很大的计算量。&lt;/p&gt;
+&lt;p&gt;第五行&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;offset:  -20x10 + as-pair ((x - 1) * size/x + 2) ((y - 1) * size/y + 1)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;face的位置由&lt;code&gt;x&lt;/code&gt;与&lt;code&gt;y&lt;/code&gt;的值计算，以形成一个网格。然后我主观觉得稍微往左偏移一点比较好看。&lt;/p&gt;
+&lt;p&gt;第六行&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;text:    form case [y = 1 [col] x = 1 [y - 1] &amp;#39;else [copy &amp;#34;&amp;#34;]]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;face的内容设为&lt;code&gt;col&lt;/code&gt;，&lt;code&gt;col&lt;/code&gt;包含了列的标签或是行数，否则的话这是输入单元格，&lt;code&gt;col&lt;/code&gt;是个空字串。&lt;/p&gt;
+&lt;p&gt;第七行&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;para:    make para! [align: pick [center right] header?]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;face 的&lt;code&gt;para&lt;/code&gt;物件只是用来把标签置中同时保持普通单元格内容靠右对齐。&lt;/p&gt;
+&lt;p&gt;第八行&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;extra:   object [name: form ref formula: old: none]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;code&gt;extra&lt;/code&gt; 域包含一个物件，这个物件内含单元格的状态：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;name&lt;/code&gt;：单元格名称，字串格式比较适合公式编译器。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;formula&lt;/code&gt;：引用最后一个输入的公式，文本格式。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;old&lt;/code&gt;：引用最后一个单元格公式引起的反应（或是为空）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;第九行&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;actors:  context [on-create: on-unfocus: function [f e][f/color: none&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;单元格定义几乎结束了，只剩下事件处理，这行开始定义事件处理。单元格创建时会呼叫&lt;code&gt;on-create&lt;/code&gt;，保证&lt;code&gt;preset&lt;/code&gt;内容在显示前会正确处理（如果是公式的话）。&lt;code&gt;on-unfocus&lt;/code&gt;主要负责处理用户的输入。&lt;code&gt;on-enter&lt;/code&gt;没有用，因为现在tabbing支援不能正常工作。按Enter键会保持焦点在同个单元格上，要解决这种副作用需要好几行。一旦tabbing恢复正常我们可以加上这个。最后因为函数的主体区块是开放的，我们可以塞一个短表达式，把单元格背景色重设为默认值。&lt;/p&gt;
+&lt;p&gt;第10行&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;if rel: f/extra/old [react/unlink rel &amp;#39;all]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;我们开始处理有趣的部份。如果一个公式产生一个反应，我们先消灭那个反应。&lt;/p&gt;
+&lt;p&gt;第11行&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;if #&amp;#34;=&amp;#34; = first f/extra/formula: copy text: copy f/text [parse remove text&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;如果检查到一个公式，那我们把文本复制下来，之后用来解析成Red表达式。因为series被deep reactors所有（例如一个&lt;code&gt;face!&lt;/code&gt;物件），&lt;code&gt;copy&lt;/code&gt;会确保转换期间没有物件事件产生。第二次&lt;code&gt;copy&lt;/code&gt;会生成另一个输入字符串实例让&lt;code&gt;extra/formula&lt;/code&gt;引用。如果输入字串不是一个公式，之前这些工作都不会影响单元格的内容（只是会浪费空间，但我们这裡不在意这点）。最后，如果这是一个公式，我们去掉开头的等号然后用一个Parse规则转换它。&lt;/p&gt;
+&lt;p&gt;第12行&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[any [p: L N not [&amp;#34;/&amp;#34; skip not N] insert p &amp;#34; &amp;#34; insert &amp;#34;/data &amp;#34;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这个规则一开始是个循环，目的是搜索所有单元格名称并且前面插一个空格再在后面加上”/data”（&lt;code&gt;A1&lt;/code&gt;变成&lt;code&gt;A1/data&lt;/code&gt;）。&lt;br&gt;&lt;code&gt;not [&amp;quot;/&amp;quot; skip not N]&lt;/code&gt;这个规则避免转换到带face属性的单元格名称（例如&lt;code&gt;A1/color&lt;/code&gt;）&lt;br&gt;，规则是检查斜杠后面的第二个字符是不是数字，所以除法&lt;code&gt;A1/B2&lt;/code&gt;仍然可以转换。&lt;/p&gt;
+&lt;p&gt;第13行&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;| L skip | p: some D opt [dot some D] insert p &amp;#34; &amp;#34; insert &amp;#34; &amp;#34; | skip]]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;如果输入不是一个单元格名称，搜寻数字（某个D），包括带小数（&lt;code&gt;opt [dot some D]&lt;/code&gt;），这样我们可以插入空格（”&lt;code&gt;1+2&lt;/code&gt;“变成”&lt;code&gt;1 + 2&lt;/code&gt;“）来遵守Red的语法规则（因为我们之后会&lt;code&gt;LOAD&lt;/code&gt;这个字串）。&lt;code&gt;| L&lt;/code&gt;这部份是防止给带符号的数字插入空格（”&lt;code&gt;-123&lt;/code&gt;“不会变）。最后一个&lt;code&gt;skip&lt;/code&gt;规则会跳过其他不重要的字符。&lt;/p&gt;
+&lt;p&gt;第14行&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;f/text: rejoin [f/extra/name &amp;#34;/data: any [math/safe [&amp;#34; text &amp;#123;] &amp;#34;#UND&amp;#34;]&amp;#125;]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;转换基本完成了。最后一步是给字串加上特殊字符好生成Red表达式。首先我们把刚才的结果包在一个&lt;code&gt;math/safe [...]&lt;/code&gt;区块中。&lt;code&gt;math&lt;/code&gt;函数的作用是保证数学符号的优先级，而&lt;code&gt;/safe&lt;/code&gt;选项会在内部尝试求值，因此出错的表达式会回传&lt;code&gt;none&lt;/code&gt;值（然后翻译成&lt;code&gt;#UND&lt;/code&gt;字串）。求值的结果被设给当前单元格。所以当你在&lt;code&gt;C1&lt;/code&gt;单元格输入像&lt;code&gt;=A1+B1&lt;/code&gt;这样的公式，我们会得到以下转换的结果：&lt;br&gt;“&lt;code&gt;C1/data: any [math/safe [ A1/data + B1/data ] &amp;quot;#UND&amp;quot;]&lt;/code&gt;“。这是可以&lt;code&gt;LOAD&lt;/code&gt;的表达式字串。但是我们的代码裡没有&lt;code&gt;LOAD&lt;/code&gt;？其实有，这归功于0.6.1版的新功能：一个域的&lt;code&gt;/text&lt;/code&gt;属性默认与&lt;code&gt;/data&lt;/code&gt;属性用一个&lt;code&gt;LOAD&lt;/code&gt;呼叫同步。如果呼叫失败，&lt;code&gt;/data&lt;/code&gt;被设为&lt;code&gt;none&lt;/code&gt;。相反，设置&lt;code&gt;/data&lt;/code&gt;也会把&lt;code&gt;/text&lt;/code&gt;改成&lt;code&gt;FROM&lt;/code&gt;呼叫的结果。这就是这个表达式的目的 ;-)&lt;/p&gt;
+&lt;p&gt;第15行&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;if f/data [any [react f/extra/old: f/data do f/data]]]]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;现在我们来到了高潮部份。上一行设置了&lt;code&gt;f/text&lt;/code&gt;产生字串&lt;code&gt;LOAD&lt;/code&gt;过的版本，由&lt;code&gt;f/data&lt;/code&gt;引用。如果&lt;code&gt;LOAD&lt;/code&gt;失败了，&lt;code&gt;f/data&lt;/code&gt;会被设为&lt;code&gt;none&lt;/code&gt;然后我们就能退出事件处理。否则我们就有东西可以喂给&lt;code&gt;REACT&lt;/code&gt;来给这个单元格产生一个响应关系。这就是之前给单元格名称加&lt;code&gt;/data&lt;/code&gt;有用的地方。&lt;code&gt;REACT&lt;/code&gt;会静态分析&lt;code&gt;path!&lt;/code&gt;值来找出响应源。不过如果表达式裡没有响应源（例如”&lt;code&gt;=1+2&lt;/code&gt;“这个公式会把&lt;code&gt;f/data&lt;/code&gt;赋值成&lt;code&gt;[C1/data: any [math/safe [ 1 + 2 ]]]&lt;/code&gt;），那么&lt;code&gt;REACT&lt;/code&gt;回传&lt;code&gt;none&lt;/code&gt;然后我们就可以直接对表达式求值，求值结果会赋值给当前单元格的&lt;code&gt;/data&lt;/code&gt;（这也会改变&lt;code&gt;/text&lt;/code&gt;，然后使用者就看得到了）。另一方面如果&lt;code&gt;REACT&lt;/code&gt;成功了，我们就给这个单元格设了新的响应关系。响应关系默认在构造时会执行一次，这可以确保单元格显示正确的值（通过隐式地改变&lt;code&gt;/data&lt;/code&gt;，大家一定都很熟悉了）。还有，我们把用来生成响应关系的表达式的一个引用存在&lt;code&gt;extra/old&lt;/code&gt;，因为有新公式的时候要把旧的给删除。如果你到目前为止都看得懂，恭喜，你已经是&lt;code&gt;View&lt;/code&gt;跟响应式框架的大师了 ;-)&lt;/p&gt;
+&lt;p&gt;第16行&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;on-focus: func [f e][f/text: any [f/extra/formula f/text] f/color: yello]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;第二个事件处理器是当单元格得到焦点的时候会把公式写回来。同时我们把背景色设为yello&lt;s&gt;w&lt;/s&gt;，也就是……恩，像yellow但是稍微没那么黄……所以我们把这个不常见的颜色命名成这样。（卡尔，你看到这裡的话，我希望你欣赏我给你那个有创意的命名格式打圆场的努力;-)）&lt;/p&gt;
+&lt;p&gt;第17行&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;]]]] view make face! [type: &amp;#39;window text: &amp;#34;PicoSheet&amp;#34; size: 840x250 pane: p]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;最后一行只是生成一个窗口，并且把先前生成的标签和域赋给它的&lt;code&gt;/pane&lt;/code&gt;属性（&lt;code&gt;face&lt;/code&gt;的子元素）。然后显示窗口并&lt;code&gt;view&lt;/code&gt;呼叫进入事件循环。大功告成！&lt;/p&gt;
+&lt;p&gt;追记&lt;/p&gt;
+&lt;p&gt;我们希望大家读过这个范例和解释觉得有意思也学到东西。你不是每天都会做一个试算表应用。这种应用很特殊，结合了很实用、强大的功能，同时只有基本电脑技能的人也能使用。&lt;br&gt;很多人把试算表应用视为我们工业软件世界的集大成。微软CEO自己几天前宣布说Excel是他&lt;br&gt;公司做过最好的产品。&lt;/p&gt;
+&lt;p&gt;Red让你可以很直接方便的用原生技术写一个这样的应用。我希望这可以让更多人有兴趣学习Red并用Red写更多给力的软件。&lt;/p&gt;
+&lt;p&gt;除了有趣以外，这个范例也展示了Red在原生GUI应用领域的潜力（我们现在只是0.6.1版，&lt;br&gt;我们还计画了很多功能和支持）。在原生和Web方案的大战之中，我们预料Red有朝一日会&lt;br&gt;是一个重要的选项。&lt;/p&gt;
+&lt;p&gt;在那之前……希望你喜欢Red，就像我们一样！ ;-)&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我们响应式框架发布几天了，我们决定做一个常见的试算表范例，展示一下用 Red&lt;br&gt;现在的功能来写需要几行。虽然Red没有网格部件，结果我们只花17行（紧缩但仍可读的）代码&lt;br&gt;就可以做出一个试算表范例了，把代码最小化甚至可以缩小到14行1053字节。&lt;br&gt;这个范例使用
+    
+    </summary>
+    
+    
+      <category term="red-lang" scheme="http://nykh.github.io/tags/red-lang/"/>
+    
+  </entry>
   
   <entry>
     <title>SVD Image Compression</title>

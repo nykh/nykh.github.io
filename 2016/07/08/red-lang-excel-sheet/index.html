@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="red-lang," />
 
 
 
@@ -59,15 +59,21 @@
 
 
 
-<meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="nykh :: log">
-<meta property="og:url" content="http://nykh.github.io/index.html">
+<meta name="description" content="我们响应式框架发布几天了，我们决定做一个常见的试算表范例，展示一下用 Red现在的功能来写需要几行。虽然Red没有网格部件，结果我们只花17行（紧缩但仍可读的）代码就可以做出一个试算表范例了，把代码最小化甚至可以缩小到14行1053字节。这个范例使用原生widget，能输入同时实时更新关联单元格。
+1Red [] L: charset &amp;#34;ABCDEFGHI&amp;#34; D: union N:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="17行代码写出原生响应式试算表（翻译）">
+<meta property="og:url" content="http://nykh.github.io/2016/07/08/red-lang-excel-sheet/index.html">
 <meta property="og:site_name" content="nykh :: log">
-<meta property="og:description">
+<meta property="og:description" content="我们响应式框架发布几天了，我们决定做一个常见的试算表范例，展示一下用 Red现在的功能来写需要几行。虽然Red没有网格部件，结果我们只花17行（紧缩但仍可读的）代码就可以做出一个试算表范例了，把代码最小化甚至可以缩小到14行1053字节。这个范例使用原生widget，能输入同时实时更新关联单元格。
+1Red [] L: charset &amp;#34;ABCDEFGHI&amp;#34; D: union N:">
+<meta property="og:image" content="https://4.bp.blogspot.com/-F4RveTcxHdQ/V34-uOhivRI/AAAAAAAAAOw/384PetWCd-ssVkMJXZVp7IBJp60PuBT2QCLcB/s1600/picosheets2.gif">
+<meta property="og:image" content="https://2.bp.blogspot.com/-RCJCZf0BEKE/V35Ql3TDJmI/AAAAAAAAAPA/amgD6KfWsKs6Zy7MrybiBb_R0cryJ3D-QCLcB/s1600/picosheets3.gif">
+<meta property="og:updated_time" content="2016-07-09T17:52:08.520Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nykh :: log">
-<meta name="twitter:description">
+<meta name="twitter:title" content="17行代码写出原生响应式试算表（翻译）">
+<meta name="twitter:description" content="我们响应式框架发布几天了，我们决定做一个常见的试算表范例，展示一下用 Red现在的功能来写需要几行。虽然Red没有网格部件，结果我们只花17行（紧缩但仍可读的）代码就可以做出一个试算表范例了，把代码最小化甚至可以缩小到14行1053字节。这个范例使用原生widget，能输入同时实时更新关联单元格。
+1Red [] L: charset &amp;#34;ABCDEFGHI&amp;#34; D: union N:">
 
 
 
@@ -85,7 +91,7 @@
   };
 </script>
 
-  <title> nykh :: log </title>
+  <title> 17行代码写出原生响应式试算表（翻译） | nykh :: log </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -104,9 +110,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-right 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -185,15 +189,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
 
+  <div id="posts" class="posts-expand">
     
-
-    
-    
-
-    
-      
 
   
   
@@ -213,10 +211,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/07/08/red-lang-excel-sheet/" itemprop="url">
-                  17行代码写出原生响应式试算表（翻译）
-                </a>
+                17行代码写出原生响应式试算表（翻译）
               
             
           </h1>
@@ -254,9 +249,7 @@
       
 
       
-        
-          
-            <p>我们响应式框架发布几天了，我们决定做一个常见的试算表范例，展示一下用 Red<br>现在的功能来写需要几行。虽然Red没有网格部件，结果我们只花17行（紧缩但仍可读的）代码<br>就可以做出一个试算表范例了，把代码最小化甚至可以缩小到14行1053字节。<br>这个范例使用原生widget，能输入同时实时更新关联单元格。</p>
+        <p>我们响应式框架发布几天了，我们决定做一个常见的试算表范例，展示一下用 Red<br>现在的功能来写需要几行。虽然Red没有网格部件，结果我们只花17行（紧缩但仍可读的）代码<br>就可以做出一个试算表范例了，把代码最小化甚至可以缩小到14行1053字节。<br>这个范例使用原生widget，能输入同时实时更新关联单元格。</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Red [] L: charset &#34;ABCDEFGHI&#34; D: union N: charset &#34;123456789&#34; charset &#34;0&#34;&#10;repeat y 9 [repeat x 9 [col: either x = 1 [#&#34; &#34;][#&#34;A&#34; + (x - 2)]&#10;  append p: [] set ref: (to word! rejoin [col y - 1]) make face! [size: 90x24&#10;    type:    pick [text field] header?: (y = 1) or (x = 1)&#10;    offset:  -20x10 + as-pair ((x - 1) * size/x + 2) ((y - 1) * size/y + 1)&#10;    text:    form case [y = 1 [col] x = 1 [y - 1] &#39;else [copy &#34;&#34;]]&#10;    para:    make para! [align: pick [center right] header?]&#10;    extra:   object [name: form ref formula: old: none]&#10;    actors:  context [on-create: on-unfocus: function [f e][f/color: none&#10;      if rel: f/extra/old [react/unlink rel &#39;all]&#10;      if #&#34;=&#34; = first f/extra/formula: copy text: copy f/text [parse remove text&#10;          [any [p: L N not [&#34;/&#34; skip not N] insert p &#34; &#34; insert &#34;/data &#34;&#10;          | L skip | p: some D opt [dot some D] insert p &#34; &#34; insert &#34; &#34; | skip]]&#10;        f/text: rejoin [f/extra/name &#34;/data: any [math/safe [&#34; text &#123;] &#34;#UND&#34;]&#125;]&#10;       if f/data [any [react f/extra/old: f/data do f/data]]]]&#10;      on-focus: func [f e][f/text: any [f/extra/formula f/text] f/color: yello]&#10;]]]] view make face! [type: &#39;window text: &#34;PicoSheet&#34; size: 840x250 pane: p]</span><br></pre></td></tr></table></figure>
 <p>你可以复制黏贴上面的代码到 Windows 用 Red 终端，使用<a href="http://static.red-lang.org/dl/auto/win/red-07jul16-54380a0.exe" target="_blank" rel="external">最新工具链　build</a> (950KB)。更好的选项是<a href="http://static.red-lang.org/dl/win/gui-console.exe" target="_blank" rel="external">prebuilt版本终端</a> (247 KB)。<br>没错，我们还在用KB计算大小 ;-)</p>
 <p>功能：</p>
@@ -350,572 +343,45 @@
 <p>除了有趣以外，这个范例也展示了Red在原生GUI应用领域的潜力（我们现在只是0.6.1版，<br>我们还计画了很多功能和支持）。在原生和Web方案的大战之中，我们预料Red有朝一日会<br>是一个重要的选项。</p>
 <p>在那之前……希望你喜欢Red，就像我们一样！ ;-)</p>
 
-          
-        
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/03/SVD-image-compression/" itemprop="url">
-                  SVD Image Compression
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">發表於</span>
-            <time itemprop="dateCreated" datetime="2016-05-03T15:31:16-07:00" content="2016-05-03">
-              2016-05-03
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-
-          
-            
-          
-
-          
-
-          
+            <a href="/tags/red-lang/" rel="tag">#red-lang</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> skimage <span class="keyword">import</span> data, filter</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">image = data.camera()</span><br><span class="line">plt.imshow(image);</span><br></pre></td></tr></table></figure>
-<p><img src="/2016/05/03/SVD-image-compression/SVD-compression_1_0.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">image.shape</span><br></pre></td></tr></table></figure>
-<pre><code>(512, 512)
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> linalg</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">U, s, Vh = linalg.svd(image)</span><br><span class="line"><span class="keyword">assert</span>(x &gt; x2 <span class="keyword">for</span> x, x2 <span class="keyword">in</span> zip(s, s[<span class="number">1</span>:])) <span class="comment"># the singular values are returned in descending order!</span></span><br></pre></td></tr></table></figure>
-<p>SVD can be used to compress image (“Introduction to Linear Algebra”, G. Strang, 4ed, p.365).</p>
-<p>Before the image is 512×512 pixels.<br>After the image can be stored as Rank×512×512 pixels</p>
-<p>When Rank is something like 50 there is essentially no big difference from original image.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">R = <span class="number">50</span></span><br><span class="line"></span><br><span class="line">Sigma = np.diag(s[:R])</span><br><span class="line">compressed_image = U[:, :R] @ Sigma @ Vh[:R, :]</span><br><span class="line">plt.imshow(compressed_image)</span><br></pre></td></tr></table></figure>
-<p><img src="/2016/05/03/SVD-image-compression/SVD-compression_6_1.png" alt="png"></p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/05/03/SVD-image-compression/" rel="next" title="SVD Image Compression">
+                <i class="fa fa-chevron-left"></i> SVD Image Compression
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2016/05/01/Replace-DASH-with-Synapse/" itemprop="url">
-                  Replace DASH with Synapse
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">發表於</span>
-            <time itemprop="dateCreated" datetime="2016-05-01T22:12:34-07:00" content="2016-05-01">
-              2016-05-01
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>I found the launcher application called <a href="https://launchpad.net/synapse-project" target="_blank" rel="external">Synapse</a> and it’s indeed very easy to use. It basically replaces Bookmarks and the built-in DASH launcher of Ubuntu. I set the keybinding to CTRL-TAB which seems to interfere the least with any applications.</p>
-<p>Next is disabling the Launcher from its default keybinding of <code>&lt;Super&gt;</code>.<br><a href="http://8thstring.blogspot.com/2011/07/change-unity-keyboard-shortcut-for.html" target="_blank" rel="external">This page</a> describes how to use <strong>Compiz Config Setting Manager (ccms)</strong> to disable/change Launcher activation key.</p>
-<p>Finally, Synapse by default ships with the search engine <em>DuckDuckGo</em>, if you are like me who just uses Google you can try <a href="https://answers.launchpad.net/synapse-project/+question/253849" target="_blank" rel="external">this solution on Launchpad</a>.</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/25/流水帳-Reinstalling-16-06/" itemprop="url">
-                  [流水帳] Reinstalling 16.06
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">發表於</span>
-            <time itemprop="dateCreated" datetime="2016-04-25T13:20:28-07:00" content="2016-04-25">
-              2016-04-25
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>記一次系統重裝</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/25/流水帳-Reinstalling-16-06/#more" rel="contents">
-              閱讀全文 &raquo;
-            </a>
           </div>
-        
-      
-    </div>
 
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/31/Python-BoBP-guide-zh/" itemprop="url">
-                  Python最最佳指南
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">發表於</span>
-            <time itemprop="dateCreated" datetime="2016-03-31T00:32:34-07:00" content="2016-03-31">
-              2016-03-31
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Python 的「最最佳作法」（the Best of Best Practices）指南。（<a href="https://gist.github.com/sloria/7001839">原文</a> by @Sloria）</p>
-<h2 id="u6982_u8AD6"><a href="#u6982_u8AD6" class="headerlink" title="概論"></a>概論</h2><h3 id="u50F9_u503C_u89C0"><a href="#u50F9_u503C_u89C0" class="headerlink" title="價值觀"></a>價值觀</h3><ul>
-<li>「不要做己所不欲的工具給人用」 - Kenneth Reitz</li>
-<li>「簡單永遠勝過多功能」 - Pieter Hintjens</li>
-<li>「滿足 90% 的使用情境，不要管奧客」 - Kenneth Reitz</li>
-<li>「優美勝過醜陋」 - <a href="https://wiki.python.org/moin/PythonZenChineseTranslate">PEP 20</a></li>
-<li>「為開源貢獻」（即便最終是為了閉源項目）</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/31/Python-BoBP-guide-zh/#more" rel="contents">
-              閱讀全文 &raquo;
-            </a>
           </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/30/How-to-set-up-CS224U-sans-Anaconda/" itemprop="url">
-                  How to set up CS224U sans Anaconda
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">發表於</span>
-            <time itemprop="dateCreated" datetime="2016-03-30T20:36:50-07:00" content="2016-03-30">
-              2016-03-30
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>Here is a way to run the CS224U notebooks without using Anaconda, especially if you already have python installed and don’t want to be bound to Anaconda.</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/30/How-to-set-up-CS224U-sans-Anaconda/#more" rel="contents">
-              閱讀全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/22/Hello-world/" itemprop="url">
-                  My first post
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">發表於</span>
-            <time itemprop="dateCreated" datetime="2016-01-22T21:33:11-08:00" content="2016-01-22">
-              2016-01-22
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Test <strong>Markdown Features</strong></p>
-<hr>
-<h2 id="Todos"><a href="#Todos" class="headerlink" title="Todos"></a>Todos</h2><p>Setting up the log is just the first step. I still need to</p>
-<ul>
-<li>[x] deploy to the web</li>
-<li>[ ] set up tool chain to write log using haroopad</li>
-<li>[ ] add link to this log site</li>
-</ul>
-<hr>
-<h2 id="Planned_contents"><a href="#Planned_contents" class="headerlink" title="Planned contents"></a>Planned contents</h2><ol>
-<li>upload my notes for various courses and tech-talks.</li>
-<li>keep track of paper reading progress</li>
-<li>notes on Machine Learning</li>
-</ol>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -923,6 +389,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -942,8 +412,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/heigo.jpg"
@@ -1015,6 +494,23 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目錄</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
       
 
     </div>
@@ -1089,6 +585,167 @@
   
 
   
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
 
   
 
