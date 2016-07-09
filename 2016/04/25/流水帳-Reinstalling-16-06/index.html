@@ -81,7 +81,7 @@
     motion: true,
     duoshuo: {
       userId: 0,
-      author: '博主'
+      author: 'Author'
     }
   };
 </script>
@@ -142,7 +142,7 @@
             
               <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
             
-            首頁
+            Startseite
           </a>
         </li>
       
@@ -152,7 +152,7 @@
             
               <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
             
-            歸檔
+            Archiv
           </a>
         </li>
       
@@ -162,7 +162,7 @@
             
               <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
             
-            標籤
+            Tags
           </a>
         </li>
       
@@ -217,7 +217,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">發表於</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-04-25T13:20:28-07:00" content="2016-04-25">
               2016-04-25
             </time>
@@ -301,7 +301,7 @@
 </ul>
 <h1 id="Permission_Problem"><a href="#Permission_Problem" class="headerlink" title="Permission Problem"></a>Permission Problem</h1><p>Turns out the mobile hard drive I used to backup my files is NTFS or something and this messed up all the permission codes (All become <code>777</code>)…</p>
 <p>I wrote a script to recursively change all the directory and executable files permission to <code>755</code>, all the normal file permission to <code>644</code>. The way it differentiates executable files and non-executable is first by extension name: those ending in <code>bin</code>, <code>sh</code>, <code>exe</code> are usually executable files. The trickier part is those executables without extension, which is a norm under Linux. To tackle those types of files (and differentiatbe them from normal files without extension like <code>Makefile</code>) I leveraged the <code>file</code> system program, which will usually tell you whether something is an executable binary. However it also has the bad habbit of saying executalbe on python script file, even those without shebang. Therefore I can’t trust it completely.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3.5</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"><span class="keyword">from</span> subprocess <span class="keyword">import</span> run <span class="comment"># &gt;= py3.5</span></span><br><span class="line"></span><br><span class="line">file_uuid = <span class="number">0o664</span></span><br><span class="line">exec_uuid = <span class="number">0o755</span></span><br><span class="line">dir_uuid  = <span class="number">0o755</span></span><br><span class="line"></span><br><span class="line">exec_file_types = [</span><br><span class="line">  <span class="string">"exe"</span>, <span class="string">"sh"</span>, <span class="string">"bin"</span>,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">path = os.getcwd()</span><br><span class="line"><span class="keyword">if</span> len(sys.argv) &gt; <span class="number">1</span>:</span><br><span class="line">    path = sys.argv[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> folder, dirs, files <span class="keyword">in</span> os.walk(path):</span><br><span class="line">    <span class="keyword">for</span> d <span class="keyword">in</span> dirs:</span><br><span class="line">        p = os.path.join(folder, d)</span><br><span class="line">        os.chmod(p, dir_uuid)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> f <span class="keyword">in</span> files:</span><br><span class="line">        p = os.path.join(folder, f)</span><br><span class="line">        ext = os.path.splitext(f)[<span class="number">1</span>][<span class="number">1</span>:]  <span class="comment"># skip the dot</span></span><br><span class="line">        <span class="keyword">if</span> ext:</span><br><span class="line">            uuid = exec_uuid <span class="keyword">if</span> ext <span class="keyword">in</span> exec_file_types <span class="keyword">else</span> file_uuid</span><br><span class="line">        <span class="keyword">else</span>: <span class="comment"># there is no extension, this may be a executable file</span></span><br><span class="line">            res = run([<span class="string">"file"</span>, p], stdout=subprocess.PIPE)</span><br><span class="line">            res_str = res.stdout.decode()</span><br><span class="line">            uuid = exec_uuid <span class="keyword">if</span> <span class="string">"executable"</span> <span class="keyword">in</span> res_str <span class="keyword">else</span> file_uuid</span><br><span class="line"></span><br><span class="line">        os.chmod(p, uuid)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python3.5</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> sys</div><div class="line"><span class="keyword">import</span> subprocess</div><div class="line"><span class="keyword">from</span> subprocess <span class="keyword">import</span> run <span class="comment"># &gt;= py3.5</span></div><div class="line"></div><div class="line">file_uuid = <span class="number">0o664</span></div><div class="line">exec_uuid = <span class="number">0o755</span></div><div class="line">dir_uuid  = <span class="number">0o755</span></div><div class="line"></div><div class="line">exec_file_types = [</div><div class="line">  <span class="string">"exe"</span>, <span class="string">"sh"</span>, <span class="string">"bin"</span>,</div><div class="line">]</div><div class="line"></div><div class="line">path = os.getcwd()</div><div class="line"><span class="keyword">if</span> len(sys.argv) &gt; <span class="number">1</span>:</div><div class="line">    path = sys.argv[<span class="number">1</span>]</div><div class="line"></div><div class="line"><span class="keyword">for</span> folder, dirs, files <span class="keyword">in</span> os.walk(path):</div><div class="line">    <span class="keyword">for</span> d <span class="keyword">in</span> dirs:</div><div class="line">        p = os.path.join(folder, d)</div><div class="line">        os.chmod(p, dir_uuid)</div><div class="line"></div><div class="line">    <span class="keyword">for</span> f <span class="keyword">in</span> files:</div><div class="line">        p = os.path.join(folder, f)</div><div class="line">        ext = os.path.splitext(f)[<span class="number">1</span>][<span class="number">1</span>:]  <span class="comment"># skip the dot</span></div><div class="line">        <span class="keyword">if</span> ext:</div><div class="line">            uuid = exec_uuid <span class="keyword">if</span> ext <span class="keyword">in</span> exec_file_types <span class="keyword">else</span> file_uuid</div><div class="line">        <span class="keyword">else</span>: <span class="comment"># there is no extension, this may be a executable file</span></div><div class="line">            res = run([<span class="string">"file"</span>, p], stdout=subprocess.PIPE)</div><div class="line">            res_str = res.stdout.decode()</div><div class="line">            uuid = exec_uuid <span class="keyword">if</span> <span class="string">"executable"</span> <span class="keyword">in</span> res_str <span class="keyword">else</span> file_uuid</div><div class="line"></div><div class="line">        os.chmod(p, uuid)</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -380,10 +380,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目錄
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            本站概覽
+            Übersicht
           </li>
         </ul>
       
@@ -400,21 +400,21 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">7</span>
-              <span class="site-state-item-name">文章</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             
               <span class="site-state-item-count">0</span>
-              <span class="site-state-item-name">分類</span>
+              <span class="site-state-item-name">Kategorien</span>
               
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
               <span class="site-state-item-count">6</span>
-              <span class="site-state-item-name">標籤</span>
+              <span class="site-state-item-name">Tags</span>
               </a>
           </div>
 
@@ -500,11 +500,11 @@
 </div>
 
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 強力驅動
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  主題 -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Mist
   </a>

@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="linalg,python," />
+  <meta name="keywords" content="python,linalg," />
 
 
 
@@ -89,6 +89,7 @@
 (512, 512)
 12from scipy import linalgimport numpy as np
 12U">
+<meta name="twitter:image" content="http://nykh.github.io/2016/05/03/SVD-image-compression/SVD-compression_1_0.png">
 
 
 
@@ -101,7 +102,7 @@
     motion: true,
     duoshuo: {
       userId: 0,
-      author: '博主'
+      author: 'Author'
     }
   };
 </script>
@@ -162,7 +163,7 @@
             
               <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
             
-            首頁
+            Startseite
           </a>
         </li>
       
@@ -172,7 +173,7 @@
             
               <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
             
-            歸檔
+            Archiv
           </a>
         </li>
       
@@ -182,7 +183,7 @@
             
               <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
             
-            標籤
+            Tags
           </a>
         </li>
       
@@ -237,7 +238,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">發表於</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-05-03T15:31:16-07:00" content="2016-05-03">
               2016-05-03
             </time>
@@ -264,17 +265,17 @@
       
 
       
-        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> skimage <span class="keyword">import</span> data, filter</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">image = data.camera()</span><br><span class="line">plt.imshow(image);</span><br></pre></td></tr></table></figure>
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> skimage <span class="keyword">import</span> data, filter</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line">%matplotlib inline</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">image = data.camera()</div><div class="line">plt.imshow(image);</div></pre></td></tr></table></figure>
 <p><img src="/2016/05/03/SVD-image-compression/SVD-compression_1_0.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">image.shape</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">image.shape</div></pre></td></tr></table></figure>
 <pre><code>(512, 512)
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> linalg</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">U, s, Vh = linalg.svd(image)</span><br><span class="line"><span class="keyword">assert</span>(x &gt; x2 <span class="keyword">for</span> x, x2 <span class="keyword">in</span> zip(s, s[<span class="number">1</span>:])) <span class="comment"># the singular values are returned in descending order!</span></span><br></pre></td></tr></table></figure>
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> linalg</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">U, s, Vh = linalg.svd(image)</div><div class="line"><span class="keyword">assert</span>(x &gt; x2 <span class="keyword">for</span> x, x2 <span class="keyword">in</span> zip(s, s[<span class="number">1</span>:])) <span class="comment"># the singular values are returned in descending order!</span></div></pre></td></tr></table></figure>
 <p>SVD can be used to compress image (“Introduction to Linear Algebra”, G. Strang, 4ed, p.365).</p>
 <p>Before the image is 512×512 pixels.<br>After the image can be stored as Rank×512×512 pixels</p>
 <p>When Rank is something like 50 there is essentially no big difference from original image.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">R = <span class="number">50</span></span><br><span class="line"></span><br><span class="line">Sigma = np.diag(s[:R])</span><br><span class="line">compressed_image = U[:, :R] @ Sigma @ Vh[:R, :]</span><br><span class="line">plt.imshow(compressed_image)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">R = <span class="number">50</span></div><div class="line"></div><div class="line">Sigma = np.diag(s[:R])</div><div class="line">compressed_image = U[:, :R] @ Sigma @ Vh[:R, :]</div><div class="line">plt.imshow(compressed_image)</div></pre></td></tr></table></figure>
 <p><img src="/2016/05/03/SVD-image-compression/SVD-compression_6_1.png" alt="png"></p>
 
       
@@ -284,9 +285,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/linalg/" rel="tag">#linalg</a>
-          
             <a href="/tags/python/" rel="tag">#python</a>
+          
+            <a href="/tags/linalg/" rel="tag">#linalg</a>
           
         </div>
       
@@ -354,10 +355,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目錄
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            本站概覽
+            Übersicht
           </li>
         </ul>
       
@@ -374,21 +375,21 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">7</span>
-              <span class="site-state-item-name">文章</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             
               <span class="site-state-item-count">0</span>
-              <span class="site-state-item-name">分類</span>
+              <span class="site-state-item-name">Kategorien</span>
               
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
               <span class="site-state-item-count">6</span>
-              <span class="site-state-item-name">標籤</span>
+              <span class="site-state-item-name">Tags</span>
               </a>
           </div>
 
@@ -444,7 +445,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目錄</p>
+              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -474,11 +475,11 @@
 </div>
 
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 強力驅動
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  主題 -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Mist
   </a>

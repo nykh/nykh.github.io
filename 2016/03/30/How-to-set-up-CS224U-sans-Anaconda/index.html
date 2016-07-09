@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="cs224u,python," />
+  <meta name="keywords" content="python,cs224u," />
 
 
 
@@ -81,7 +81,7 @@
     motion: true,
     duoshuo: {
       userId: 0,
-      author: '博主'
+      author: 'Author'
     }
   };
 </script>
@@ -142,7 +142,7 @@
             
               <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
             
-            首頁
+            Startseite
           </a>
         </li>
       
@@ -152,7 +152,7 @@
             
               <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
             
-            歸檔
+            Archiv
           </a>
         </li>
       
@@ -162,7 +162,7 @@
             
               <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
             
-            標籤
+            Tags
           </a>
         </li>
       
@@ -217,7 +217,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">發表於</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-03-30T20:36:50-07:00" content="2016-03-30">
               2016-03-30
             </time>
@@ -247,22 +247,22 @@
         <p>Here is a way to run the CS224U notebooks without using Anaconda, especially if you already have python installed and don’t want to be bound to Anaconda.</p>
  <a id="more"></a>
 <h2 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h2><p>First of all I run a 64bit <strong>*nix</strong> system (Linux, Mac is proabably find too) and have Python2.7 preinstalled (which is why I don’t want to have to install Anaconda). This means we will be mostly using the <code>pip</code> and <code>virtualenv</code> cli tool of native python.</p>
-<p>Python2.7 comes with <code>pip</code> in the box. If you don’t have <code>virtualenv</code>, install it via<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; sudo pip install virtualenv</span><br></pre></td></tr></table></figure></p>
+<p>Python2.7 comes with <code>pip</code> in the box. If you don’t have <code>virtualenv</code>, install it via<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt; sudo pip install virtualenv</div></pre></td></tr></table></figure></p>
 <p><a href="https://realpython.com/blog/python/python-virtual-environments-a-primer/" target="_blank" rel="external">Here</a> is a good introduction to the idea of Virtual Environment for Python. Basically I use it because I primarily use Python3.5 and don’t want the packages used in this course to interfere with other use cases.</p>
-<h3 id="Open_a_virutal_environment"><a href="#Open_a_virutal_environment" class="headerlink" title="Open a virutal environment"></a>Open a virutal environment</h3><p><strong>Clone</strong> the project<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/cgpotts/cs224u.git &amp;&amp; <span class="built_in">cd</span> cs224u</span><br></pre></td></tr></table></figure></p>
-<p>We are now inside the <code>cs224u</code> directory. Make a virtual environment, or <strong><em>venv</em></strong> here.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; virtualenv .</span><br></pre></td></tr></table></figure></p>
+<h3 id="Open_a_virutal_environment"><a href="#Open_a_virutal_environment" class="headerlink" title="Open a virutal environment"></a>Open a virutal environment</h3><p><strong>Clone</strong> the project<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> https://github.com/cgpotts/cs224u.git &amp;&amp; <span class="built_in">cd</span> cs224u</div></pre></td></tr></table></figure></p>
+<p>We are now inside the <code>cs224u</code> directory. Make a virtual environment, or <strong><em>venv</em></strong> here.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt; virtualenv .</div></pre></td></tr></table></figure></p>
 <p>This will create some additional files and directories, like <code>bin/</code>, <code>lib/</code> (where the packages will be installed). If you are bothered, add those files into the <code>.gitignore</code> ignore list so <code>git</code> won’t track them.</p>
-<p>Now we can enter the virtual environment by<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; <span class="built_in">source</span> bin/activate</span><br></pre></td></tr></table></figure></p>
-<p><code>activate</code> is a script, by sourcing (running) it you change the python path and a few other properties to cut you away from the system global setting. You are now in a clean state, whatever you install in this environment won’t affect the system global <code>site_packages</code>. Also notice your prompt will display the name of the venv to remind you you are now <em>virtual</em>. To see for yourself<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(venv) &gt;&gt; pip list</span><br><span class="line">pip (<span class="number">8.1</span>.<span class="number">1</span>)</span><br><span class="line">setuptools (<span class="number">20.6</span>.<span class="number">6</span>)</span><br><span class="line">wheel (<span class="number">0.29</span>.<span class="number">0</span>)</span><br></pre></td></tr></table></figure></p>
+<p>Now we can enter the virtual environment by<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt; <span class="built_in">source</span> bin/activate</div></pre></td></tr></table></figure></p>
+<p><code>activate</code> is a script, by sourcing (running) it you change the python path and a few other properties to cut you away from the system global setting. You are now in a clean state, whatever you install in this environment won’t affect the system global <code>site_packages</code>. Also notice your prompt will display the name of the venv to remind you you are now <em>virtual</em>. To see for yourself<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(venv) &gt;&gt; pip list</div><div class="line">pip (8.1.1)</div><div class="line">setuptools (20.6.6)</div><div class="line">wheel (0.29.0)</div></pre></td></tr></table></figure></p>
 <p>Nothing else!</p>
-<h3 id="Install_required_packages"><a href="#Install_required_packages" class="headerlink" title="Install required packages"></a>Install required packages</h3><p>If you become lazy and just<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(venv) &gt;&gt; pip install -r requirements.txt</span><br></pre></td></tr></table></figure></p>
+<h3 id="Install_required_packages"><a href="#Install_required_packages" class="headerlink" title="Install required packages"></a>Install required packages</h3><p>If you become lazy and just<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(venv) &gt;&gt; pip install -r requirements.txt</div></pre></td></tr></table></figure></p>
 <p>You will run into problem while fetching. Apparently, this is because the package names in this file correspond to those on the <strong>Anaconda</strong> package repository, and are different from PyPI repo, which <code>pip</code> fetches from.</p>
 <p><s>After some trial and error</s> Actually somebody pointed it out in <a href="https://github.com/cgpotts/cs224u/pull/1" target="_blank" rel="external">this pull request</a>, this file seems to be the correct list for <code>pip</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python &#62;= 2.7.10&#10;numpy &#62;= 1.10&#10;scipy &#62;= 0.11.0&#10;matplotlib &#62;= 1.5.1&#10;scikit-learn &#62;= 0.17&#10;nltk &#62;= 3.0&#10;python-dateutil &#62;= 2.4&#10;unicodecsv &#62;= 0.14&#10;jupyter&#62;=1.0.0&#10;# tensorflow==0.7.1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">python &gt;= 2.7.10</div><div class="line">numpy &gt;= 1.10</div><div class="line">scipy &gt;= 0.11.0</div><div class="line">matplotlib &gt;= 1.5.1</div><div class="line">scikit-learn &gt;= 0.17</div><div class="line">nltk &gt;= 3.0</div><div class="line">python-dateutil &gt;= 2.4</div><div class="line">unicodecsv &gt;= 0.14</div><div class="line">jupyter&gt;=1.0.0</div><div class="line"># tensorflow==0.7.1</div></pre></td></tr></table></figure>
 <p>Overwrite <code>requirement.txt</code> as above and it should install all the packages for you without problem. It might take a while though.</p>
-<h4 id="Install_tensorflow"><a href="#Install_tensorflow" class="headerlink" title="Install tensorflow"></a>Install <code>tensorflow</code></h4><p>You must have noticed how <code>tensorflow</code> was commented out in <code>requirement.txt</code>. This is because the package does not reside on PyPI for some reason. If you follow the link given in <code>setup.ipnb</code> and try<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; pip install -i https://pypi.anaconda.org/jjhelmus/simple tensorflow</span><br></pre></td></tr></table></figure></p>
+<h4 id="Install_tensorflow"><a href="#Install_tensorflow" class="headerlink" title="Install tensorflow"></a>Install <code>tensorflow</code></h4><p>You must have noticed how <code>tensorflow</code> was commented out in <code>requirement.txt</code>. This is because the package does not reside on PyPI for some reason. If you follow the link given in <code>setup.ipnb</code> and try<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt; pip install -i https://pypi.anaconda.org/jjhelmus/simple tensorflow</div></pre></td></tr></table></figure></p>
 <p>It will download the package, before failing to find a dependency called <code>protobuf</code> and fails. Turns out, although the <code>tensorflow</code> package resides on Anaconda, this <code>protobuf</code> package is not hosted up to the required version, causing the fetching to fail.</p>
-<p>I was able to bypass the problem by following <a href="https://www.tensorflow.org/versions/r0.7/get_started/os_setup.html#pip-installation" target="_blank" rel="external">a different instruction here</a> on the TensorFlow official website. This fetches from the Google repo<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; pip install https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-<span class="number">0.7</span>.<span class="number">1</span>-cp27-none-linux_x86_64.whl</span><br></pre></td></tr></table></figure></p>
+<p>I was able to bypass the problem by following <a href="https://www.tensorflow.org/versions/r0.7/get_started/os_setup.html#pip-installation" target="_blank" rel="external">a different instruction here</a> on the TensorFlow official website. This fetches from the Google repo<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt; pip install https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.7.1-cp27-none-linux_x86_64.whl</div></pre></td></tr></table></figure></p>
 <p>This <code>Wheel file</code> probably comes with all the dependencies packaged in and thus bypassed the problem earlier.</p>
 <h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>This is able to run the first notebook without problem. I have not tried a notebook with <strong>TensorFlow</strong>, but if there is any problem I will update accordingly. Until then.</p>
 
@@ -273,9 +273,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/cs224u/" rel="tag">#cs224u</a>
-          
             <a href="/tags/python/" rel="tag">#python</a>
+          
+            <a href="/tags/cs224u/" rel="tag">#cs224u</a>
           
         </div>
       
@@ -343,10 +343,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目錄
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            本站概覽
+            Übersicht
           </li>
         </ul>
       
@@ -363,21 +363,21 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">7</span>
-              <span class="site-state-item-name">文章</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             
               <span class="site-state-item-count">0</span>
-              <span class="site-state-item-name">分類</span>
+              <span class="site-state-item-name">Kategorien</span>
               
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
               <span class="site-state-item-count">6</span>
-              <span class="site-state-item-name">標籤</span>
+              <span class="site-state-item-name">Tags</span>
               </a>
           </div>
 
@@ -463,11 +463,11 @@
 </div>
 
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 強力驅動
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  主題 -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Mist
   </a>

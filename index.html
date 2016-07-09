@@ -59,15 +59,12 @@
 
 
 
-<meta name="description">
 <meta property="og:type" content="website">
 <meta property="og:title" content="nykh :: log">
 <meta property="og:url" content="http://nykh.github.io/index.html">
 <meta property="og:site_name" content="nykh :: log">
-<meta property="og:description">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nykh :: log">
-<meta name="twitter:description">
 
 
 
@@ -80,7 +77,7 @@
     motion: true,
     duoshuo: {
       userId: 0,
-      author: '博主'
+      author: 'Author'
     }
   };
 </script>
@@ -143,7 +140,7 @@
             
               <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
             
-            首頁
+            Startseite
           </a>
         </li>
       
@@ -153,7 +150,7 @@
             
               <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
             
-            歸檔
+            Archiv
           </a>
         </li>
       
@@ -163,7 +160,7 @@
             
               <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
             
-            標籤
+            Tags
           </a>
         </li>
       
@@ -190,6 +187,15 @@
     
 
     
+    
+      
+      
+        
+        
+        
+      
+
+      
     
 
     
@@ -227,7 +233,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">發表於</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-07-08T20:18:46-07:00" content="2016-07-08">
               2016-07-08
             </time>
@@ -257,7 +263,7 @@
         
           
             <p>我们响应式框架发布几天了，我们决定做一个常见的试算表范例，展示一下用 Red<br>现在的功能来写需要几行。虽然Red没有网格部件，结果我们只花17行（紧缩但仍可读的）代码<br>就可以做出一个试算表范例了，把代码最小化甚至可以缩小到14行1053字节。<br>这个范例使用原生widget，能输入同时实时更新关联单元格。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Red [] L: charset &#34;ABCDEFGHI&#34; D: union N: charset &#34;123456789&#34; charset &#34;0&#34;&#10;repeat y 9 [repeat x 9 [col: either x = 1 [#&#34; &#34;][#&#34;A&#34; + (x - 2)]&#10;  append p: [] set ref: (to word! rejoin [col y - 1]) make face! [size: 90x24&#10;    type:    pick [text field] header?: (y = 1) or (x = 1)&#10;    offset:  -20x10 + as-pair ((x - 1) * size/x + 2) ((y - 1) * size/y + 1)&#10;    text:    form case [y = 1 [col] x = 1 [y - 1] &#39;else [copy &#34;&#34;]]&#10;    para:    make para! [align: pick [center right] header?]&#10;    extra:   object [name: form ref formula: old: none]&#10;    actors:  context [on-create: on-unfocus: function [f e][f/color: none&#10;      if rel: f/extra/old [react/unlink rel &#39;all]&#10;      if #&#34;=&#34; = first f/extra/formula: copy text: copy f/text [parse remove text&#10;          [any [p: L N not [&#34;/&#34; skip not N] insert p &#34; &#34; insert &#34;/data &#34;&#10;          | L skip | p: some D opt [dot some D] insert p &#34; &#34; insert &#34; &#34; | skip]]&#10;        f/text: rejoin [f/extra/name &#34;/data: any [math/safe [&#34; text &#123;] &#34;#UND&#34;]&#125;]&#10;       if f/data [any [react f/extra/old: f/data do f/data]]]]&#10;      on-focus: func [f e][f/text: any [f/extra/formula f/text] f/color: yello]&#10;]]]] view make face! [type: &#39;window text: &#34;PicoSheet&#34; size: 840x250 pane: p]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Red [] L: charset &quot;ABCDEFGHI&quot; D: union N: charset &quot;123456789&quot; charset &quot;0&quot;</div><div class="line">repeat y 9 [repeat x 9 [col: either x = 1 [#&quot; &quot;][#&quot;A&quot; + (x - 2)]</div><div class="line">  append p: [] set ref: (to word! rejoin [col y - 1]) make face! [size: 90x24</div><div class="line">    type:    pick [text field] header?: (y = 1) or (x = 1)</div><div class="line">    offset:  -20x10 + as-pair ((x - 1) * size/x + 2) ((y - 1) * size/y + 1)</div><div class="line">    text:    form case [y = 1 [col] x = 1 [y - 1] &apos;else [copy &quot;&quot;]]</div><div class="line">    para:    make para! [align: pick [center right] header?]</div><div class="line">    extra:   object [name: form ref formula: old: none]</div><div class="line">    actors:  context [on-create: on-unfocus: function [f e][f/color: none</div><div class="line">      if rel: f/extra/old [react/unlink rel &apos;all]</div><div class="line">      if #&quot;=&quot; = first f/extra/formula: copy text: copy f/text [parse remove text</div><div class="line">          [any [p: L N not [&quot;/&quot; skip not N] insert p &quot; &quot; insert &quot;/data &quot;</div><div class="line">          | L skip | p: some D opt [dot some D] insert p &quot; &quot; insert &quot; &quot; | skip]]</div><div class="line">        f/text: rejoin [f/extra/name &quot;/data: any [math/safe [&quot; text &#123;] &quot;#UND&quot;]&#125;]</div><div class="line">       if f/data [any [react f/extra/old: f/data do f/data]]]]</div><div class="line">      on-focus: func [f e][f/text: any [f/extra/formula f/text] f/color: yello]</div><div class="line">]]]] view make face! [type: &apos;window text: &quot;PicoSheet&quot; size: 840x250 pane: p]</div></pre></td></tr></table></figure>
 <p>你可以复制黏贴上面的代码到 Windows 用 Red 终端，使用<a href="http://static.red-lang.org/dl/auto/win/red-07jul16-54380a0.exe" target="_blank" rel="external">最新工具链　build</a> (950KB)。更好的选项是<a href="http://static.red-lang.org/dl/win/gui-console.exe" target="_blank" rel="external">prebuilt版本终端</a> (247 KB)。<br>没错，我们还在用KB计算大小 ;-)</p>
 <p>功能：</p>
 <ul>
@@ -289,28 +295,28 @@
 <p>这个程序利用了<a href="http://doc.red-lang.org/gui/View.html" target="_blank" rel="external">Red/View</a>　GUI引擎、<a href="http://www.red-lang.org/2016/06/061-reactive-programming.html" target="_blank" rel="external">响应式</a><a href="http://doc.red-lang.org/reactivity.html" target="_blank" rel="external">框架</a>、<a href="http://www.red-lang.org/2013/11/041-introducing-parse.html" target="_blank" rel="external">Parse</a> DSL和Red语言核心。<br>很多人可能第一次听说，Red语言核心是<a href="http://rebol.com/" target="_blank" rel="external">Rebol</a>语言的衍生，有编程语言中最高的表达力之一。</p>
 <p>想要搞懂上面代码的人可以看这个<a href="https://gist.github.com/dockimbel/b0a413342dc39568696207412a2ef5e7" target="_blank" rel="external">更可读的版本</a>。<br>接下来是详解。其实这个程序比看起来的简单多了，开始吧：</p>
 <p>第一行</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">L: charset &#34;ABCDEFGHI&#34; D: union N: charset &#34;123456789&#34; charset &#34;0&#34;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">L: charset &quot;ABCDEFGHI&quot; D: union N: charset &quot;123456789&quot; charset &quot;0&quot;</div></pre></td></tr></table></figure>
 <p>跳过Red的[]头部，这行定义几个<a href="http://www.rebol.com/r3/docs/datatypes/bitset.html" target="_blank" rel="external">bitsets</a>，<br>会用来解析。我们合并N和”0”来生成<br>D <a href="http://www.rebol.com/docs/words/wcharset.html" target="_blank" rel="external">charset</a>，<br>这样可以省下空间</p>
 <p>第二行</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">repeat y 9 [repeat x 9 [col: either x = 1 [#&#34; &#34;][#&#34;A&#34; + (x - 2)]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">repeat y 9 [repeat x 9 [col: either x = 1 [#&quot; &quot;][#&quot;A&quot; + (x - 2)]</div></pre></td></tr></table></figure>
 <p>双重循环产生所有需要的小窗口构件，如果该列是个表头<code>col</code>设成一个空格<br>否則设成A到G之间的一个字母。等下用来生成单元格名称和第一行的标签。</p>
 <p>第三行</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">append p: [] set ref: (to word! rejoin [col y - 1]) make face! [size: 90x24</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">append p: [] set ref: (to word! rejoin [col y - 1]) make face! [size: 90x24</div></pre></td></tr></table></figure>
 <p>这裡我们开始建构face。在<code>p</code>区块里面累积。<code>p: []</code>是一种静态分配，而且不用<br>换行很方便。<code>set ref: (to word! rejoin [col y - 1])</code>这部份很好懂，<br>是把<code>make face!</code>生成的face加到<code>p</code>列表中。这个表达式创建单元格的名称（一个<br>字母表示列然后一个数字表示行），这被转换成一个word然后引用新创建的face。<br>有这些词才能支持试算表公式引用。最后没关闭的区块接受一个嵌套表达式，<br><code>size</code>定义是属性定义裡面最短的，所以可以加在这裡。</p>
 <p>第四行</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type:    pick [text field] header?: (y = 1) or (x = 1)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">type:    pick [text field] header?: (y = 1) or (x = 1)</div></pre></td></tr></table></figure>
 <p>第一行/列的face类型可以是<code>text</code>，否则可以是<code>field</code>。<code>header?</code>这个word之后还有用处，来检查一个单元格是否只是标签或是个域。如果你好奇为什么用<code>or</code>而不是更常见的<code>any</code>，这是因为那样的话<code>pick</code>会要求把结果转换成<code>logic!</code>，这会花很大的计算量。</p>
 <p>第五行</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">offset:  -20x10 + as-pair ((x - 1) * size/x + 2) ((y - 1) * size/y + 1)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">offset:  -20x10 + as-pair ((x - 1) * size/x + 2) ((y - 1) * size/y + 1)</div></pre></td></tr></table></figure>
 <p>face的位置由<code>x</code>与<code>y</code>的值计算，以形成一个网格。然后我主观觉得稍微往左偏移一点比较好看。</p>
 <p>第六行</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text:    form case [y = 1 [col] x = 1 [y - 1] &#39;else [copy &#34;&#34;]]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">text:    form case [y = 1 [col] x = 1 [y - 1] &apos;else [copy &quot;&quot;]]</div></pre></td></tr></table></figure>
 <p>face的内容设为<code>col</code>，<code>col</code>包含了列的标签或是行数，否则的话这是输入单元格，<code>col</code>是个空字串。</p>
 <p>第七行</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">para:    make para! [align: pick [center right] header?]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">para:    make para! [align: pick [center right] header?]</div></pre></td></tr></table></figure>
 <p>face 的<code>para</code>物件只是用来把标签置中同时保持普通单元格内容靠右对齐。</p>
 <p>第八行</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extra:   object [name: form ref formula: old: none]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">extra:   object [name: form ref formula: old: none]</div></pre></td></tr></table></figure>
 <p><code>extra</code> 域包含一个物件，这个物件内含单元格的状态：</p>
 <ul>
 <li><code>name</code>：单元格名称，字串格式比较适合公式编译器。</li>
@@ -318,31 +324,31 @@
 <li><code>old</code>：引用最后一个单元格公式引起的反应（或是为空）</li>
 </ul>
 <p>第九行</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">actors:  context [on-create: on-unfocus: function [f e][f/color: none</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">actors:  context [on-create: on-unfocus: function [f e][f/color: none</div></pre></td></tr></table></figure>
 <p>单元格定义几乎结束了，只剩下事件处理，这行开始定义事件处理。单元格创建时会呼叫<code>on-create</code>，保证<code>preset</code>内容在显示前会正确处理（如果是公式的话）。<code>on-unfocus</code>主要负责处理用户的输入。<code>on-enter</code>没有用，因为现在tabbing支援不能正常工作。按Enter键会保持焦点在同个单元格上，要解决这种副作用需要好几行。一旦tabbing恢复正常我们可以加上这个。最后因为函数的主体区块是开放的，我们可以塞一个短表达式，把单元格背景色重设为默认值。</p>
 <p>第10行</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if rel: f/extra/old [react/unlink rel &#39;all]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">if rel: f/extra/old [react/unlink rel &apos;all]</div></pre></td></tr></table></figure>
 <p>我们开始处理有趣的部份。如果一个公式产生一个反应，我们先消灭那个反应。</p>
 <p>第11行</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if #&#34;=&#34; = first f/extra/formula: copy text: copy f/text [parse remove text</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">if #&quot;=&quot; = first f/extra/formula: copy text: copy f/text [parse remove text</div></pre></td></tr></table></figure>
 <p>如果检查到一个公式，那我们把文本复制下来，之后用来解析成Red表达式。因为series被deep reactors所有（例如一个<code>face!</code>物件），<code>copy</code>会确保转换期间没有物件事件产生。第二次<code>copy</code>会生成另一个输入字符串实例让<code>extra/formula</code>引用。如果输入字串不是一个公式，之前这些工作都不会影响单元格的内容（只是会浪费空间，但我们这裡不在意这点）。最后，如果这是一个公式，我们去掉开头的等号然后用一个Parse规则转换它。</p>
 <p>第12行</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[any [p: L N not [&#34;/&#34; skip not N] insert p &#34; &#34; insert &#34;/data &#34;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[any [p: L N not [&quot;/&quot; skip not N] insert p &quot; &quot; insert &quot;/data &quot;</div></pre></td></tr></table></figure>
 <p>这个规则一开始是个循环，目的是搜索所有单元格名称并且前面插一个空格再在后面加上”/data”（<code>A1</code>变成<code>A1/data</code>）。<br><code>not [&quot;/&quot; skip not N]</code>这个规则避免转换到带face属性的单元格名称（例如<code>A1/color</code>）<br>，规则是检查斜杠后面的第二个字符是不是数字，所以除法<code>A1/B2</code>仍然可以转换。</p>
 <p>第13行</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">| L skip | p: some D opt [dot some D] insert p &#34; &#34; insert &#34; &#34; | skip]]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">| L skip | p: some D opt [dot some D] insert p &quot; &quot; insert &quot; &quot; | skip]]</div></pre></td></tr></table></figure>
 <p>如果输入不是一个单元格名称，搜寻数字（某个D），包括带小数（<code>opt [dot some D]</code>），这样我们可以插入空格（”<code>1+2</code>“变成”<code>1 + 2</code>“）来遵守Red的语法规则（因为我们之后会<code>LOAD</code>这个字串）。<code>| L</code>这部份是防止给带符号的数字插入空格（”<code>-123</code>“不会变）。最后一个<code>skip</code>规则会跳过其他不重要的字符。</p>
 <p>第14行</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f/text: rejoin [f/extra/name &#34;/data: any [math/safe [&#34; text &#123;] &#34;#UND&#34;]&#125;]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">f/text: rejoin [f/extra/name &quot;/data: any [math/safe [&quot; text &#123;] &quot;#UND&quot;]&#125;]</div></pre></td></tr></table></figure>
 <p>转换基本完成了。最后一步是给字串加上特殊字符好生成Red表达式。首先我们把刚才的结果包在一个<code>math/safe [...]</code>区块中。<code>math</code>函数的作用是保证数学符号的优先级，而<code>/safe</code>选项会在内部尝试求值，因此出错的表达式会回传<code>none</code>值（然后翻译成<code>#UND</code>字串）。求值的结果被设给当前单元格。所以当你在<code>C1</code>单元格输入像<code>=A1+B1</code>这样的公式，我们会得到以下转换的结果：<br>“<code>C1/data: any [math/safe [ A1/data + B1/data ] &quot;#UND&quot;]</code>“。这是可以<code>LOAD</code>的表达式字串。但是我们的代码裡没有<code>LOAD</code>？其实有，这归功于0.6.1版的新功能：一个域的<code>/text</code>属性默认与<code>/data</code>属性用一个<code>LOAD</code>呼叫同步。如果呼叫失败，<code>/data</code>被设为<code>none</code>。相反，设置<code>/data</code>也会把<code>/text</code>改成<code>FROM</code>呼叫的结果。这就是这个表达式的目的 ;-)</p>
 <p>第15行</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if f/data [any [react f/extra/old: f/data do f/data]]]]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">if f/data [any [react f/extra/old: f/data do f/data]]]]</div></pre></td></tr></table></figure>
 <p>现在我们来到了高潮部份。上一行设置了<code>f/text</code>产生字串<code>LOAD</code>过的版本，由<code>f/data</code>引用。如果<code>LOAD</code>失败了，<code>f/data</code>会被设为<code>none</code>然后我们就能退出事件处理。否则我们就有东西可以喂给<code>REACT</code>来给这个单元格产生一个响应关系。这就是之前给单元格名称加<code>/data</code>有用的地方。<code>REACT</code>会静态分析<code>path!</code>值来找出响应源。不过如果表达式裡没有响应源（例如”<code>=1+2</code>“这个公式会把<code>f/data</code>赋值成<code>[C1/data: any [math/safe [ 1 + 2 ]]]</code>），那么<code>REACT</code>回传<code>none</code>然后我们就可以直接对表达式求值，求值结果会赋值给当前单元格的<code>/data</code>（这也会改变<code>/text</code>，然后使用者就看得到了）。另一方面如果<code>REACT</code>成功了，我们就给这个单元格设了新的响应关系。响应关系默认在构造时会执行一次，这可以确保单元格显示正确的值（通过隐式地改变<code>/data</code>，大家一定都很熟悉了）。还有，我们把用来生成响应关系的表达式的一个引用存在<code>extra/old</code>，因为有新公式的时候要把旧的给删除。如果你到目前为止都看得懂，恭喜，你已经是<code>View</code>跟响应式框架的大师了 ;-)</p>
 <p>第16行</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">on-focus: func [f e][f/text: any [f/extra/formula f/text] f/color: yello]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">on-focus: func [f e][f/text: any [f/extra/formula f/text] f/color: yello]</div></pre></td></tr></table></figure>
 <p>第二个事件处理器是当单元格得到焦点的时候会把公式写回来。同时我们把背景色设为yello<s>w</s>，也就是……恩，像yellow但是稍微没那么黄……所以我们把这个不常见的颜色命名成这样。（卡尔，你看到这裡的话，我希望你欣赏我给你那个有创意的命名格式打圆场的努力;-)）</p>
 <p>第17行</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">]]]] view make face! [type: &#39;window text: &#34;PicoSheet&#34; size: 840x250 pane: p]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">]]]] view make face! [type: &apos;window text: &quot;PicoSheet&quot; size: 840x250 pane: p]</div></pre></td></tr></table></figure>
 <p>最后一行只是生成一个窗口，并且把先前生成的标签和域赋给它的<code>/pane</code>属性（<code>face</code>的子元素）。然后显示窗口并<code>view</code>呼叫进入事件循环。大功告成！</p>
 <p>追记</p>
 <p>我们希望大家读过这个范例和解释觉得有意思也学到东西。你不是每天都会做一个试算表应用。这种应用很特殊，结合了很实用、强大的功能，同时只有基本电脑技能的人也能使用。<br>很多人把试算表应用视为我们工业软件世界的集大成。微软CEO自己几天前宣布说Excel是他<br>公司做过最好的产品。</p>
@@ -403,7 +409,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">發表於</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-05-03T15:31:16-07:00" content="2016-05-03">
               2016-05-03
             </time>
@@ -432,17 +438,17 @@
       
         
           
-            <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> skimage <span class="keyword">import</span> data, filter</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">image = data.camera()</span><br><span class="line">plt.imshow(image);</span><br></pre></td></tr></table></figure>
+            <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> skimage <span class="keyword">import</span> data, filter</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line">%matplotlib inline</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">image = data.camera()</div><div class="line">plt.imshow(image);</div></pre></td></tr></table></figure>
 <p><img src="/2016/05/03/SVD-image-compression/SVD-compression_1_0.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">image.shape</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">image.shape</div></pre></td></tr></table></figure>
 <pre><code>(512, 512)
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> linalg</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">U, s, Vh = linalg.svd(image)</span><br><span class="line"><span class="keyword">assert</span>(x &gt; x2 <span class="keyword">for</span> x, x2 <span class="keyword">in</span> zip(s, s[<span class="number">1</span>:])) <span class="comment"># the singular values are returned in descending order!</span></span><br></pre></td></tr></table></figure>
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> linalg</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">U, s, Vh = linalg.svd(image)</div><div class="line"><span class="keyword">assert</span>(x &gt; x2 <span class="keyword">for</span> x, x2 <span class="keyword">in</span> zip(s, s[<span class="number">1</span>:])) <span class="comment"># the singular values are returned in descending order!</span></div></pre></td></tr></table></figure>
 <p>SVD can be used to compress image (“Introduction to Linear Algebra”, G. Strang, 4ed, p.365).</p>
 <p>Before the image is 512×512 pixels.<br>After the image can be stored as Rank×512×512 pixels</p>
 <p>When Rank is something like 50 there is essentially no big difference from original image.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">R = <span class="number">50</span></span><br><span class="line"></span><br><span class="line">Sigma = np.diag(s[:R])</span><br><span class="line">compressed_image = U[:, :R] @ Sigma @ Vh[:R, :]</span><br><span class="line">plt.imshow(compressed_image)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">R = <span class="number">50</span></div><div class="line"></div><div class="line">Sigma = np.diag(s[:R])</div><div class="line">compressed_image = U[:, :R] @ Sigma @ Vh[:R, :]</div><div class="line">plt.imshow(compressed_image)</div></pre></td></tr></table></figure>
 <p><img src="/2016/05/03/SVD-image-compression/SVD-compression_6_1.png" alt="png"></p>
 
           
@@ -498,7 +504,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">發表於</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-05-01T22:12:34-07:00" content="2016-05-01">
               2016-05-01
             </time>
@@ -584,7 +590,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">發表於</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-04-25T13:20:28-07:00" content="2016-04-25">
               2016-04-25
             </time>
@@ -615,7 +621,7 @@
           <p>記一次系統重裝</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/04/25/流水帳-Reinstalling-16-06/#more" rel="contents">
-              閱讀全文 &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
         
@@ -670,7 +676,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">發表於</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-03-31T00:32:34-07:00" content="2016-03-31">
               2016-03-31
             </time>
@@ -708,7 +714,7 @@
 </ul>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/03/31/Python-BoBP-guide-zh/#more" rel="contents">
-              閱讀全文 &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
         
@@ -763,7 +769,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">發表於</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-03-30T20:36:50-07:00" content="2016-03-30">
               2016-03-30
             </time>
@@ -794,7 +800,7 @@
           <p>Here is a way to run the CS224U notebooks without using Anaconda, especially if you already have python installed and don’t want to be bound to Anaconda.</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/03/30/How-to-set-up-CS224U-sans-Anaconda/#more" rel="contents">
-              閱讀全文 &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
         
@@ -849,7 +855,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">發表於</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-01-22T21:33:11-08:00" content="2016-01-22">
               2016-01-22
             </time>
@@ -955,21 +961,21 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">7</span>
-              <span class="site-state-item-name">文章</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             
               <span class="site-state-item-count">0</span>
-              <span class="site-state-item-name">分類</span>
+              <span class="site-state-item-name">Kategorien</span>
               
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
               <span class="site-state-item-count">6</span>
-              <span class="site-state-item-name">標籤</span>
+              <span class="site-state-item-name">Tags</span>
               </a>
           </div>
 
@@ -1038,11 +1044,11 @@
 </div>
 
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 強力驅動
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  主題 -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Mist
   </a>
