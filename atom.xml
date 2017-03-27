@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://nykh.github.io/"/>
-  <updated>2016-07-09T18:29:09.299Z</updated>
+  <updated>2017-03-27T08:58:10.053Z</updated>
   <id>http://nykh.github.io/</id>
   
   <author>
@@ -14,6 +14,103 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Installing Python 3.6.1 from source (to be cont.)</title>
+    <link href="http://nykh.github.io/2017/03/27/Installing-Python-3-6-1-from-source/"/>
+    <id>http://nykh.github.io/2017/03/27/Installing-Python-3-6-1-from-source/</id>
+    <published>2017-03-27T08:47:21.000Z</published>
+    <updated>2017-03-27T08:58:10.053Z</updated>
+    
+    <content type="html">&lt;p&gt;This is a revisiting of a &lt;a href=&quot;http://nykh.github.io/2016/04/25/%E6%B5%81%E6%B0%B4%E5%B8%B3-Reinstalling-16-06/&quot;&gt;previous post&lt;/a&gt; setting up &lt;strong&gt;Ubuntu 16.04LTS&lt;/strong&gt;. In this previous post I installed Python 3.5 from the Ubuntu/Debian repo. It was a breeze. Now that I want Python 3.6.1, however, it is not as easy. Some dependencies are not well documented and I had to find them through trial-and-error. This post documents the process.&lt;/p&gt;
+&lt;p&gt;This is a work in progress as you will see we are stuck in some last dependencies.&lt;/p&gt;
+&lt;p&gt;##System spec&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Ubuntu 16.04 LTS&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Steps&quot;&gt;&lt;a href=&quot;#Steps&quot; class=&quot;headerlink&quot; title=&quot;Steps&quot;&gt;&lt;/a&gt;Steps&lt;/h2&gt;&lt;p&gt;Initial run&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Download source&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;./configure&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;make&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This will show a list of Ubuntu packages that are missing for optional packages. It is fine if you don’t really care to use those features, though. Normal system programming / data science applications are not really affected.&lt;/p&gt;
+&lt;h2 id=&quot;Ubuntu_packages_to_install&quot;&gt;&lt;a href=&quot;#Ubuntu_packages_to_install&quot; class=&quot;headerlink&quot; title=&quot;Ubuntu packages to install&quot;&gt;&lt;/a&gt;Ubuntu packages to install&lt;/h2&gt;&lt;p&gt;This may not be a complete list, but here are some of them. It should be possible to &lt;code&gt;sudo apt-get install&lt;/code&gt; all of them .&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Packages&lt;/th&gt;
+&lt;th&gt;Other packages&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;libc6&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;build-essential&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;libreadline6&lt;/td&gt;
+&lt;td&gt;-dev&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;libsqlite3-dev&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;libbz2-dev&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;libgdbm-dev&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;“liblzma5&lt;/td&gt;
+&lt;td&gt;liblzma-dev, liblzma-doc&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;libssl-dev&lt;/td&gt;
+&lt;td&gt;-doc&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;“libncurses5&lt;/td&gt;
+&lt;td&gt;-dev, -doc&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;“libncursesw5&lt;/td&gt;
+&lt;td&gt;-dev, -doc&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Alternatively just copy paste the following&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sudo apt-get install libc6, build-essential&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo apt-get install libreadline6 libreadline6-dev&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo apt-get install libsqlite3-dev&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo apt-get install libbz2-dev&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo apt-get install libgdbm-dev&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo apt-get install liblzma5, liblzma-dev, liblzma-doc&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo apt-get install libssl-dev, libssl-doc&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo apt-get install libncurses5, libncurses5-dev, libncurses5-dbg&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo apt-get install libncursesw5, libncursesw5-dev, libncursesw5-dbg&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;Tkinter&quot;&gt;&lt;a href=&quot;#Tkinter&quot; class=&quot;headerlink&quot; title=&quot;Tkinter&quot;&gt;&lt;/a&gt;Tkinter&lt;/h2&gt;&lt;p&gt;After this you should confirm by running &lt;code&gt;make&lt;/code&gt; again. The same list should only show &lt;code&gt;_tkinter&lt;/code&gt; now. I have no clear solution on what exact packages to install on 16.04 that will fulfill the Tkinter dependency. What I noticed was, for the system built-in Python 3.5 it was sufficient to install the package &lt;code&gt;python3-tk&lt;/code&gt; and nothing like the &lt;code&gt;lib*&lt;/code&gt; like other dependencies. I think perhaps this suggests the dependency of Tkinter already came built-in for Ubuntu 16.04, but then why &lt;code&gt;make&lt;/code&gt; is not able to find them is another problem.&lt;/p&gt;
+&lt;p&gt;I saw a question asked just a few days ago on StackOverflow about this, althought OP is trying to install Tkinter for py3.6 on Ubuntu 12.04:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/42623049/install-tkinter-in-python3-6-on-ubuntu&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Install tkinter in python3.6 on Ubuntu&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;Version_control&quot;&gt;&lt;a href=&quot;#Version_control&quot; class=&quot;headerlink&quot; title=&quot;Version control&quot;&gt;&lt;/a&gt;Version control&lt;/h2&gt;&lt;p&gt;I recommend &lt;a href=&quot;https://github.com/pyenv/pyenv&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;pyenv&lt;/a&gt; for managing multiple versions of python. It integrates well with &lt;code&gt;virtualenv&lt;/code&gt; so you can not only swtich between python versions seamlessly but also create virtual environment of desired python version on the fly. Now that all Ubuntu comes with Py2.7 and Py3.5 built-in this will be handy.&lt;/p&gt;
+&lt;p&gt;The easiest way to install &lt;code&gt;pyenv&lt;/code&gt; is by running the &lt;a href=&quot;https://github.com/pyenv/pyenv-installer&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;auto-installer&lt;/a&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;With all the dependencies installed. We can install with pyenv this way&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;export CONFIGURE_OPTS=&amp;quot;--enable-optimizations&amp;quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;pyenv install -v 3.6.1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;The first line asks &lt;code&gt;configure&lt;/code&gt; to use optimization for Python 3.6.  See the discussion &lt;a href=&quot;https://bugs.python.org/issue28032&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;about the flag&lt;/a&gt;. According to &lt;a href=&quot;https://github.com/docker-library/python/issues/160&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;here&lt;/a&gt; the flag will make the compiled binary 10% faster, which I think is worth trying out.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;This is a revisiting of a &lt;a href=&quot;http://nykh.github.io/2016/04/25/%E6%B5%81%E6%B0%B4%E5%B8%B3-Reinstalling-16-06/&quot;&gt;previous post&lt;/a&gt; se
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://nykh.github.io/tags/python/"/>
+    
+      <category term="ubuntu" scheme="http://nykh.github.io/tags/ubuntu/"/>
+    
+  </entry>
   
   <entry>
     <title>【Red】17行代码写出原生响应式试算表（翻译）</title>
