@@ -62,13 +62,13 @@
 <meta name="description" content="This is a revisiting of a previous post setting up Ubuntu 16.04LTS. In this previous post I installed Python 3.5 from the Ubuntu/Debian repo. It was a breeze. Now that I want Python 3.6.1, however, it">
 <meta name="keywords" content="python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Installing Python 3.6.1 from source (to be cont.)">
+<meta property="og:title" content="Installing Python 3.6.1 from source">
 <meta property="og:url" content="http://nykh.github.io/2017/03/27/Installing-Python-3-6-1-from-source/index.html">
 <meta property="og:site_name" content="nykh::log">
 <meta property="og:description" content="This is a revisiting of a previous post setting up Ubuntu 16.04LTS. In this previous post I installed Python 3.5 from the Ubuntu/Debian repo. It was a breeze. Now that I want Python 3.6.1, however, it">
-<meta property="og:updated_time" content="2017-05-18T07:15:48.645Z">
+<meta property="og:updated_time" content="2017-05-18T07:20:27.697Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Installing Python 3.6.1 from source (to be cont.)">
+<meta name="twitter:title" content="Installing Python 3.6.1 from source">
 <meta name="twitter:description" content="This is a revisiting of a previous post setting up Ubuntu 16.04LTS. In this previous post I installed Python 3.5 from the Ubuntu/Debian repo. It was a breeze. Now that I want Python 3.6.1, however, it">
 
 
@@ -87,7 +87,7 @@
   };
 </script>
 
-  <title> Installing Python 3.6.1 from source (to be cont.) | nykh::log </title>
+  <title> Installing Python 3.6.1 from source | nykh::log </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="default">
@@ -207,7 +207,7 @@
             
             
               
-                Installing Python 3.6.1 from source (to be cont.)
+                Installing Python 3.6.1 from source
               
             
           </h1>
@@ -314,7 +314,7 @@
 <h2 id="Tkinter"><a href="#Tkinter" class="headerlink" title="Tkinter"></a>Tkinter</h2><p>Note that previously there was a problem with Tkinter dependency and I was not able to find the correct dependency.<br>But this is officially solved by installing <code>tk-dev</code> package.</p>
 <h2 id="Version-control"><a href="#Version-control" class="headerlink" title="Version control"></a>Version control</h2><p>I recommend <a href="https://github.com/pyenv/pyenv" target="_blank" rel="external">pyenv</a> for managing multiple versions of python. It integrates well with <code>virtualenv</code> so you can not only swtich between python versions seamlessly but also create virtual environment of desired python version on the fly. Now that all Ubuntu comes with Py2.7 and Py3.5 built-in this will be handy.</p>
 <p>The easiest way to install <code>pyenv</code> is by running the <a href="https://github.com/pyenv/pyenv-installer" target="_blank" rel="external">auto-installer</a></p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash&lt;/div&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash&lt;/div&gt;</span></div></pre></td></tr></table></figure>
 <p>With all the dependencies installed. We can install with pyenv this way</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export CONFIGURE_OPTS="--enable-optimizations"</div><div class="line">pyenv install -v 3.6.1</div></pre></td></tr></table></figure>
 <p>The first line asks <code>configure</code> to use optimization for Python 3.6. See the discussion <a href="https://bugs.python.org/issue28032" target="_blank" rel="external">about the flag</a>. According to <a href="https://github.com/docker-library/python/issues/160" target="_blank" rel="external">here</a> the flag will make the compiled binary 10% faster, which I think is worth trying out.</p>
