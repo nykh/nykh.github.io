@@ -41,13 +41,13 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="python,ubuntu," />
+  <meta name="keywords" content="python," />
 
 
 
 
 
-  <link rel="alternate" href="/atom.xml" title="nykh :: log" type="application/atom+xml" />
+  <link rel="alternate" href="/atom.xml" title="nykh::log" type="application/atom+xml" />
 
 
 
@@ -60,12 +60,13 @@
 
 
 <meta name="description" content="This is a revisiting of a previous post setting up Ubuntu 16.04LTS. In this previous post I installed Python 3.5 from the Ubuntu/Debian repo. It was a breeze. Now that I want Python 3.6.1, however, it">
+<meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Installing Python 3.6.1 from source (to be cont.)">
 <meta property="og:url" content="http://nykh.github.io/2017/03/27/Installing-Python-3-6-1-from-source/index.html">
-<meta property="og:site_name" content="nykh :: log">
+<meta property="og:site_name" content="nykh::log">
 <meta property="og:description" content="This is a revisiting of a previous post setting up Ubuntu 16.04LTS. In this previous post I installed Python 3.5 from the Ubuntu/Debian repo. It was a breeze. Now that I want Python 3.6.1, however, it">
-<meta property="og:updated_time" content="2017-03-27T08:58:10.053Z">
+<meta property="og:updated_time" content="2017-05-18T07:15:48.645Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Installing Python 3.6.1 from source (to be cont.)">
 <meta name="twitter:description" content="This is a revisiting of a previous post setting up Ubuntu 16.04LTS. In this previous post I installed Python 3.5 from the Ubuntu/Debian repo. It was a breeze. Now that I want Python 3.6.1, however, it">
@@ -86,10 +87,10 @@
   };
 </script>
 
-  <title> Installing Python 3.6.1 from source (to be cont.) | nykh :: log </title>
+  <title> Installing Python 3.6.1 from source (to be cont.) | nykh::log </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
 
   
 
@@ -115,11 +116,11 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">nykh :: log</span>
+      <span class="site-title">nykh::log</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle">Study, Thought, Discovery</p>
+  <p class="site-subtitle"></p>
 </div>
 
 <div class="site-nav-toggle">
@@ -218,7 +219,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2017-03-27T01:47:21-07:00" content="2017-03-27">
+            <time itemprop="dateCreated" datetime="2017-03-27T00:32:34-07:00" content="2017-03-27">
               2017-03-27
             </time>
           </span>
@@ -246,8 +247,7 @@
       
         <p>This is a revisiting of a <a href="http://nykh.github.io/2016/04/25/%E6%B5%81%E6%B0%B4%E5%B8%B3-Reinstalling-16-06/">previous post</a> setting up <strong>Ubuntu 16.04LTS</strong>. In this previous post I installed Python 3.5 from the Ubuntu/Debian repo. It was a breeze. Now that I want Python 3.6.1, however, it is not as easy. Some dependencies are not well documented and I had to find them through trial-and-error. This post documents the process.</p>
 <p>This is a work in progress as you will see we are stuck in some last dependencies.</p>
-<p>##System spec</p>
-<p><strong>Ubuntu 16.04 LTS</strong></p>
+<h2 id="System-spec"><a href="#System-spec" class="headerlink" title="System spec"></a>System spec</h2><p><strong>Ubuntu 16.04 LTS</strong></p>
 <h2 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h2><p>Initial run</p>
 <ol>
 <li>Download source</li>
@@ -255,7 +255,7 @@
 <li><code>make</code></li>
 </ol>
 <p>This will show a list of Ubuntu packages that are missing for optional packages. It is fine if you don’t really care to use those features, though. Normal system programming / data science applications are not really affected.</p>
-<h2 id="Ubuntu_packages_to_install"><a href="#Ubuntu_packages_to_install" class="headerlink" title="Ubuntu packages to install"></a>Ubuntu packages to install</h2><p>This may not be a complete list, but here are some of them. It should be possible to <code>sudo apt-get install</code> all of them .</p>
+<h2 id="Ubuntu-packages-to-install"><a href="#Ubuntu-packages-to-install" class="headerlink" title="Ubuntu packages to install"></a>Ubuntu packages to install</h2><p>This may not be a complete list, but here are some of them. It should be possible to <code>sudo apt-get install</code> all of them .</p>
 <table>
 <thead>
 <tr>
@@ -289,36 +289,35 @@
 <td></td>
 </tr>
 <tr>
-<td>“liblzma5</td>
-<td>liblzma-dev, liblzma-doc</td>
+<td>liblzma5</td>
+<td>liblzma-dev/liblzma-doc</td>
 </tr>
 <tr>
 <td>libssl-dev</td>
 <td>-doc</td>
 </tr>
 <tr>
-<td>“libncurses5</td>
-<td>-dev, -doc</td>
+<td>libncurses5</td>
+<td>-dev/-doc</td>
 </tr>
 <tr>
-<td>“libncursesw5</td>
-<td>-dev, -doc</td>
+<td>libncursesw5</td>
+<td>-dev/-doc</td>
+</tr>
+<tr>
+<td>tk-dev</td>
 </tr>
 </tbody>
 </table>
 <p>Alternatively just copy paste the following</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install libc6, build-essential</div><div class="line">sudo apt-get install libreadline6 libreadline6-dev</div><div class="line">sudo apt-get install libsqlite3-dev</div><div class="line">sudo apt-get install libbz2-dev</div><div class="line">sudo apt-get install libgdbm-dev</div><div class="line">sudo apt-get install liblzma5, liblzma-dev, liblzma-doc</div><div class="line">sudo apt-get install libssl-dev, libssl-doc</div><div class="line">sudo apt-get install libncurses5, libncurses5-dev, libncurses5-dbg</div><div class="line">sudo apt-get install libncursesw5, libncursesw5-dev, libncursesw5-dbg</div></pre></td></tr></table></figure>
-<h2 id="Tkinter"><a href="#Tkinter" class="headerlink" title="Tkinter"></a>Tkinter</h2><p>After this you should confirm by running <code>make</code> again. The same list should only show <code>_tkinter</code> now. I have no clear solution on what exact packages to install on 16.04 that will fulfill the Tkinter dependency. What I noticed was, for the system built-in Python 3.5 it was sufficient to install the package <code>python3-tk</code> and nothing like the <code>lib*</code> like other dependencies. I think perhaps this suggests the dependency of Tkinter already came built-in for Ubuntu 16.04, but then why <code>make</code> is not able to find them is another problem.</p>
-<p>I saw a question asked just a few days ago on StackOverflow about this, althought OP is trying to install Tkinter for py3.6 on Ubuntu 12.04:</p>
-<blockquote>
-<p><a href="http://stackoverflow.com/questions/42623049/install-tkinter-in-python3-6-on-ubuntu" target="_blank" rel="external">Install tkinter in python3.6 on Ubuntu</a></p>
-</blockquote>
-<h2 id="Version_control"><a href="#Version_control" class="headerlink" title="Version control"></a>Version control</h2><p>I recommend <a href="https://github.com/pyenv/pyenv" target="_blank" rel="external">pyenv</a> for managing multiple versions of python. It integrates well with <code>virtualenv</code> so you can not only swtich between python versions seamlessly but also create virtual environment of desired python version on the fly. Now that all Ubuntu comes with Py2.7 and Py3.5 built-in this will be handy.</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install libc6, build-essential</div><div class="line">sudo apt-get install libreadline6 libreadline6-dev</div><div class="line">sudo apt-get install libsqlite3-dev</div><div class="line">sudo apt-get install libbz2-dev</div><div class="line">sudo apt-get install libgdbm-dev</div><div class="line">sudo apt-get install liblzma5, liblzma-dev, liblzma-doc</div><div class="line">sudo apt-get install libssl-dev, libssl-doc</div><div class="line">sudo apt-get install libncurses5, libncurses5-dev, libncurses5-dbg</div><div class="line">sudo apt-get install libncursesw5, libncursesw5-dev, libncursesw5-dbg</div><div class="line">sudo apt-get install tk-dev</div></pre></td></tr></table></figure>
+<h2 id="Tkinter"><a href="#Tkinter" class="headerlink" title="Tkinter"></a>Tkinter</h2><p>Note that previously there was a problem with Tkinter dependency and I was not able to find the correct dependency.<br>But this is officially solved by installing <code>tk-dev</code> package.</p>
+<h2 id="Version-control"><a href="#Version-control" class="headerlink" title="Version control"></a>Version control</h2><p>I recommend <a href="https://github.com/pyenv/pyenv" target="_blank" rel="external">pyenv</a> for managing multiple versions of python. It integrates well with <code>virtualenv</code> so you can not only swtich between python versions seamlessly but also create virtual environment of desired python version on the fly. Now that all Ubuntu comes with Py2.7 and Py3.5 built-in this will be handy.</p>
 <p>The easiest way to install <code>pyenv</code> is by running the <a href="https://github.com/pyenv/pyenv-installer" target="_blank" rel="external">auto-installer</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash</div></pre></td></tr></table></figure>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash&lt;/div&gt;</div></pre></td></tr></table></figure>
 <p>With all the dependencies installed. We can install with pyenv this way</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export CONFIGURE_OPTS=&quot;--enable-optimizations&quot;</div><div class="line">pyenv install -v 3.6.1</div></pre></td></tr></table></figure>
-<p>The first line asks <code>configure</code> to use optimization for Python 3.6.  See the discussion <a href="https://bugs.python.org/issue28032" target="_blank" rel="external">about the flag</a>. According to <a href="https://github.com/docker-library/python/issues/160" target="_blank" rel="external">here</a> the flag will make the compiled binary 10% faster, which I think is worth trying out.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export CONFIGURE_OPTS="--enable-optimizations"</div><div class="line">pyenv install -v 3.6.1</div></pre></td></tr></table></figure>
+<p>The first line asks <code>configure</code> to use optimization for Python 3.6. See the discussion <a href="https://bugs.python.org/issue28032" target="_blank" rel="external">about the flag</a>. According to <a href="https://github.com/docker-library/python/issues/160" target="_blank" rel="external">here</a> the flag will make the compiled binary 10% faster, which I think is worth trying out.</p>
 
       
     </div>
@@ -328,8 +327,6 @@
         <div class="post-tags">
           
             <a href="/tags/python/" rel="tag">#python</a>
-          
-            <a href="/tags/ubuntu/" rel="tag">#ubuntu</a>
           
         </div>
       
@@ -446,7 +443,7 @@
           
             
               <span class="links-of-author-item">
-                <a href="http://web.stanford.edu/~nykh/portfolio/cv.html" target="_blank">
+                <a href="http://web.stanford.edu/~nykh/" target="_blank">
                   
                     <i class="fa fa-globe"></i> Main
                   
@@ -483,7 +480,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Steps"><span class="nav-number">1.</span> <span class="nav-text">Steps</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ubuntu_packages_to_install"><span class="nav-number">2.</span> <span class="nav-text">Ubuntu packages to install</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tkinter"><span class="nav-number">3.</span> <span class="nav-text">Tkinter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Version_control"><span class="nav-number">4.</span> <span class="nav-text">Version control</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#System-spec"><span class="nav-number">1.</span> <span class="nav-text">System spec</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Steps"><span class="nav-number">2.</span> <span class="nav-text">Steps</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ubuntu-packages-to-install"><span class="nav-number">3.</span> <span class="nav-text">Ubuntu packages to install</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tkinter"><span class="nav-number">4.</span> <span class="nav-text">Tkinter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Version-control"><span class="nav-number">5.</span> <span class="nav-text">Version control</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

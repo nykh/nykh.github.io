@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>nykh :: log</title>
-  <subtitle>Study, Thought, Discovery</subtitle>
+  <title>nykh::log</title>
+  
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://nykh.github.io/"/>
-  <updated>2017-03-27T08:58:10.053Z</updated>
+  <updated>2017-05-18T07:15:48.645Z</updated>
   <id>http://nykh.github.io/</id>
   
   <author>
@@ -19,85 +19,83 @@
     <title>Installing Python 3.6.1 from source (to be cont.)</title>
     <link href="http://nykh.github.io/2017/03/27/Installing-Python-3-6-1-from-source/"/>
     <id>http://nykh.github.io/2017/03/27/Installing-Python-3-6-1-from-source/</id>
-    <published>2017-03-27T08:47:21.000Z</published>
-    <updated>2017-03-27T08:58:10.053Z</updated>
+    <published>2017-03-27T07:32:34.000Z</published>
+    <updated>2017-05-18T07:15:48.645Z</updated>
     
-    <content type="html">&lt;p&gt;This is a revisiting of a &lt;a href=&quot;http://nykh.github.io/2016/04/25/%E6%B5%81%E6%B0%B4%E5%B8%B3-Reinstalling-16-06/&quot;&gt;previous post&lt;/a&gt; setting up &lt;strong&gt;Ubuntu 16.04LTS&lt;/strong&gt;. In this previous post I installed Python 3.5 from the Ubuntu/Debian repo. It was a breeze. Now that I want Python 3.6.1, however, it is not as easy. Some dependencies are not well documented and I had to find them through trial-and-error. This post documents the process.&lt;/p&gt;
-&lt;p&gt;This is a work in progress as you will see we are stuck in some last dependencies.&lt;/p&gt;
-&lt;p&gt;##System spec&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Ubuntu 16.04 LTS&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&quot;Steps&quot;&gt;&lt;a href=&quot;#Steps&quot; class=&quot;headerlink&quot; title=&quot;Steps&quot;&gt;&lt;/a&gt;Steps&lt;/h2&gt;&lt;p&gt;Initial run&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Download source&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;./configure&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;make&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;This will show a list of Ubuntu packages that are missing for optional packages. It is fine if you don’t really care to use those features, though. Normal system programming / data science applications are not really affected.&lt;/p&gt;
-&lt;h2 id=&quot;Ubuntu_packages_to_install&quot;&gt;&lt;a href=&quot;#Ubuntu_packages_to_install&quot; class=&quot;headerlink&quot; title=&quot;Ubuntu packages to install&quot;&gt;&lt;/a&gt;Ubuntu packages to install&lt;/h2&gt;&lt;p&gt;This may not be a complete list, but here are some of them. It should be possible to &lt;code&gt;sudo apt-get install&lt;/code&gt; all of them .&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Packages&lt;/th&gt;
-&lt;th&gt;Other packages&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;libc6&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;build-essential&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;libreadline6&lt;/td&gt;
-&lt;td&gt;-dev&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;libsqlite3-dev&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;libbz2-dev&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;libgdbm-dev&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;“liblzma5&lt;/td&gt;
-&lt;td&gt;liblzma-dev, liblzma-doc&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;libssl-dev&lt;/td&gt;
-&lt;td&gt;-doc&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;“libncurses5&lt;/td&gt;
-&lt;td&gt;-dev, -doc&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;“libncursesw5&lt;/td&gt;
-&lt;td&gt;-dev, -doc&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;Alternatively just copy paste the following&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sudo apt-get install libc6, build-essential&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo apt-get install libreadline6 libreadline6-dev&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo apt-get install libsqlite3-dev&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo apt-get install libbz2-dev&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo apt-get install libgdbm-dev&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo apt-get install liblzma5, liblzma-dev, liblzma-doc&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo apt-get install libssl-dev, libssl-doc&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo apt-get install libncurses5, libncurses5-dev, libncurses5-dbg&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo apt-get install libncursesw5, libncursesw5-dev, libncursesw5-dbg&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&quot;Tkinter&quot;&gt;&lt;a href=&quot;#Tkinter&quot; class=&quot;headerlink&quot; title=&quot;Tkinter&quot;&gt;&lt;/a&gt;Tkinter&lt;/h2&gt;&lt;p&gt;After this you should confirm by running &lt;code&gt;make&lt;/code&gt; again. The same list should only show &lt;code&gt;_tkinter&lt;/code&gt; now. I have no clear solution on what exact packages to install on 16.04 that will fulfill the Tkinter dependency. What I noticed was, for the system built-in Python 3.5 it was sufficient to install the package &lt;code&gt;python3-tk&lt;/code&gt; and nothing like the &lt;code&gt;lib*&lt;/code&gt; like other dependencies. I think perhaps this suggests the dependency of Tkinter already came built-in for Ubuntu 16.04, but then why &lt;code&gt;make&lt;/code&gt; is not able to find them is another problem.&lt;/p&gt;
-&lt;p&gt;I saw a question asked just a few days ago on StackOverflow about this, althought OP is trying to install Tkinter for py3.6 on Ubuntu 12.04:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/42623049/install-tkinter-in-python3-6-on-ubuntu&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Install tkinter in python3.6 on Ubuntu&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;Version_control&quot;&gt;&lt;a href=&quot;#Version_control&quot; class=&quot;headerlink&quot; title=&quot;Version control&quot;&gt;&lt;/a&gt;Version control&lt;/h2&gt;&lt;p&gt;I recommend &lt;a href=&quot;https://github.com/pyenv/pyenv&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;pyenv&lt;/a&gt; for managing multiple versions of python. It integrates well with &lt;code&gt;virtualenv&lt;/code&gt; so you can not only swtich between python versions seamlessly but also create virtual environment of desired python version on the fly. Now that all Ubuntu comes with Py2.7 and Py3.5 built-in this will be handy.&lt;/p&gt;
-&lt;p&gt;The easiest way to install &lt;code&gt;pyenv&lt;/code&gt; is by running the &lt;a href=&quot;https://github.com/pyenv/pyenv-installer&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;auto-installer&lt;/a&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;With all the dependencies installed. We can install with pyenv this way&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;export CONFIGURE_OPTS=&amp;quot;--enable-optimizations&amp;quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;pyenv install -v 3.6.1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;The first line asks &lt;code&gt;configure&lt;/code&gt; to use optimization for Python 3.6.  See the discussion &lt;a href=&quot;https://bugs.python.org/issue28032&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;about the flag&lt;/a&gt;. According to &lt;a href=&quot;https://github.com/docker-library/python/issues/160&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;here&lt;/a&gt; the flag will make the compiled binary 10% faster, which I think is worth trying out.&lt;/p&gt;
-</content>
+    <content type="html"><![CDATA[<p>This is a revisiting of a <a href="http://nykh.github.io/2016/04/25/%E6%B5%81%E6%B0%B4%E5%B8%B3-Reinstalling-16-06/">previous post</a> setting up <strong>Ubuntu 16.04LTS</strong>. In this previous post I installed Python 3.5 from the Ubuntu/Debian repo. It was a breeze. Now that I want Python 3.6.1, however, it is not as easy. Some dependencies are not well documented and I had to find them through trial-and-error. This post documents the process.</p>
+<p>This is a work in progress as you will see we are stuck in some last dependencies.</p>
+<h2 id="System-spec"><a href="#System-spec" class="headerlink" title="System spec"></a>System spec</h2><p><strong>Ubuntu 16.04 LTS</strong></p>
+<h2 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h2><p>Initial run</p>
+<ol>
+<li>Download source</li>
+<li><code>./configure</code></li>
+<li><code>make</code></li>
+</ol>
+<p>This will show a list of Ubuntu packages that are missing for optional packages. It is fine if you don’t really care to use those features, though. Normal system programming / data science applications are not really affected.</p>
+<h2 id="Ubuntu-packages-to-install"><a href="#Ubuntu-packages-to-install" class="headerlink" title="Ubuntu packages to install"></a>Ubuntu packages to install</h2><p>This may not be a complete list, but here are some of them. It should be possible to <code>sudo apt-get install</code> all of them .</p>
+<table>
+<thead>
+<tr>
+<th>Packages</th>
+<th>Other packages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>libc6</td>
+<td></td>
+</tr>
+<tr>
+<td>build-essential</td>
+<td></td>
+</tr>
+<tr>
+<td>libreadline6</td>
+<td>-dev</td>
+</tr>
+<tr>
+<td>libsqlite3-dev</td>
+<td></td>
+</tr>
+<tr>
+<td>libbz2-dev</td>
+<td></td>
+</tr>
+<tr>
+<td>libgdbm-dev</td>
+<td></td>
+</tr>
+<tr>
+<td>liblzma5</td>
+<td>liblzma-dev/liblzma-doc</td>
+</tr>
+<tr>
+<td>libssl-dev</td>
+<td>-doc</td>
+</tr>
+<tr>
+<td>libncurses5</td>
+<td>-dev/-doc</td>
+</tr>
+<tr>
+<td>libncursesw5</td>
+<td>-dev/-doc</td>
+</tr>
+<tr>
+<td>tk-dev</td>
+</tr>
+</tbody>
+</table>
+<p>Alternatively just copy paste the following</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install libc6, build-essential</div><div class="line">sudo apt-get install libreadline6 libreadline6-dev</div><div class="line">sudo apt-get install libsqlite3-dev</div><div class="line">sudo apt-get install libbz2-dev</div><div class="line">sudo apt-get install libgdbm-dev</div><div class="line">sudo apt-get install liblzma5, liblzma-dev, liblzma-doc</div><div class="line">sudo apt-get install libssl-dev, libssl-doc</div><div class="line">sudo apt-get install libncurses5, libncurses5-dev, libncurses5-dbg</div><div class="line">sudo apt-get install libncursesw5, libncursesw5-dev, libncursesw5-dbg</div><div class="line">sudo apt-get install tk-dev</div></pre></td></tr></table></figure>
+<h2 id="Tkinter"><a href="#Tkinter" class="headerlink" title="Tkinter"></a>Tkinter</h2><p>Note that previously there was a problem with Tkinter dependency and I was not able to find the correct dependency.<br>But this is officially solved by installing <code>tk-dev</code> package.</p>
+<h2 id="Version-control"><a href="#Version-control" class="headerlink" title="Version control"></a>Version control</h2><p>I recommend <a href="https://github.com/pyenv/pyenv" target="_blank" rel="external">pyenv</a> for managing multiple versions of python. It integrates well with <code>virtualenv</code> so you can not only swtich between python versions seamlessly but also create virtual environment of desired python version on the fly. Now that all Ubuntu comes with Py2.7 and Py3.5 built-in this will be handy.</p>
+<p>The easiest way to install <code>pyenv</code> is by running the <a href="https://github.com/pyenv/pyenv-installer" target="_blank" rel="external">auto-installer</a></p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>With all the dependencies installed. We can install with pyenv this way</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export CONFIGURE_OPTS="--enable-optimizations"</div><div class="line">pyenv install -v 3.6.1</div></pre></td></tr></table></figure>
+<p>The first line asks <code>configure</code> to use optimization for Python 3.6. See the discussion <a href="https://bugs.python.org/issue28032" target="_blank" rel="external">about the flag</a>. According to <a href="https://github.com/docker-library/python/issues/160" target="_blank" rel="external">here</a> the flag will make the compiled binary 10% faster, which I think is worth trying out.</p>
+]]></content>
     
     <summary type="html">
     
@@ -108,8 +106,6 @@
     
       <category term="python" scheme="http://nykh.github.io/tags/python/"/>
     
-      <category term="ubuntu" scheme="http://nykh.github.io/tags/ubuntu/"/>
-    
   </entry>
   
   <entry>
@@ -119,103 +115,103 @@
     <published>2016-07-09T03:18:46.000Z</published>
     <updated>2016-07-09T18:29:09.299Z</updated>
     
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;原文　&lt;a href=&quot;http://www.red-lang.org/2016/07/native-reactive-spreadsheet-in-17-loc.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.red-lang.org/2016/07/native-reactive-spreadsheet-in-17-loc.html&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;我们响应式框架发布几天了，我们决定做一个常见的试算表范例，展示一下用 Red&lt;br&gt;现在的功能来写需要几行。虽然Red没有网格部件，结果我们只花17行（紧缩但仍可读的）代码&lt;br&gt;就可以做出一个试算表范例了，把代码最小化甚至可以缩小到14行1053字节。&lt;br&gt;这个范例使用原生widget，能输入同时实时更新关联单元格。&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;Red [] L: charset &amp;quot;ABCDEFGHI&amp;quot; D: union N: charset &amp;quot;123456789&amp;quot; charset &amp;quot;0&amp;quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;repeat y 9 [repeat x 9 [col: either x = 1 [#&amp;quot; &amp;quot;][#&amp;quot;A&amp;quot; + (x - 2)]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  append p: [] set ref: (to word! rejoin [col y - 1]) make face! [size: 90x24&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    type:    pick [text field] header?: (y = 1) or (x = 1)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    offset:  -20x10 + as-pair ((x - 1) * size/x + 2) ((y - 1) * size/y + 1)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    text:    form case [y = 1 [col] x = 1 [y - 1] &amp;apos;else [copy &amp;quot;&amp;quot;]]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    para:    make para! [align: pick [center right] header?]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    extra:   object [name: form ref formula: old: none]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    actors:  context [on-create: on-unfocus: function [f e][f/color: none&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      if rel: f/extra/old [react/unlink rel &amp;apos;all]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      if #&amp;quot;=&amp;quot; = first f/extra/formula: copy text: copy f/text [parse remove text&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;          [any [p: L N not [&amp;quot;/&amp;quot; skip not N] insert p &amp;quot; &amp;quot; insert &amp;quot;/data &amp;quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;          | L skip | p: some D opt [dot some D] insert p &amp;quot; &amp;quot; insert &amp;quot; &amp;quot; | skip]]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        f/text: rejoin [f/extra/name &amp;quot;/data: any [math/safe [&amp;quot; text &amp;#123;] &amp;quot;#UND&amp;quot;]&amp;#125;]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;       if f/data [any [react f/extra/old: f/data do f/data]]]]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;      on-focus: func [f e][f/text: any [f/extra/formula f/text] f/color: yello]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;]]]] view make face! [type: &amp;apos;window text: &amp;quot;PicoSheet&amp;quot; size: 840x250 pane: p]&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;你可以复制黏贴上面的代码到 Windows 用 Red 终端，使用&lt;a href=&quot;http://static.red-lang.org/dl/auto/win/red-07jul16-54380a0.exe&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;最新工具链　build&lt;/a&gt; (950KB)。更好的选项是&lt;a href=&quot;http://static.red-lang.org/dl/win/gui-console.exe&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;prebuilt版本终端&lt;/a&gt; (247 KB)。&lt;br&gt;没错，我们还在用KB计算大小 ;-)&lt;/p&gt;
-&lt;p&gt;功能：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;100% 原生窗口构件，使用内建GUI引擎（没有第三方库。目前仅支持Windows，&lt;br&gt;OSX与GTK制作中）&lt;/li&gt;
-&lt;li&gt;支持任意Excel式公式 (&lt;code&gt;=A1+2*C3&lt;/code&gt;)&lt;/li&gt;
-&lt;li&gt;支持公式中夹杂任意Red代码&lt;/li&gt;
-&lt;li&gt;输入同时实时更新&lt;/li&gt;
-&lt;li&gt;编辑公式时，相关单元格会显示&lt;code&gt;#UND&lt;/code&gt;（”undefined”）&lt;/li&gt;
-&lt;li&gt;如果公式语法出错，单元格显示&lt;code&gt;#UND&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;代码紧缩以减少行数，但每行不超过82个字符（去掉缩进只要77个）&lt;/li&gt;
-&lt;li&gt;建构试算表花了&lt;strong&gt;6行代码&lt;/strong&gt;，把公式编译成Red表达式花了&lt;strong&gt;3行代码&lt;/strong&gt;。&lt;/li&gt;
-&lt;li&gt;每行一个表达式（或是嵌套表达式）。不算Red的头部，不算最后一行把选中单元格&lt;br&gt;背景设为黄色，那行只是为了让动画截屏容易看懂。&lt;/li&gt;
-&lt;li&gt;不使用GUI用的 &lt;a href=&quot;http://doc.red-lang.org/gui/VID.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;VID&lt;/a&gt; 方言，这部份留给读者作为练习 ;-)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;以下是范例的截图&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://4.bp.blogspot.com/-F4RveTcxHdQ/V34-uOhivRI/AAAAAAAAAOw/384PetWCd-ssVkMJXZVp7IBJp60PuBT2QCLcB/s1600/picosheets2.gif&quot; alt=&quot;盗链XD&quot;&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;如果你想用这个资料集试试看，使用&lt;a href=&quot;https://gist.github.com/dockimbel/08e40961e5f7836d29591dd06d1a56f9&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这个脚本&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;第二个范例展示怎么利用Red&lt;a href=&quot;http://rebol.com/docs/core23/rebolcore-16.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;丰富的资料型态&lt;/a&gt;。&lt;br&gt;这也展示了你可以从单元格里存取、修改face物件的属性&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://2.bp.blogspot.com/-RCJCZf0BEKE/V35Ql3TDJmI/AAAAAAAAAPA/amgD6KfWsKs6Zy7MrybiBb_R0cryJ3D-QCLcB/s1600/picosheets3.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;如果你想用这个资料集，使用&lt;a href=&quot;https://gist.github.com/dockimbel/9ff2fd10e6310d1c4baf2336c6928cf0&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这个脚本&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;这些影片是在Windows上录的。目前Windows是我们最先进的GUI后端。OSX跟GTK后端还在开发中。&lt;/p&gt;
-&lt;p&gt;这个展示是承袭Tcl/tk那个用了30行的&lt;a href=&quot;http://wiki.tcl.tk/41294&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;类似范例&lt;/a&gt;。&lt;br&gt;那个范例有利用内建的网格构件以及一个C风格的解析求值表达式的库叫&lt;a href=&quot;http://www.tcl.tk/man/tcl/TclCmd/expr.htm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;expr&lt;/a&gt;。&lt;br&gt;即便如此，Tcl/tk能用这么少行还是不错的。&lt;br&gt;但真正的王者是这个&lt;a href=&quot;http://xem.github.io/sheet/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;220比特&lt;/a&gt;的JS程序。&lt;br&gt;虽然这与其说是展示JS的&lt;a href=&quot;http://redmonk.com/dberkholz/2013/03/25/programming-languages-ranked-by-expressiveness/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;表达力&lt;/a&gt;&lt;br&gt;不如说是展示了DOM的厉害（后面有个100MB+的runtime）。&lt;br&gt;不管怎样，这个Red的范例是目前所知使用原生GUI的最小程序。包括可执行文件的大小也是最小的。&lt;br&gt;编译过后（头部加上Needs: View）只有&lt;a href=&quot;http://static.red-lang.org/dl/win/picosheet.exe&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;655KB&lt;/a&gt;，&lt;br&gt;&lt;a href=&quot;http://upx.sourceforge.net/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;压缩&lt;/a&gt;过后剩下&lt;a href=&quot;http://static.red-lang.org/dl/win/picosheet-packed.exe&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;221KB&lt;/a&gt;，&lt;br&gt;并且如同之前说的，&lt;strong&gt;没有任何依赖&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;以上源代码为了用最少行经过紧缩，但仍然可读。Red代码就算故意要混淆也是很难的。&lt;br&gt;Red代码记号之间必须要有空格，这就没办法做C那样偏激的事情。&lt;br&gt;要用Red赢一场每个字节都算分的&lt;a href=&quot;https://en.wikipedia.org/wiki/Code_golf&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;代码高尔夫&lt;/a&gt;也很难……&lt;br&gt;除非你用Red的DSL功能&lt;a href=&quot;http://rebmu.hostilefork.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;写一个最少长度的DSL&lt;/a&gt;。&lt;br&gt;那也没问题，基本上就是个为Red/Rebol设计的压缩标准。 ;-)&lt;/p&gt;
-&lt;p&gt;怎么作到的？&lt;/p&gt;
-&lt;p&gt;这个程序利用了&lt;a href=&quot;http://doc.red-lang.org/gui/View.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Red/View&lt;/a&gt;　GUI引擎、&lt;a href=&quot;http://www.red-lang.org/2016/06/061-reactive-programming.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;响应式&lt;/a&gt;&lt;a href=&quot;http://doc.red-lang.org/reactivity.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;框架&lt;/a&gt;、&lt;a href=&quot;http://www.red-lang.org/2013/11/041-introducing-parse.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Parse&lt;/a&gt; DSL和Red语言核心。&lt;br&gt;很多人可能第一次听说，Red语言核心是&lt;a href=&quot;http://rebol.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Rebol&lt;/a&gt;语言的衍生，有编程语言中最高的表达力之一。&lt;/p&gt;
-&lt;p&gt;想要搞懂上面代码的人可以看这个&lt;a href=&quot;https://gist.github.com/dockimbel/b0a413342dc39568696207412a2ef5e7&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;更可读的版本&lt;/a&gt;。&lt;br&gt;接下来是详解。其实这个程序比看起来的简单多了，开始吧：&lt;/p&gt;
-&lt;p&gt;第一行&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;L: charset &amp;quot;ABCDEFGHI&amp;quot; D: union N: charset &amp;quot;123456789&amp;quot; charset &amp;quot;0&amp;quot;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;跳过Red的[]头部，这行定义几个&lt;a href=&quot;http://www.rebol.com/r3/docs/datatypes/bitset.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;bitsets&lt;/a&gt;，&lt;br&gt;会用来解析。我们合并N和”0”来生成&lt;br&gt;D &lt;a href=&quot;http://www.rebol.com/docs/words/wcharset.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;charset&lt;/a&gt;，&lt;br&gt;这样可以省下空间&lt;/p&gt;
-&lt;p&gt;第二行&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;repeat y 9 [repeat x 9 [col: either x = 1 [#&amp;quot; &amp;quot;][#&amp;quot;A&amp;quot; + (x - 2)]&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;双重循环产生所有需要的小窗口构件，如果该列是个表头&lt;code&gt;col&lt;/code&gt;设成一个空格&lt;br&gt;否則设成A到G之间的一个字母。等下用来生成单元格名称和第一行的标签。&lt;/p&gt;
-&lt;p&gt;第三行&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;append p: [] set ref: (to word! rejoin [col y - 1]) make face! [size: 90x24&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;这裡我们开始建构face。在&lt;code&gt;p&lt;/code&gt;区块里面累积。&lt;code&gt;p: []&lt;/code&gt;是一种静态分配，而且不用&lt;br&gt;换行很方便。&lt;code&gt;set ref: (to word! rejoin [col y - 1])&lt;/code&gt;这部份很好懂，&lt;br&gt;是把&lt;code&gt;make face!&lt;/code&gt;生成的face加到&lt;code&gt;p&lt;/code&gt;列表中。这个表达式创建单元格的名称（一个&lt;br&gt;字母表示列然后一个数字表示行），这被转换成一个word然后引用新创建的face。&lt;br&gt;有这些词才能支持试算表公式引用。最后没关闭的区块接受一个嵌套表达式，&lt;br&gt;&lt;code&gt;size&lt;/code&gt;定义是属性定义裡面最短的，所以可以加在这裡。&lt;/p&gt;
-&lt;p&gt;第四行&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;type:    pick [text field] header?: (y = 1) or (x = 1)&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;第一行/列的face类型可以是&lt;code&gt;text&lt;/code&gt;，否则可以是&lt;code&gt;field&lt;/code&gt;。&lt;code&gt;header?&lt;/code&gt;这个word之后还有用处，来检查一个单元格是否只是标签或是个域。如果你好奇为什么用&lt;code&gt;or&lt;/code&gt;而不是更常见的&lt;code&gt;any&lt;/code&gt;，这是因为那样的话&lt;code&gt;pick&lt;/code&gt;会要求把结果转换成&lt;code&gt;logic!&lt;/code&gt;，这会花很大的计算量。&lt;/p&gt;
-&lt;p&gt;第五行&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;offset:  -20x10 + as-pair ((x - 1) * size/x + 2) ((y - 1) * size/y + 1)&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;face的位置由&lt;code&gt;x&lt;/code&gt;与&lt;code&gt;y&lt;/code&gt;的值计算，以形成一个网格。然后我主观觉得稍微往左偏移一点比较好看。&lt;/p&gt;
-&lt;p&gt;第六行&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;text:    form case [y = 1 [col] x = 1 [y - 1] &amp;apos;else [copy &amp;quot;&amp;quot;]]&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;face的内容设为&lt;code&gt;col&lt;/code&gt;，&lt;code&gt;col&lt;/code&gt;包含了列的标签或是行数，否则的话这是输入单元格，&lt;code&gt;col&lt;/code&gt;是个空字串。&lt;/p&gt;
-&lt;p&gt;第七行&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;para:    make para! [align: pick [center right] header?]&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;face 的&lt;code&gt;para&lt;/code&gt;物件只是用来把标签置中同时保持普通单元格内容靠右对齐。&lt;/p&gt;
-&lt;p&gt;第八行&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;extra:   object [name: form ref formula: old: none]&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;code&gt;extra&lt;/code&gt; 域包含一个物件，这个物件内含单元格的状态：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;name&lt;/code&gt;：单元格名称，字串格式比较适合公式编译器。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;formula&lt;/code&gt;：引用最后一个输入的公式，文本格式。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;old&lt;/code&gt;：引用最后一个单元格公式引起的反应（或是为空）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;第九行&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;actors:  context [on-create: on-unfocus: function [f e][f/color: none&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;单元格定义几乎结束了，只剩下事件处理，这行开始定义事件处理。单元格创建时会呼叫&lt;code&gt;on-create&lt;/code&gt;，保证&lt;code&gt;preset&lt;/code&gt;内容在显示前会正确处理（如果是公式的话）。&lt;code&gt;on-unfocus&lt;/code&gt;主要负责处理用户的输入。&lt;code&gt;on-enter&lt;/code&gt;没有用，因为现在tabbing支援不能正常工作。按Enter键会保持焦点在同个单元格上，要解决这种副作用需要好几行。一旦tabbing恢复正常我们可以加上这个。最后因为函数的主体区块是开放的，我们可以塞一个短表达式，把单元格背景色重设为默认值。&lt;/p&gt;
-&lt;p&gt;第10行&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;if rel: f/extra/old [react/unlink rel &amp;apos;all]&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;我们开始处理有趣的部份。如果一个公式产生一个反应，我们先消灭那个反应。&lt;/p&gt;
-&lt;p&gt;第11行&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;if #&amp;quot;=&amp;quot; = first f/extra/formula: copy text: copy f/text [parse remove text&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;如果检查到一个公式，那我们把文本复制下来，之后用来解析成Red表达式。因为series被deep reactors所有（例如一个&lt;code&gt;face!&lt;/code&gt;物件），&lt;code&gt;copy&lt;/code&gt;会确保转换期间没有物件事件产生。第二次&lt;code&gt;copy&lt;/code&gt;会生成另一个输入字符串实例让&lt;code&gt;extra/formula&lt;/code&gt;引用。如果输入字串不是一个公式，之前这些工作都不会影响单元格的内容（只是会浪费空间，但我们这裡不在意这点）。最后，如果这是一个公式，我们去掉开头的等号然后用一个Parse规则转换它。&lt;/p&gt;
-&lt;p&gt;第12行&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;[any [p: L N not [&amp;quot;/&amp;quot; skip not N] insert p &amp;quot; &amp;quot; insert &amp;quot;/data &amp;quot;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;这个规则一开始是个循环，目的是搜索所有单元格名称并且前面插一个空格再在后面加上”/data”（&lt;code&gt;A1&lt;/code&gt;变成&lt;code&gt;A1/data&lt;/code&gt;）。&lt;br&gt;&lt;code&gt;not [&amp;quot;/&amp;quot; skip not N]&lt;/code&gt;这个规则避免转换到带face属性的单元格名称（例如&lt;code&gt;A1/color&lt;/code&gt;）&lt;br&gt;，规则是检查斜杠后面的第二个字符是不是数字，所以除法&lt;code&gt;A1/B2&lt;/code&gt;仍然可以转换。&lt;/p&gt;
-&lt;p&gt;第13行&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;| L skip | p: some D opt [dot some D] insert p &amp;quot; &amp;quot; insert &amp;quot; &amp;quot; | skip]]&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;如果输入不是一个单元格名称，搜寻数字（某个D），包括带小数（&lt;code&gt;opt [dot some D]&lt;/code&gt;），这样我们可以插入空格（”&lt;code&gt;1+2&lt;/code&gt;“变成”&lt;code&gt;1 + 2&lt;/code&gt;“）来遵守Red的语法规则（因为我们之后会&lt;code&gt;LOAD&lt;/code&gt;这个字串）。&lt;code&gt;| L&lt;/code&gt;这部份是防止给带符号的数字插入空格（”&lt;code&gt;-123&lt;/code&gt;“不会变）。最后一个&lt;code&gt;skip&lt;/code&gt;规则会跳过其他不重要的字符。&lt;/p&gt;
-&lt;p&gt;第14行&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;f/text: rejoin [f/extra/name &amp;quot;/data: any [math/safe [&amp;quot; text &amp;#123;] &amp;quot;#UND&amp;quot;]&amp;#125;]&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;转换基本完成了。最后一步是给字串加上特殊字符好生成Red表达式。首先我们把刚才的结果包在一个&lt;code&gt;math/safe [...]&lt;/code&gt;区块中。&lt;code&gt;math&lt;/code&gt;函数的作用是保证数学符号的优先级，而&lt;code&gt;/safe&lt;/code&gt;选项会在内部尝试求值，因此出错的表达式会回传&lt;code&gt;none&lt;/code&gt;值（然后翻译成&lt;code&gt;#UND&lt;/code&gt;字串）。求值的结果被设给当前单元格。所以当你在&lt;code&gt;C1&lt;/code&gt;单元格输入像&lt;code&gt;=A1+B1&lt;/code&gt;这样的公式，我们会得到以下转换的结果：&lt;br&gt;“&lt;code&gt;C1/data: any [math/safe [ A1/data + B1/data ] &amp;quot;#UND&amp;quot;]&lt;/code&gt;“。这是可以&lt;code&gt;LOAD&lt;/code&gt;的表达式字串。但是我们的代码裡没有&lt;code&gt;LOAD&lt;/code&gt;？其实有，这归功于0.6.1版的新功能：一个域的&lt;code&gt;/text&lt;/code&gt;属性默认与&lt;code&gt;/data&lt;/code&gt;属性用一个&lt;code&gt;LOAD&lt;/code&gt;呼叫同步。如果呼叫失败，&lt;code&gt;/data&lt;/code&gt;被设为&lt;code&gt;none&lt;/code&gt;。相反，设置&lt;code&gt;/data&lt;/code&gt;也会把&lt;code&gt;/text&lt;/code&gt;改成&lt;code&gt;FROM&lt;/code&gt;呼叫的结果。这就是这个表达式的目的 ;-)&lt;/p&gt;
-&lt;p&gt;第15行&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;if f/data [any [react f/extra/old: f/data do f/data]]]]&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;现在我们来到了高潮部份。上一行设置了&lt;code&gt;f/text&lt;/code&gt;产生字串&lt;code&gt;LOAD&lt;/code&gt;过的版本，由&lt;code&gt;f/data&lt;/code&gt;引用。如果&lt;code&gt;LOAD&lt;/code&gt;失败了，&lt;code&gt;f/data&lt;/code&gt;会被设为&lt;code&gt;none&lt;/code&gt;然后我们就能退出事件处理。否则我们就有东西可以喂给&lt;code&gt;REACT&lt;/code&gt;来给这个单元格产生一个响应关系。这就是之前给单元格名称加&lt;code&gt;/data&lt;/code&gt;有用的地方。&lt;code&gt;REACT&lt;/code&gt;会静态分析&lt;code&gt;path!&lt;/code&gt;值来找出响应源。不过如果表达式裡没有响应源（例如”&lt;code&gt;=1+2&lt;/code&gt;“这个公式会把&lt;code&gt;f/data&lt;/code&gt;赋值成&lt;code&gt;[C1/data: any [math/safe [ 1 + 2 ]]]&lt;/code&gt;），那么&lt;code&gt;REACT&lt;/code&gt;回传&lt;code&gt;none&lt;/code&gt;然后我们就可以直接对表达式求值，求值结果会赋值给当前单元格的&lt;code&gt;/data&lt;/code&gt;（这也会改变&lt;code&gt;/text&lt;/code&gt;，然后使用者就看得到了）。另一方面如果&lt;code&gt;REACT&lt;/code&gt;成功了，我们就给这个单元格设了新的响应关系。响应关系默认在构造时会执行一次，这可以确保单元格显示正确的值（通过隐式地改变&lt;code&gt;/data&lt;/code&gt;，大家一定都很熟悉了）。还有，我们把用来生成响应关系的表达式的一个引用存在&lt;code&gt;extra/old&lt;/code&gt;，因为有新公式的时候要把旧的给删除。如果你到目前为止都看得懂，恭喜，你已经是&lt;code&gt;View&lt;/code&gt;跟响应式框架的大师了 ;-)&lt;/p&gt;
-&lt;p&gt;第16行&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;on-focus: func [f e][f/text: any [f/extra/formula f/text] f/color: yello]&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;第二个事件处理器是当单元格得到焦点的时候会把公式写回来。同时我们把背景色设为yello&lt;s&gt;w&lt;/s&gt;，也就是……恩，像yellow但是稍微没那么黄……所以我们把这个不常见的颜色命名成这样。（卡尔，你看到这裡的话，我希望你欣赏我给你那个有创意的命名格式打圆场的努力;-)）&lt;/p&gt;
-&lt;p&gt;第17行&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;]]]] view make face! [type: &amp;apos;window text: &amp;quot;PicoSheet&amp;quot; size: 840x250 pane: p]&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;最后一行只是生成一个窗口，并且把先前生成的标签和域赋给它的&lt;code&gt;/pane&lt;/code&gt;属性（&lt;code&gt;face&lt;/code&gt;的子元素）。然后显示窗口并&lt;code&gt;view&lt;/code&gt;呼叫进入事件循环。大功告成！&lt;/p&gt;
-&lt;p&gt;追记&lt;/p&gt;
-&lt;p&gt;我们希望大家读过这个范例和解释觉得有意思也学到东西。你不是每天都会做一个试算表应用。这种应用很特殊，结合了很实用、强大的功能，同时只有基本电脑技能的人也能使用。&lt;br&gt;很多人把试算表应用视为我们工业软件世界的集大成。微软CEO自己几天前宣布说Excel是他&lt;br&gt;公司做过最好的产品。&lt;/p&gt;
-&lt;p&gt;Red让你可以很直接方便的用原生技术写一个这样的应用。我希望这可以让更多人有兴趣学习Red并用Red写更多给力的软件。&lt;/p&gt;
-&lt;p&gt;除了有趣以外，这个范例也展示了Red在原生GUI应用领域的潜力（我们现在只是0.6.1版，&lt;br&gt;我们还计画了很多功能和支持）。在原生和Web方案的大战之中，我们预料Red有朝一日会&lt;br&gt;是一个重要的选项。&lt;/p&gt;
-&lt;p&gt;在那之前……希望你喜欢Red，就像我们一样！ ;-)&lt;/p&gt;
-</content>
+    <content type="html"><![CDATA[<blockquote>
+<p>原文　<a href="http://www.red-lang.org/2016/07/native-reactive-spreadsheet-in-17-loc.html" target="_blank" rel="external">http://www.red-lang.org/2016/07/native-reactive-spreadsheet-in-17-loc.html</a></p>
+</blockquote>
+<p>我们响应式框架发布几天了，我们决定做一个常见的试算表范例，展示一下用 Red<br>现在的功能来写需要几行。虽然Red没有网格部件，结果我们只花17行（紧缩但仍可读的）代码<br>就可以做出一个试算表范例了，把代码最小化甚至可以缩小到14行1053字节。<br>这个范例使用原生widget，能输入同时实时更新关联单元格。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Red [] L: charset &quot;ABCDEFGHI&quot; D: union N: charset &quot;123456789&quot; charset &quot;0&quot;</div><div class="line">repeat y 9 [repeat x 9 [col: either x = 1 [#&quot; &quot;][#&quot;A&quot; + (x - 2)]</div><div class="line">  append p: [] set ref: (to word! rejoin [col y - 1]) make face! [size: 90x24</div><div class="line">    type:    pick [text field] header?: (y = 1) or (x = 1)</div><div class="line">    offset:  -20x10 + as-pair ((x - 1) * size/x + 2) ((y - 1) * size/y + 1)</div><div class="line">    text:    form case [y = 1 [col] x = 1 [y - 1] &apos;else [copy &quot;&quot;]]</div><div class="line">    para:    make para! [align: pick [center right] header?]</div><div class="line">    extra:   object [name: form ref formula: old: none]</div><div class="line">    actors:  context [on-create: on-unfocus: function [f e][f/color: none</div><div class="line">      if rel: f/extra/old [react/unlink rel &apos;all]</div><div class="line">      if #&quot;=&quot; = first f/extra/formula: copy text: copy f/text [parse remove text</div><div class="line">          [any [p: L N not [&quot;/&quot; skip not N] insert p &quot; &quot; insert &quot;/data &quot;</div><div class="line">          | L skip | p: some D opt [dot some D] insert p &quot; &quot; insert &quot; &quot; | skip]]</div><div class="line">        f/text: rejoin [f/extra/name &quot;/data: any [math/safe [&quot; text &#123;] &quot;#UND&quot;]&#125;]</div><div class="line">       if f/data [any [react f/extra/old: f/data do f/data]]]]</div><div class="line">      on-focus: func [f e][f/text: any [f/extra/formula f/text] f/color: yello]</div><div class="line">]]]] view make face! [type: &apos;window text: &quot;PicoSheet&quot; size: 840x250 pane: p]</div></pre></td></tr></table></figure>
+<p>你可以复制黏贴上面的代码到 Windows 用 Red 终端，使用<a href="http://static.red-lang.org/dl/auto/win/red-07jul16-54380a0.exe" target="_blank" rel="external">最新工具链　build</a> (950KB)。更好的选项是<a href="http://static.red-lang.org/dl/win/gui-console.exe" target="_blank" rel="external">prebuilt版本终端</a> (247 KB)。<br>没错，我们还在用KB计算大小 ;-)</p>
+<p>功能：</p>
+<ul>
+<li>100% 原生窗口构件，使用内建GUI引擎（没有第三方库。目前仅支持Windows，<br>OSX与GTK制作中）</li>
+<li>支持任意Excel式公式 (<code>=A1+2*C3</code>)</li>
+<li>支持公式中夹杂任意Red代码</li>
+<li>输入同时实时更新</li>
+<li>编辑公式时，相关单元格会显示<code>#UND</code>（”undefined”）</li>
+<li>如果公式语法出错，单元格显示<code>#UND</code></li>
+<li>代码紧缩以减少行数，但每行不超过82个字符（去掉缩进只要77个）</li>
+<li>建构试算表花了<strong>6行代码</strong>，把公式编译成Red表达式花了<strong>3行代码</strong>。</li>
+<li>每行一个表达式（或是嵌套表达式）。不算Red的头部，不算最后一行把选中单元格<br>背景设为黄色，那行只是为了让动画截屏容易看懂。</li>
+<li>不使用GUI用的 <a href="http://doc.red-lang.org/gui/VID.html" target="_blank" rel="external">VID</a> 方言，这部份留给读者作为练习 ;-)</li>
+</ul>
+<p>以下是范例的截图</p>
+<p><img src="https://4.bp.blogspot.com/-F4RveTcxHdQ/V34-uOhivRI/AAAAAAAAAOw/384PetWCd-ssVkMJXZVp7IBJp60PuBT2QCLcB/s1600/picosheets2.gif" alt="盗链XD"></p>
+<blockquote>
+<p>如果你想用这个资料集试试看，使用<a href="https://gist.github.com/dockimbel/08e40961e5f7836d29591dd06d1a56f9" target="_blank" rel="external">这个脚本</a></p>
+</blockquote>
+<p>第二个范例展示怎么利用Red<a href="http://rebol.com/docs/core23/rebolcore-16.html" target="_blank" rel="external">丰富的资料型态</a>。<br>这也展示了你可以从单元格里存取、修改face物件的属性</p>
+<p><img src="https://2.bp.blogspot.com/-RCJCZf0BEKE/V35Ql3TDJmI/AAAAAAAAAPA/amgD6KfWsKs6Zy7MrybiBb_R0cryJ3D-QCLcB/s1600/picosheets3.gif" alt=""></p>
+<blockquote>
+<p>如果你想用这个资料集，使用<a href="https://gist.github.com/dockimbel/9ff2fd10e6310d1c4baf2336c6928cf0" target="_blank" rel="external">这个脚本</a></p>
+</blockquote>
+<p>这些影片是在Windows上录的。目前Windows是我们最先进的GUI后端。OSX跟GTK后端还在开发中。</p>
+<p>这个展示是承袭Tcl/tk那个用了30行的<a href="http://wiki.tcl.tk/41294" target="_blank" rel="external">类似范例</a>。<br>那个范例有利用内建的网格构件以及一个C风格的解析求值表达式的库叫<a href="http://www.tcl.tk/man/tcl/TclCmd/expr.htm" target="_blank" rel="external">expr</a>。<br>即便如此，Tcl/tk能用这么少行还是不错的。<br>但真正的王者是这个<a href="http://xem.github.io/sheet/" target="_blank" rel="external">220比特</a>的JS程序。<br>虽然这与其说是展示JS的<a href="http://redmonk.com/dberkholz/2013/03/25/programming-languages-ranked-by-expressiveness/" target="_blank" rel="external">表达力</a><br>不如说是展示了DOM的厉害（后面有个100MB+的runtime）。<br>不管怎样，这个Red的范例是目前所知使用原生GUI的最小程序。包括可执行文件的大小也是最小的。<br>编译过后（头部加上Needs: View）只有<a href="http://static.red-lang.org/dl/win/picosheet.exe" target="_blank" rel="external">655KB</a>，<br><a href="http://upx.sourceforge.net/" target="_blank" rel="external">压缩</a>过后剩下<a href="http://static.red-lang.org/dl/win/picosheet-packed.exe" target="_blank" rel="external">221KB</a>，<br>并且如同之前说的，<strong>没有任何依赖</strong>。</p>
+<p>以上源代码为了用最少行经过紧缩，但仍然可读。Red代码就算故意要混淆也是很难的。<br>Red代码记号之间必须要有空格，这就没办法做C那样偏激的事情。<br>要用Red赢一场每个字节都算分的<a href="https://en.wikipedia.org/wiki/Code_golf" target="_blank" rel="external">代码高尔夫</a>也很难……<br>除非你用Red的DSL功能<a href="http://rebmu.hostilefork.com/" target="_blank" rel="external">写一个最少长度的DSL</a>。<br>那也没问题，基本上就是个为Red/Rebol设计的压缩标准。 ;-)</p>
+<p>怎么作到的？</p>
+<p>这个程序利用了<a href="http://doc.red-lang.org/gui/View.html" target="_blank" rel="external">Red/View</a>　GUI引擎、<a href="http://www.red-lang.org/2016/06/061-reactive-programming.html" target="_blank" rel="external">响应式</a><a href="http://doc.red-lang.org/reactivity.html" target="_blank" rel="external">框架</a>、<a href="http://www.red-lang.org/2013/11/041-introducing-parse.html" target="_blank" rel="external">Parse</a> DSL和Red语言核心。<br>很多人可能第一次听说，Red语言核心是<a href="http://rebol.com/" target="_blank" rel="external">Rebol</a>语言的衍生，有编程语言中最高的表达力之一。</p>
+<p>想要搞懂上面代码的人可以看这个<a href="https://gist.github.com/dockimbel/b0a413342dc39568696207412a2ef5e7" target="_blank" rel="external">更可读的版本</a>。<br>接下来是详解。其实这个程序比看起来的简单多了，开始吧：</p>
+<p>第一行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">L: charset &quot;ABCDEFGHI&quot; D: union N: charset &quot;123456789&quot; charset &quot;0&quot;</div></pre></td></tr></table></figure>
+<p>跳过Red的[]头部，这行定义几个<a href="http://www.rebol.com/r3/docs/datatypes/bitset.html" target="_blank" rel="external">bitsets</a>，<br>会用来解析。我们合并N和”0”来生成<br>D <a href="http://www.rebol.com/docs/words/wcharset.html" target="_blank" rel="external">charset</a>，<br>这样可以省下空间</p>
+<p>第二行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">repeat y 9 [repeat x 9 [col: either x = 1 [#&quot; &quot;][#&quot;A&quot; + (x - 2)]</div></pre></td></tr></table></figure>
+<p>双重循环产生所有需要的小窗口构件，如果该列是个表头<code>col</code>设成一个空格<br>否則设成A到G之间的一个字母。等下用来生成单元格名称和第一行的标签。</p>
+<p>第三行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">append p: [] set ref: (to word! rejoin [col y - 1]) make face! [size: 90x24</div></pre></td></tr></table></figure>
+<p>这裡我们开始建构face。在<code>p</code>区块里面累积。<code>p: []</code>是一种静态分配，而且不用<br>换行很方便。<code>set ref: (to word! rejoin [col y - 1])</code>这部份很好懂，<br>是把<code>make face!</code>生成的face加到<code>p</code>列表中。这个表达式创建单元格的名称（一个<br>字母表示列然后一个数字表示行），这被转换成一个word然后引用新创建的face。<br>有这些词才能支持试算表公式引用。最后没关闭的区块接受一个嵌套表达式，<br><code>size</code>定义是属性定义裡面最短的，所以可以加在这裡。</p>
+<p>第四行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">type:    pick [text field] header?: (y = 1) or (x = 1)</div></pre></td></tr></table></figure>
+<p>第一行/列的face类型可以是<code>text</code>，否则可以是<code>field</code>。<code>header?</code>这个word之后还有用处，来检查一个单元格是否只是标签或是个域。如果你好奇为什么用<code>or</code>而不是更常见的<code>any</code>，这是因为那样的话<code>pick</code>会要求把结果转换成<code>logic!</code>，这会花很大的计算量。</p>
+<p>第五行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">offset:  -20x10 + as-pair ((x - 1) * size/x + 2) ((y - 1) * size/y + 1)</div></pre></td></tr></table></figure>
+<p>face的位置由<code>x</code>与<code>y</code>的值计算，以形成一个网格。然后我主观觉得稍微往左偏移一点比较好看。</p>
+<p>第六行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">text:    form case [y = 1 [col] x = 1 [y - 1] &apos;else [copy &quot;&quot;]]</div></pre></td></tr></table></figure>
+<p>face的内容设为<code>col</code>，<code>col</code>包含了列的标签或是行数，否则的话这是输入单元格，<code>col</code>是个空字串。</p>
+<p>第七行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">para:    make para! [align: pick [center right] header?]</div></pre></td></tr></table></figure>
+<p>face 的<code>para</code>物件只是用来把标签置中同时保持普通单元格内容靠右对齐。</p>
+<p>第八行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">extra:   object [name: form ref formula: old: none]</div></pre></td></tr></table></figure>
+<p><code>extra</code> 域包含一个物件，这个物件内含单元格的状态：</p>
+<ul>
+<li><code>name</code>：单元格名称，字串格式比较适合公式编译器。</li>
+<li><code>formula</code>：引用最后一个输入的公式，文本格式。</li>
+<li><code>old</code>：引用最后一个单元格公式引起的反应（或是为空）</li>
+</ul>
+<p>第九行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">actors:  context [on-create: on-unfocus: function [f e][f/color: none</div></pre></td></tr></table></figure>
+<p>单元格定义几乎结束了，只剩下事件处理，这行开始定义事件处理。单元格创建时会呼叫<code>on-create</code>，保证<code>preset</code>内容在显示前会正确处理（如果是公式的话）。<code>on-unfocus</code>主要负责处理用户的输入。<code>on-enter</code>没有用，因为现在tabbing支援不能正常工作。按Enter键会保持焦点在同个单元格上，要解决这种副作用需要好几行。一旦tabbing恢复正常我们可以加上这个。最后因为函数的主体区块是开放的，我们可以塞一个短表达式，把单元格背景色重设为默认值。</p>
+<p>第10行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">if rel: f/extra/old [react/unlink rel &apos;all]</div></pre></td></tr></table></figure>
+<p>我们开始处理有趣的部份。如果一个公式产生一个反应，我们先消灭那个反应。</p>
+<p>第11行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">if #&quot;=&quot; = first f/extra/formula: copy text: copy f/text [parse remove text</div></pre></td></tr></table></figure>
+<p>如果检查到一个公式，那我们把文本复制下来，之后用来解析成Red表达式。因为series被deep reactors所有（例如一个<code>face!</code>物件），<code>copy</code>会确保转换期间没有物件事件产生。第二次<code>copy</code>会生成另一个输入字符串实例让<code>extra/formula</code>引用。如果输入字串不是一个公式，之前这些工作都不会影响单元格的内容（只是会浪费空间，但我们这裡不在意这点）。最后，如果这是一个公式，我们去掉开头的等号然后用一个Parse规则转换它。</p>
+<p>第12行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[any [p: L N not [&quot;/&quot; skip not N] insert p &quot; &quot; insert &quot;/data &quot;</div></pre></td></tr></table></figure>
+<p>这个规则一开始是个循环，目的是搜索所有单元格名称并且前面插一个空格再在后面加上”/data”（<code>A1</code>变成<code>A1/data</code>）。<br><code>not [&quot;/&quot; skip not N]</code>这个规则避免转换到带face属性的单元格名称（例如<code>A1/color</code>）<br>，规则是检查斜杠后面的第二个字符是不是数字，所以除法<code>A1/B2</code>仍然可以转换。</p>
+<p>第13行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">| L skip | p: some D opt [dot some D] insert p &quot; &quot; insert &quot; &quot; | skip]]</div></pre></td></tr></table></figure>
+<p>如果输入不是一个单元格名称，搜寻数字（某个D），包括带小数（<code>opt [dot some D]</code>），这样我们可以插入空格（”<code>1+2</code>“变成”<code>1 + 2</code>“）来遵守Red的语法规则（因为我们之后会<code>LOAD</code>这个字串）。<code>| L</code>这部份是防止给带符号的数字插入空格（”<code>-123</code>“不会变）。最后一个<code>skip</code>规则会跳过其他不重要的字符。</p>
+<p>第14行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">f/text: rejoin [f/extra/name &quot;/data: any [math/safe [&quot; text &#123;] &quot;#UND&quot;]&#125;]</div></pre></td></tr></table></figure>
+<p>转换基本完成了。最后一步是给字串加上特殊字符好生成Red表达式。首先我们把刚才的结果包在一个<code>math/safe [...]</code>区块中。<code>math</code>函数的作用是保证数学符号的优先级，而<code>/safe</code>选项会在内部尝试求值，因此出错的表达式会回传<code>none</code>值（然后翻译成<code>#UND</code>字串）。求值的结果被设给当前单元格。所以当你在<code>C1</code>单元格输入像<code>=A1+B1</code>这样的公式，我们会得到以下转换的结果：<br>“<code>C1/data: any [math/safe [ A1/data + B1/data ] &quot;#UND&quot;]</code>“。这是可以<code>LOAD</code>的表达式字串。但是我们的代码裡没有<code>LOAD</code>？其实有，这归功于0.6.1版的新功能：一个域的<code>/text</code>属性默认与<code>/data</code>属性用一个<code>LOAD</code>呼叫同步。如果呼叫失败，<code>/data</code>被设为<code>none</code>。相反，设置<code>/data</code>也会把<code>/text</code>改成<code>FROM</code>呼叫的结果。这就是这个表达式的目的 ;-)</p>
+<p>第15行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">if f/data [any [react f/extra/old: f/data do f/data]]]]</div></pre></td></tr></table></figure>
+<p>现在我们来到了高潮部份。上一行设置了<code>f/text</code>产生字串<code>LOAD</code>过的版本，由<code>f/data</code>引用。如果<code>LOAD</code>失败了，<code>f/data</code>会被设为<code>none</code>然后我们就能退出事件处理。否则我们就有东西可以喂给<code>REACT</code>来给这个单元格产生一个响应关系。这就是之前给单元格名称加<code>/data</code>有用的地方。<code>REACT</code>会静态分析<code>path!</code>值来找出响应源。不过如果表达式裡没有响应源（例如”<code>=1+2</code>“这个公式会把<code>f/data</code>赋值成<code>[C1/data: any [math/safe [ 1 + 2 ]]]</code>），那么<code>REACT</code>回传<code>none</code>然后我们就可以直接对表达式求值，求值结果会赋值给当前单元格的<code>/data</code>（这也会改变<code>/text</code>，然后使用者就看得到了）。另一方面如果<code>REACT</code>成功了，我们就给这个单元格设了新的响应关系。响应关系默认在构造时会执行一次，这可以确保单元格显示正确的值（通过隐式地改变<code>/data</code>，大家一定都很熟悉了）。还有，我们把用来生成响应关系的表达式的一个引用存在<code>extra/old</code>，因为有新公式的时候要把旧的给删除。如果你到目前为止都看得懂，恭喜，你已经是<code>View</code>跟响应式框架的大师了 ;-)</p>
+<p>第16行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">on-focus: func [f e][f/text: any [f/extra/formula f/text] f/color: yello]</div></pre></td></tr></table></figure>
+<p>第二个事件处理器是当单元格得到焦点的时候会把公式写回来。同时我们把背景色设为yello<s>w</s>，也就是……恩，像yellow但是稍微没那么黄……所以我们把这个不常见的颜色命名成这样。（卡尔，你看到这裡的话，我希望你欣赏我给你那个有创意的命名格式打圆场的努力;-)）</p>
+<p>第17行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">]]]] view make face! [type: &apos;window text: &quot;PicoSheet&quot; size: 840x250 pane: p]</div></pre></td></tr></table></figure>
+<p>最后一行只是生成一个窗口，并且把先前生成的标签和域赋给它的<code>/pane</code>属性（<code>face</code>的子元素）。然后显示窗口并<code>view</code>呼叫进入事件循环。大功告成！</p>
+<p>追记</p>
+<p>我们希望大家读过这个范例和解释觉得有意思也学到东西。你不是每天都会做一个试算表应用。这种应用很特殊，结合了很实用、强大的功能，同时只有基本电脑技能的人也能使用。<br>很多人把试算表应用视为我们工业软件世界的集大成。微软CEO自己几天前宣布说Excel是他<br>公司做过最好的产品。</p>
+<p>Red让你可以很直接方便的用原生技术写一个这样的应用。我希望这可以让更多人有兴趣学习Red并用Red写更多给力的软件。</p>
+<p>除了有趣以外，这个范例也展示了Red在原生GUI应用领域的潜力（我们现在只是0.6.1版，<br>我们还计画了很多功能和支持）。在原生和Web方案的大战之中，我们预料Red有朝一日会<br>是一个重要的选项。</p>
+<p>在那之前……希望你喜欢Red，就像我们一样！ ;-)</p>
+]]></content>
     
     <summary type="html">
     
@@ -236,19 +232,19 @@
     <published>2016-05-03T22:31:16.000Z</published>
     <updated>2016-05-04T01:45:05.319Z</updated>
     
-    <content type="html">&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; skimage &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; data, filter&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; matplotlib.pyplot &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; plt&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;%matplotlib inline&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;image = data.camera()&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;plt.imshow(image);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;img src=&quot;/2016/05/03/SVD-image-compression/SVD-compression_1_0.png&quot; alt=&quot;png&quot;&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;image.shape&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;pre&gt;&lt;code&gt;(512, 512)
-&lt;/code&gt;&lt;/pre&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; scipy &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; linalg&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; numpy &lt;span class=&quot;keyword&quot;&gt;as&lt;/span&gt; np&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;U, s, Vh = linalg.svd(image)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;assert&lt;/span&gt;(x &amp;gt; x2 &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; x, x2 &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; zip(s, s[&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;:])) &lt;span class=&quot;comment&quot;&gt;# the singular values are returned in descending order!&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;SVD can be used to compress image (“Introduction to Linear Algebra”, G. Strang, 4ed, p.365).&lt;/p&gt;
-&lt;p&gt;Before the image is 512×512 pixels.&lt;br&gt;After the image can be stored as Rank×512×512 pixels&lt;/p&gt;
-&lt;p&gt;When Rank is something like 50 there is essentially no big difference from original image.&lt;/p&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;R = &lt;span class=&quot;number&quot;&gt;50&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Sigma = np.diag(s[:R])&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;compressed_image = U[:, :R] @ Sigma @ Vh[:R, :]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;plt.imshow(compressed_image)&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;img src=&quot;/2016/05/03/SVD-image-compression/SVD-compression_6_1.png&quot; alt=&quot;png&quot;&gt;&lt;/p&gt;
-</content>
+    <content type="html"><![CDATA[<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> skimage <span class="keyword">import</span> data, filter</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line">%matplotlib inline</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">image = data.camera()</div><div class="line">plt.imshow(image);</div></pre></td></tr></table></figure>
+<p><img src="2016/05/03/SVD-image-compression/SVD-compression_1_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">image.shape</div></pre></td></tr></table></figure>
+<pre><code>(512, 512)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> linalg</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">U, s, Vh = linalg.svd(image)</div><div class="line"><span class="keyword">assert</span>(x &gt; x2 <span class="keyword">for</span> x, x2 <span class="keyword">in</span> zip(s, s[<span class="number">1</span>:])) <span class="comment"># the singular values are returned in descending order!</span></div></pre></td></tr></table></figure>
+<p>SVD can be used to compress image (“Introduction to Linear Algebra”, G. Strang, 4ed, p.365).</p>
+<p>Before the image is 512×512 pixels.<br>After the image can be stored as Rank×512×512 pixels</p>
+<p>When Rank is something like 50 there is essentially no big difference from original image.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">R = <span class="number">50</span></div><div class="line"></div><div class="line">Sigma = np.diag(s[:R])</div><div class="line">compressed_image = U[:, :R] @ Sigma @ Vh[:R, :]</div><div class="line">plt.imshow(compressed_image)</div></pre></td></tr></table></figure>
+<p><img src="2016/05/03/SVD-image-compression/SVD-compression_6_1.png" alt="png"></p>
+]]></content>
     
     <summary type="html">
     
@@ -270,10 +266,10 @@
     <published>2016-05-02T05:12:34.000Z</published>
     <updated>2016-05-02T17:53:32.331Z</updated>
     
-    <content type="html">&lt;p&gt;I found the launcher application called &lt;a href=&quot;https://launchpad.net/synapse-project&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Synapse&lt;/a&gt; and it’s indeed very easy to use. It basically replaces Bookmarks and the built-in DASH launcher of Ubuntu. I set the keybinding to CTRL-TAB which seems to interfere the least with any applications.&lt;/p&gt;
-&lt;p&gt;Next is disabling the Launcher from its default keybinding of &lt;code&gt;&amp;lt;Super&amp;gt;&lt;/code&gt;.&lt;br&gt;&lt;a href=&quot;http://8thstring.blogspot.com/2011/07/change-unity-keyboard-shortcut-for.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;This page&lt;/a&gt; describes how to use &lt;strong&gt;Compiz Config Setting Manager (ccms)&lt;/strong&gt; to disable/change Launcher activation key.&lt;/p&gt;
-&lt;p&gt;Finally, Synapse by default ships with the search engine &lt;em&gt;DuckDuckGo&lt;/em&gt;, if you are like me who just uses Google you can try &lt;a href=&quot;https://answers.launchpad.net/synapse-project/+question/253849&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;this solution on Launchpad&lt;/a&gt;.&lt;/p&gt;
-</content>
+    <content type="html"><![CDATA[<p>I found the launcher application called <a href="https://launchpad.net/synapse-project" target="_blank" rel="external">Synapse</a> and it’s indeed very easy to use. It basically replaces Bookmarks and the built-in DASH launcher of Ubuntu. I set the keybinding to CTRL-TAB which seems to interfere the least with any applications.</p>
+<p>Next is disabling the Launcher from its default keybinding of <code>&lt;Super&gt;</code>.<br><a href="http://8thstring.blogspot.com/2011/07/change-unity-keyboard-shortcut-for.html" target="_blank" rel="external">This page</a> describes how to use <strong>Compiz Config Setting Manager (ccms)</strong> to disable/change Launcher activation key.</p>
+<p>Finally, Synapse by default ships with the search engine <em>DuckDuckGo</em>, if you are like me who just uses Google you can try <a href="https://answers.launchpad.net/synapse-project/+question/253849" target="_blank" rel="external">this solution on Launchpad</a>.</p>
+]]></content>
     
     <summary type="html">
     
@@ -293,65 +289,65 @@
     <published>2016-04-25T20:20:28.000Z</published>
     <updated>2016-04-25T22:22:50.755Z</updated>
     
-    <content type="html">&lt;p&gt;記一次系統重裝&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h1 id=&quot;Backup&quot;&gt;&lt;a href=&quot;#Backup&quot; class=&quot;headerlink&quot; title=&quot;Backup&quot;&gt;&lt;/a&gt;Backup&lt;/h1&gt;&lt;p&gt;Folders to back up&lt;/p&gt;
-&lt;p&gt;Ubuntu Side&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;~/Documents&lt;/li&gt;
-&lt;li&gt;~/workspace&lt;/li&gt;
-&lt;li&gt;~/dotfiles&lt;/li&gt;
-&lt;li&gt;~/.emacs.d&lt;/li&gt;
-&lt;li&gt;~/.ipython/kernels&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Windows Side&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Videos&lt;/li&gt;
-&lt;li&gt;Pictures&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Other files&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;python installation&lt;/li&gt;
-&lt;li&gt;&lt;s&gt;Firefox bookmarks&lt;/s&gt; (Firefox sync takes care of all these)&lt;/li&gt;
-&lt;li&gt;&lt;s&gt;Firefo.x saved passwords&lt;/s&gt;&lt;/li&gt;
-&lt;li&gt;Atom packages&lt;/li&gt;
-&lt;li&gt;Atom snippets&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;Prepare_16-04_installation&quot;&gt;&lt;a href=&quot;#Prepare_16-04_installation&quot; class=&quot;headerlink&quot; title=&quot;Prepare 16.04 installation&quot;&gt;&lt;/a&gt;Prepare 16.04 installation&lt;/h1&gt;&lt;p&gt;I ended up wiping out the Windows installation.&lt;/p&gt;
-&lt;h1 id=&quot;Set_up_system&quot;&gt;&lt;a href=&quot;#Set_up_system&quot; class=&quot;headerlink&quot; title=&quot;Set up system&quot;&gt;&lt;/a&gt;Set up system&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;&lt;s&gt;Firefox&lt;/s&gt; (Comes prepackaged with it)&lt;/li&gt;
-&lt;li&gt;Dropbox&lt;/li&gt;
-&lt;li&gt;Atom (with packages)&lt;/li&gt;
-&lt;li&gt;Emacs (with package)&lt;/li&gt;
-&lt;li&gt;Scala&lt;/li&gt;
-&lt;li&gt;DB Browser&lt;/li&gt;
-&lt;li&gt;Haroopad&lt;/li&gt;
-&lt;li&gt;Skype&lt;/li&gt;
-&lt;li&gt;KMPlayer&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;Input_method&quot;&gt;&lt;a href=&quot;#Input_method&quot; class=&quot;headerlink&quot; title=&quot;Input method&quot;&gt;&lt;/a&gt;Input method&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;fcitx&lt;br&gt;&lt;a href=&quot;https://blogs.fsfe.org/stefan.a/2014/09/23/set-up-fcitx-chinese-and-japanese-language-input-ubuntu-14-04/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;This page&lt;/a&gt; talks about how to config system to use fcitx&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Use emacs key&lt;br&gt;Use Tweak Tool (found at Software Store), go to Typing &amp;gt; Caplocks Behavior &amp;gt; select “as additional Ctrl”&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;in the System setting Keyboard &amp;gt; shortcuts &amp;gt; Typing, Disable Ctrl+Space for switching input methods, as this conflicts with emacs’ C-SPACE selection key-binding.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;Switch_default_shell_from_bash__26gt_3B_zsh&quot;&gt;&lt;a href=&quot;#Switch_default_shell_from_bash__26gt_3B_zsh&quot; class=&quot;headerlink&quot; title=&quot;Switch default shell from bash &amp;gt; zsh&quot;&gt;&lt;/a&gt;Switch default shell from bash &amp;gt; zsh&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;install zsh in package manager&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;sudo usermod -s /bin/zsh $USER&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;Python_environment&quot;&gt;&lt;a href=&quot;#Python_environment&quot; class=&quot;headerlink&quot; title=&quot;Python environment&quot;&gt;&lt;/a&gt;Python environment&lt;/h2&gt;&lt;p&gt;Turns out, most system modules are now in python3, unlike in Ubuntu 15.10 when they were under python2. So now it’s the pip3 that gets all the mess. Good thing is the system comes pre-packaged with python3.5.&lt;/p&gt;
-&lt;p&gt;Problem: The packaged python doesn’t contain&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;pip (pip2, pip3)&lt;br&gt;go to pip website, download &lt;code&gt;get_pip.py&lt;/code&gt; and run it with sudo for both python2 and python3. This will install pip2 and pip3 respectively. I don’t know whether the order matters, but I ran 2 and then 3.&lt;/li&gt;
-&lt;li&gt;virtualenv&lt;br&gt;Find &lt;code&gt;python-virtualenv&lt;/code&gt; package in Synaptic&lt;/li&gt;
-&lt;li&gt;Also find &lt;code&gt;python-dev&lt;/code&gt; and &lt;code&gt;python3-dev&lt;/code&gt; package in Synaptic, because some python libraries require compiling with &lt;code&gt;Python.h&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Matplotlib requires the dev portions of &lt;code&gt;libfreetype&lt;/code&gt; and &lt;code&gt;libpng&lt;/code&gt; to be installed&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;Permission_Problem&quot;&gt;&lt;a href=&quot;#Permission_Problem&quot; class=&quot;headerlink&quot; title=&quot;Permission Problem&quot;&gt;&lt;/a&gt;Permission Problem&lt;/h1&gt;&lt;p&gt;Turns out the mobile hard drive I used to backup my files is NTFS or something and this messed up all the permission codes (All become &lt;code&gt;777&lt;/code&gt;)…&lt;/p&gt;
-&lt;p&gt;I wrote a script to recursively change all the directory and executable files permission to &lt;code&gt;755&lt;/code&gt;, all the normal file permission to &lt;code&gt;644&lt;/code&gt;. The way it differentiates executable files and non-executable is first by extension name: those ending in &lt;code&gt;bin&lt;/code&gt;, &lt;code&gt;sh&lt;/code&gt;, &lt;code&gt;exe&lt;/code&gt; are usually executable files. The trickier part is those executables without extension, which is a norm under Linux. To tackle those types of files (and differentiatbe them from normal files without extension like &lt;code&gt;Makefile&lt;/code&gt;) I leveraged the &lt;code&gt;file&lt;/code&gt; system program, which will usually tell you whether something is an executable binary. However it also has the bad habbit of saying executalbe on python script file, even those without shebang. Therefore I can’t trust it completely.&lt;/p&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;23&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;24&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;25&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;26&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;27&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;28&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;29&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;30&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;31&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;32&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;33&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;34&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;35&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#!/usr/bin/python3.5&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; os&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; sys&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; subprocess&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; subprocess &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; run &lt;span class=&quot;comment&quot;&gt;# &amp;gt;= py3.5&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;file_uuid = &lt;span class=&quot;number&quot;&gt;0o664&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;exec_uuid = &lt;span class=&quot;number&quot;&gt;0o755&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;dir_uuid  = &lt;span class=&quot;number&quot;&gt;0o755&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;exec_file_types = [&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;string&quot;&gt;&quot;exe&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;sh&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;bin&quot;&lt;/span&gt;,&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;path = os.getcwd()&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; len(sys.argv) &amp;gt; &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    path = sys.argv[&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; folder, dirs, files &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; os.walk(path):&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; d &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; dirs:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        p = os.path.join(folder, d)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        os.chmod(p, dir_uuid)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; f &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; files:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        p = os.path.join(folder, f)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        ext = os.path.splitext(f)[&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;][&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;:]  &lt;span class=&quot;comment&quot;&gt;# skip the dot&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; ext:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            uuid = exec_uuid &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; ext &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; exec_file_types &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; file_uuid&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;: &lt;span class=&quot;comment&quot;&gt;# there is no extension, this may be a executable file&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            res = run([&lt;span class=&quot;string&quot;&gt;&quot;file&quot;&lt;/span&gt;, p], stdout=subprocess.PIPE)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            res_str = res.stdout.decode()&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            uuid = exec_uuid &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;executable&quot;&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; res_str &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; file_uuid&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        os.chmod(p, uuid)&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-</content>
+    <content type="html"><![CDATA[<p>記一次系統重裝</p>
+<a id="more"></a>
+<h1 id="Backup"><a href="#Backup" class="headerlink" title="Backup"></a>Backup</h1><p>Folders to back up</p>
+<p>Ubuntu Side</p>
+<ul>
+<li>~/Documents</li>
+<li>~/workspace</li>
+<li>~/dotfiles</li>
+<li>~/.emacs.d</li>
+<li>~/.ipython/kernels</li>
+</ul>
+<p>Windows Side</p>
+<ul>
+<li>Videos</li>
+<li>Pictures</li>
+</ul>
+<p>Other files</p>
+<ul>
+<li>python installation</li>
+<li><s>Firefox bookmarks</s> (Firefox sync takes care of all these)</li>
+<li><s>Firefo.x saved passwords</s></li>
+<li>Atom packages</li>
+<li>Atom snippets</li>
+</ul>
+<h1 id="Prepare-16-04-installation"><a href="#Prepare-16-04-installation" class="headerlink" title="Prepare 16.04 installation"></a>Prepare 16.04 installation</h1><p>I ended up wiping out the Windows installation.</p>
+<h1 id="Set-up-system"><a href="#Set-up-system" class="headerlink" title="Set up system"></a>Set up system</h1><ul>
+<li><s>Firefox</s> (Comes prepackaged with it)</li>
+<li>Dropbox</li>
+<li>Atom (with packages)</li>
+<li>Emacs (with package)</li>
+<li>Scala</li>
+<li>DB Browser</li>
+<li>Haroopad</li>
+<li>Skype</li>
+<li>KMPlayer</li>
+</ul>
+<h2 id="Input-method"><a href="#Input-method" class="headerlink" title="Input method"></a>Input method</h2><ul>
+<li><p>fcitx<br><a href="https://blogs.fsfe.org/stefan.a/2014/09/23/set-up-fcitx-chinese-and-japanese-language-input-ubuntu-14-04/" target="_blank" rel="external">This page</a> talks about how to config system to use fcitx</p>
+</li>
+<li><p>Use emacs key<br>Use Tweak Tool (found at Software Store), go to Typing &gt; Caplocks Behavior &gt; select “as additional Ctrl”</p>
+</li>
+<li>in the System setting Keyboard &gt; shortcuts &gt; Typing, Disable Ctrl+Space for switching input methods, as this conflicts with emacs’ C-SPACE selection key-binding.</li>
+</ul>
+<h2 id="Switch-default-shell-from-bash-gt-zsh"><a href="#Switch-default-shell-from-bash-gt-zsh" class="headerlink" title="Switch default shell from bash &gt; zsh"></a>Switch default shell from bash &gt; zsh</h2><ol>
+<li>install zsh in package manager</li>
+<li><code>sudo usermod -s /bin/zsh $USER</code></li>
+</ol>
+<h2 id="Python-environment"><a href="#Python-environment" class="headerlink" title="Python environment"></a>Python environment</h2><p>Turns out, most system modules are now in python3, unlike in Ubuntu 15.10 when they were under python2. So now it’s the pip3 that gets all the mess. Good thing is the system comes pre-packaged with python3.5.</p>
+<p>Problem: The packaged python doesn’t contain</p>
+<ul>
+<li>pip (pip2, pip3)<br>go to pip website, download <code>get_pip.py</code> and run it with sudo for both python2 and python3. This will install pip2 and pip3 respectively. I don’t know whether the order matters, but I ran 2 and then 3.</li>
+<li>virtualenv<br>Find <code>python-virtualenv</code> package in Synaptic</li>
+<li>Also find <code>python-dev</code> and <code>python3-dev</code> package in Synaptic, because some python libraries require compiling with <code>Python.h</code>.</li>
+<li>Matplotlib requires the dev portions of <code>libfreetype</code> and <code>libpng</code> to be installed</li>
+</ul>
+<h1 id="Permission-Problem"><a href="#Permission-Problem" class="headerlink" title="Permission Problem"></a>Permission Problem</h1><p>Turns out the mobile hard drive I used to backup my files is NTFS or something and this messed up all the permission codes (All become <code>777</code>)…</p>
+<p>I wrote a script to recursively change all the directory and executable files permission to <code>755</code>, all the normal file permission to <code>644</code>. The way it differentiates executable files and non-executable is first by extension name: those ending in <code>bin</code>, <code>sh</code>, <code>exe</code> are usually executable files. The trickier part is those executables without extension, which is a norm under Linux. To tackle those types of files (and differentiatbe them from normal files without extension like <code>Makefile</code>) I leveraged the <code>file</code> system program, which will usually tell you whether something is an executable binary. However it also has the bad habbit of saying executalbe on python script file, even those without shebang. Therefore I can’t trust it completely.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python3.5</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> sys</div><div class="line"><span class="keyword">import</span> subprocess</div><div class="line"><span class="keyword">from</span> subprocess <span class="keyword">import</span> run <span class="comment"># &gt;= py3.5</span></div><div class="line"></div><div class="line">file_uuid = <span class="number">0o664</span></div><div class="line">exec_uuid = <span class="number">0o755</span></div><div class="line">dir_uuid  = <span class="number">0o755</span></div><div class="line"></div><div class="line">exec_file_types = [</div><div class="line">  <span class="string">"exe"</span>, <span class="string">"sh"</span>, <span class="string">"bin"</span>,</div><div class="line">]</div><div class="line"></div><div class="line">path = os.getcwd()</div><div class="line"><span class="keyword">if</span> len(sys.argv) &gt; <span class="number">1</span>:</div><div class="line">    path = sys.argv[<span class="number">1</span>]</div><div class="line"></div><div class="line"><span class="keyword">for</span> folder, dirs, files <span class="keyword">in</span> os.walk(path):</div><div class="line">    <span class="keyword">for</span> d <span class="keyword">in</span> dirs:</div><div class="line">        p = os.path.join(folder, d)</div><div class="line">        os.chmod(p, dir_uuid)</div><div class="line"></div><div class="line">    <span class="keyword">for</span> f <span class="keyword">in</span> files:</div><div class="line">        p = os.path.join(folder, f)</div><div class="line">        ext = os.path.splitext(f)[<span class="number">1</span>][<span class="number">1</span>:]  <span class="comment"># skip the dot</span></div><div class="line">        <span class="keyword">if</span> ext:</div><div class="line">            uuid = exec_uuid <span class="keyword">if</span> ext <span class="keyword">in</span> exec_file_types <span class="keyword">else</span> file_uuid</div><div class="line">        <span class="keyword">else</span>: <span class="comment"># there is no extension, this may be a executable file</span></div><div class="line">            res = run([<span class="string">"file"</span>, p], stdout=subprocess.PIPE)</div><div class="line">            res_str = res.stdout.decode()</div><div class="line">            uuid = exec_uuid <span class="keyword">if</span> <span class="string">"executable"</span> <span class="keyword">in</span> res_str <span class="keyword">else</span> file_uuid</div><div class="line"></div><div class="line">        os.chmod(p, uuid)</div></pre></td></tr></table></figure>
+]]></content>
     
     <summary type="html">
     
@@ -373,141 +369,141 @@
     <published>2016-03-31T07:32:34.000Z</published>
     <updated>2016-04-25T22:23:06.672Z</updated>
     
-    <content type="html">&lt;p&gt;Python 的「最最佳作法」（the Best of Best Practices）指南。（&lt;a href=&quot;https://gist.github.com/sloria/7001839&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;原文&lt;/a&gt; by @Sloria）&lt;/p&gt;
-&lt;h2 id=&quot;u6982_u8AD6&quot;&gt;&lt;a href=&quot;#u6982_u8AD6&quot; class=&quot;headerlink&quot; title=&quot;概論&quot;&gt;&lt;/a&gt;概論&lt;/h2&gt;&lt;h3 id=&quot;u50F9_u503C_u89C0&quot;&gt;&lt;a href=&quot;#u50F9_u503C_u89C0&quot; class=&quot;headerlink&quot; title=&quot;價值觀&quot;&gt;&lt;/a&gt;價值觀&lt;/h3&gt;&lt;ul&gt;
+    <content type="html"><![CDATA[<p>Python 的「最最佳作法」（the Best of Best Practices）指南。（<a href="https://gist.github.com/sloria/7001839" target="_blank" rel="external">原文</a> by @Sloria）</p>
+<h2 id="概論"><a href="#概論" class="headerlink" title="概論"></a>概論</h2><h3 id="價值觀"><a href="#價值觀" class="headerlink" title="價值觀"></a>價值觀</h3><ul>
+<li>「不要做己所不欲的工具給人用」 - Kenneth Reitz</li>
+<li>「簡單永遠勝過多功能」 - Pieter Hintjens</li>
+<li>「滿足 90% 的使用情境，不要管奧客」 - Kenneth Reitz</li>
+<li>「優美勝過醜陋」 - <a href="https://wiki.python.org/moin/PythonZenChineseTranslate" target="_blank" rel="external">PEP 20</a></li>
+<li>「為開源貢獻」（即便最終是為了閉源項目）</li>
+</ul>
+<a id="more"></a>
+<h3 id="一般開發準則"><a href="#一般開發準則" class="headerlink" title="一般開發準則"></a>一般開發準則</h3><ul>
+<li>「顯明勝過隱含」 - <a href="https://wiki.python.org/moin/PythonZenChineseTranslate" target="_blank" rel="external">PEP 20</a></li>
+<li>「可讀性很重要」 - <a href="https://wiki.python.org/moin/PythonZenChineseTranslate" target="_blank" rel="external">PEP 20</a></li>
+<li>「所有人都可以解決所有問題」 - <a href="https://sites.google.com/a/khanacademy.org/forge/for-developers" target="_blank" rel="external">Khan Academy Development Docs</a></li>
+<li>「一旦發現<a href="http://www.artima.com/intv/fixit2.html" target="_blank" rel="external">破窗</a>（糟糕的設計、錯誤的決定、劣質代碼）立刻修復」</li>
+<li>「現在就做好過一直不做」 - <a href="https://wiki.python.org/moin/PythonZenChineseTranslate" target="_blank" rel="external">PEP 20</a></li>
+<li>無情地測試，為新功能寫文檔</li>
+<li>比測試驅動開發更重要的是<strong>人類驅動開發</strong></li>
+<li>這些準則也許，很可能，會改變</li>
+</ul>
+<h2 id="特別"><a href="#特別" class="headerlink" title="特別"></a>特別</h2><h3 id="風格"><a href="#風格" class="headerlink" title="風格"></a>風格</h3><p>除非有適當理由，遵循 <a href="http://www.python.org/dev/peps/pep-0008/" target="_blank" rel="external">PEP 8</a>。</p>
+<h4 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h4><ul>
+<li>變量，函數，方法，包，模塊<ul>
+<li><code>lower_case_with_underscores</code></li>
+</ul>
+</li>
+<li>類與例外<ul>
+<li><code>CapWords</code></li>
+</ul>
+</li>
+<li>保護或內部方法<ul>
+<li><code>_single_leading_underscore(self, ...)</code></li>
+</ul>
+</li>
+<li>私有方法<ul>
+<li><code>__double_leading_underscore(self, ...)</code></li>
+</ul>
+</li>
+<li>常數<ul>
+<li><code>ALL_CAPS_WITH_UNDERSCORES</code></li>
+</ul>
+</li>
+</ul>
+<h6 id="一般命名準則"><a href="#一般命名準則" class="headerlink" title="一般命名準則"></a>一般命名準則</h6><p>不要用單字母變量（特別是 <code>l</code>, <code>O</code>, <code>I</code>）（譯註：容易與數字搞混）</p>
+<p><strong>例外：</strong> 在非常短的塊裡，其含意從附近上下文很明顯時可以接受。</p>
+<p><strong>這樣可以</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> e <span class="keyword">in</span> elements:</div><div class="line">    e.mutate()</div></pre></td></tr></table></figure></p>
+<p>不要無用的標籤</p>
+<p><strong>用</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> audio</div><div class="line"></div><div class="line">core = audio.Core()</div><div class="line">controller = audio.Controller()</div></pre></td></tr></table></figure></p>
+<p><strong>不要</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> audio</div><div class="line"></div><div class="line">core = audio.AudioCore()</div><div class="line">controller = audio.AudioController()</div></pre></td></tr></table></figure></p>
+<p>偏好「倒裝命名法」</p>
+<p><strong>要</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">elements = ...</div><div class="line">elements_active = ...</div><div class="line">elements_defunct = ...</div></pre></td></tr></table></figure></p>
+<p><strong>不要</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">elements = ...</div><div class="line">active_elements = ...</div><div class="line">defunct_elements ...</div></pre></td></tr></table></figure></p>
+<p>不要 getter、setter 方法。</p>
+<p><strong>要</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">person.age = <span class="number">42</span></div></pre></td></tr></table></figure></p>
+<p><strong>不要</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">person.set_age(<span class="number">42</span>)</div></pre></td></tr></table></figure></p>
+<h4 id="縮進"><a href="#縮進" class="headerlink" title="縮進"></a>縮進</h4><p>用 4 個空格，絕對不要用 Tab。以上。</p>
+<h4 id="import"><a href="#import" class="headerlink" title="import"></a>import</h4><p>import 整個模塊而不是單獨的符號。例如如果頂層模組 <code>canteen</code> 下有 <code>canteen/sessions.py</code>，</p>
+<p><strong>要</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> canteen</div><div class="line"><span class="keyword">import</span> canteen.sessions</div><div class="line"><span class="keyword">from</span> canteen <span class="keyword">import</span> sessions</div></pre></td></tr></table></figure>
+<p><strong>不要</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> canteen <span class="keyword">import</span> get_user  <span class="comment"># Symbol from canteen/__init__.py</span></div><div class="line"><span class="keyword">from</span> canteen.sessions <span class="keyword">import</span> get_session  <span class="comment"># Symbol from canteen/sessions.py</span></div></pre></td></tr></table></figure>
+<p><strong>例外：</strong> 除非某些第三方代碼的文件中明確指示 import 單個符號。</p>
+<p><strong>理由：</strong> 這可以避免循環 import，見<a href="https://sites.google.com/a/khanacademy.org/forge/for-developers/styleguide/python#TOC-Imports" target="_blank" rel="external">這個例子</a>。</p>
+<p>把所有 import 放在文件頂部，分三小節，每小節用一個空行隔開，三個小節分別是</p>
+<ol>
+<li>系統 import</li>
+<li>第三方 import</li>
+<li>本地源 import</li>
+</ol>
+<p><strong>理由：</strong> 容易看出模塊出自哪裡。</p>
+<h4 id="文檔"><a href="#文檔" class="headerlink" title="文檔"></a>文檔</h4><p>遵循 <a href="http://www.python.org/dev/peps/pep-0257/" target="_blank" rel="external">PEP 257</a> 的文檔字串規範。 <a href="http://docutils.sourceforge.net/docs/user/rst/quickref.html" target="_blank" rel="external">reStructured Text</a> 和 <a href="http://sphinx-doc.org/" target="_blank" rel="external">Sphinx</a> 可以幫你強制這些規範。</p>
+<p>功能明顯的函數只需要一行文檔字串。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">"""Return the pathname of ``foo``."""</span></div></pre></td></tr></table></figure>
+<p>多行文檔字串應包括</p>
+<ul>
+<li>一行總結</li>
+<li>使用情境，若適合</li>
+<li>參數</li>
+<li>回傳值的類型與意思，除非回傳值是 <code>None</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="string">"""Train a model to classify Foos and Bars.</span></div><div class="line"></div><div class="line">Usage::</div><div class="line"></div><div class="line">    &gt;&gt;&gt; import klassify</div><div class="line">    &gt;&gt;&gt; data = [("green", "foo"), ("orange", "bar")]</div><div class="line">    &gt;&gt;&gt; classifier = klassify.train(data)</div><div class="line"></div><div class="line">:param train_data: A list of tuples of the form ``(color, label)``.</div><div class="line">:rtype: A :class:`Classifier &lt;Classifier&gt;`</div><div class="line">"""</div></pre></td></tr></table></figure>
+<p>備註</p>
+<ul>
+<li>使用命令體（”Return”）不要記敘體（”Returns”）</li>
+<li><code>__init__</code>方法的文檔放在類的文檔字串中</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="string">"""A simple representation of a human being.</span></div><div class="line"></div><div class="line">    :param name: A string, the person's name.</div><div class="line">    :param age: An int, the person's age.</div><div class="line">    """</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age)</span>:</span></div><div class="line">        self.name = name</div><div class="line">        self.age = age</div></pre></td></tr></table></figure>
+<h5 id="註解"><a href="#註解" class="headerlink" title="註解"></a>註解</h5><p>謹慎使用。偏好可讀的代碼而不是依賴大量註解，短小的方法常常比註解更有用。</p>
+<p><em>不要</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># If the sign is a stop sign</span></div><div class="line"><span class="keyword">if</span> sign.color == <span class="string">'red'</span> <span class="keyword">and</span> sign.sides == <span class="number">8</span>:</div><div class="line">    stop()</div></pre></td></tr></table></figure>
+<p><em>要</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_stop_sign</span><span class="params">(sign)</span>:</span></div><div class="line">    <span class="keyword">return</span> sign.color == <span class="string">'red'</span> <span class="keyword">and</span> sign.sides == <span class="number">8</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> is_stop_sign(sign):</div><div class="line">    stop()</div></pre></td></tr></table></figure>
+<p>非得寫註解的時候，記得遵循「<a href="https://zh.wikipedia.org/wiki/%E8%8B%B1%E6%96%87%E5%86%99%E4%BD%9C%E6%8C%87%E5%8D%97" target="_blank" rel="external">英文寫作指南</a>」（<a href="http://www.python.org/dev/peps/pep-0008/" target="_blank" rel="external">PEP 8</a>說的）</p>
+<h4 id="行長度"><a href="#行長度" class="headerlink" title="行長度"></a>行長度</h4><p>不要太在意，80-100 個字符在可接受範圍內。</p>
+<p>用括號延續很長的行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">wiki = (</div><div class="line">    <span class="string">"The Colt Python is a .357 Magnum caliber revolver formerly manufactured "</span></div><div class="line">    <span class="string">"by Colt's Manufacturing Company of Hartford, Connecticut. It is sometimes "</span></div><div class="line">    <span class="string">'referred to as a "Combat Magnum". It was first introduced in 1955, the '</span></div><div class="line">    <span class="string">"same year as Smith &amp; Wesson's M29 .44 Magnum."</span></div><div class="line">)</div></pre></td></tr></table></figure>
+<h3 id="測試"><a href="#測試" class="headerlink" title="測試"></a>測試</h3><p>追求 100% 覆蓋，但不要太執著。</p>
+<h4 id="一般測試準則"><a href="#一般測試準則" class="headerlink" title="一般測試準則"></a>一般測試準則</h4><ul>
+<li>用長而描述性的名字命名用例。這樣通常就不需要在測試裡寫文檔字串。</li>
+<li>用例應該彼此分離，不要在用例間共享一個資料庫或網路連接，為每個用例使用一個單獨的測試用資料庫並在用完後拆除，或是使用模擬。</li>
+<li>偏好用<a href="https://github.com/rbarrois/factory_boy" target="_blank" rel="external">工廠</a>來控制變量。</li>
+<li>絕對不要讓沒寫完的用例通過，否則你可能會忘記他們。相反，預留一個 <code>assert False, &quot;TODO: 完成我&quot;</code></li>
+</ul>
+<h4 id="單元測試"><a href="#單元測試" class="headerlink" title="單元測試"></a>單元測試</h4><ul>
+<li>每次關注一個小功能</li>
+<li>最好很快完成，但一個跑得很慢的測試勝過沒測試</li>
+<li>一個用例的類對應一個類或模型通常是合理的。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> unittest</div><div class="line"><span class="keyword">import</span> factories</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonTest</span><span class="params">(unittest.TestCase)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setUp</span><span class="params">(self)</span>:</span></div><div class="line">        self.person = factories.PersonFactory()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_has_age_in_dog_years</span><span class="params">(self)</span>:</span></div><div class="line">        self.assertEqual(self.person.dog_years, self.person.age / <span class="number">7</span>)</div></pre></td></tr></table></figure>
+<h4 id="功能測試"><a href="#功能測試" class="headerlink" title="功能測試"></a>功能測試</h4><p>功能測試是更高級的測試，接近使用者使用你的應用的方式。通常在網路跟圖形界面應用上使用。</p>
+<ul>
+<li>把用例寫成場景，用例跟測試方法應該描述場景中發生的事情。</li>
+<li><strong>在寫測試代碼之前</strong>先用註解講故事</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> unittest</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestAUser</span><span class="params">(unittest.TestCase)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_can_write_a_blog_post</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="comment"># Goes to the her dashboard</span></div><div class="line">        ...</div><div class="line">        <span class="comment"># Clicks "New Post"</span></div><div class="line">        ...</div><div class="line">        <span class="comment"># Fills out the post form</span></div><div class="line">        ...</div><div class="line">        <span class="comment"># Clicks "Submit"</span></div><div class="line">        ...</div><div class="line">        <span class="comment"># Can see the new post</span></div><div class="line">        ...</div></pre></td></tr></table></figure>
+<p>注意測試用例跟測試方法合起來是一句話「Test A User can write a blog post」。</p>
+<h2 id="靈感來自…"><a href="#靈感來自…" class="headerlink" title="靈感來自…"></a>靈感來自…</h2><ul>
+<li><a href="https://wiki.python.org/moin/PythonZenChineseTranslate" target="_blank" rel="external">PEP 20（Python 之禪）</a></li>
+<li><a href="http://www.python.org/dev/peps/pep-0008/" target="_blank" rel="external">PEP 8（Python 風格指南）</a></li>
+<li><a href="http://docs.python-guide.org/en/latest/" target="_blank" rel="external">The Hitchiker’s Guide to Python</a></li>
+<li><a href="https://sites.google.com/a/khanacademy.org/forge/for-developers" target="_blank" rel="external">Khan Academy Development Docs</a></li>
+<li><a href="http://youtu.be/GZNUfkVIHAY" target="_blank" rel="external">Python Best Practice Patterns</a></li>
+<li><a href="http://www.nilunder.com/blog/2013/08/03/pythonic-sensibilities/" target="_blank" rel="external">Pythonic Sensibilities</a></li>
+<li><a href="http://www.amazon.com/The-Pragmatic-Programmer-Journeyman-Master/dp/020161622X/ref=sr_1_1?ie=UTF8&amp;qid=1381886835&amp;sr=8-1&amp;keywords=pragmatic+programmer" target="_blank" rel="external">The Pragmatic Programmer</a></li>
+<li>還有各種其他來源</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Python 的「最最佳作法」（the Best of Best Practices）指南。（&lt;a href=&quot;https://gist.github.com/sloria/7001839&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;原文&lt;/a&gt; by @Sloria）&lt;/p&gt;
+&lt;h2 id=&quot;概論&quot;&gt;&lt;a href=&quot;#概論&quot; class=&quot;headerlink&quot; title=&quot;概論&quot;&gt;&lt;/a&gt;概論&lt;/h2&gt;&lt;h3 id=&quot;價值觀&quot;&gt;&lt;a href=&quot;#價值觀&quot; class=&quot;headerlink&quot; title=&quot;價值觀&quot;&gt;&lt;/a&gt;價值觀&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;「不要做己所不欲的工具給人用」 - Kenneth Reitz&lt;/li&gt;
 &lt;li&gt;「簡單永遠勝過多功能」 - Pieter Hintjens&lt;/li&gt;
 &lt;li&gt;「滿足 90% 的使用情境，不要管奧客」 - Kenneth Reitz&lt;/li&gt;
 &lt;li&gt;「優美勝過醜陋」 - &lt;a href=&quot;https://wiki.python.org/moin/PythonZenChineseTranslate&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PEP 20&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;「為開源貢獻」（即便最終是為了閉源項目）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h3 id=&quot;u4E00_u822C_u958B_u767C_u6E96_u5247&quot;&gt;&lt;a href=&quot;#u4E00_u822C_u958B_u767C_u6E96_u5247&quot; class=&quot;headerlink&quot; title=&quot;一般開發準則&quot;&gt;&lt;/a&gt;一般開發準則&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;「顯明勝過隱含」 - &lt;a href=&quot;https://wiki.python.org/moin/PythonZenChineseTranslate&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PEP 20&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;「可讀性很重要」 - &lt;a href=&quot;https://wiki.python.org/moin/PythonZenChineseTranslate&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PEP 20&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;「所有人都可以解決所有問題」 - &lt;a href=&quot;https://sites.google.com/a/khanacademy.org/forge/for-developers&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Khan Academy Development Docs&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;「一旦發現&lt;a href=&quot;http://www.artima.com/intv/fixit2.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;破窗&lt;/a&gt;（糟糕的設計、錯誤的決定、劣質代碼）立刻修復」&lt;/li&gt;
-&lt;li&gt;「現在就做好過一直不做」 - &lt;a href=&quot;https://wiki.python.org/moin/PythonZenChineseTranslate&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PEP 20&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;無情地測試，為新功能寫文檔&lt;/li&gt;
-&lt;li&gt;比測試驅動開發更重要的是&lt;strong&gt;人類驅動開發&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;這些準則也許，很可能，會改變&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;u7279_u5225&quot;&gt;&lt;a href=&quot;#u7279_u5225&quot; class=&quot;headerlink&quot; title=&quot;特別&quot;&gt;&lt;/a&gt;特別&lt;/h2&gt;&lt;h3 id=&quot;u98A8_u683C&quot;&gt;&lt;a href=&quot;#u98A8_u683C&quot; class=&quot;headerlink&quot; title=&quot;風格&quot;&gt;&lt;/a&gt;風格&lt;/h3&gt;&lt;p&gt;除非有適當理由，遵循 &lt;a href=&quot;http://www.python.org/dev/peps/pep-0008/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PEP 8&lt;/a&gt;。&lt;/p&gt;
-&lt;h4 id=&quot;u547D_u540D&quot;&gt;&lt;a href=&quot;#u547D_u540D&quot; class=&quot;headerlink&quot; title=&quot;命名&quot;&gt;&lt;/a&gt;命名&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;變量，函數，方法，包，模塊&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;lower_case_with_underscores&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;類與例外&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;CapWords&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;保護或內部方法&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;_single_leading_underscore(self, ...)&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;私有方法&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;__double_leading_underscore(self, ...)&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;常數&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;ALL_CAPS_WITH_UNDERSCORES&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h6 id=&quot;u4E00_u822C_u547D_u540D_u6E96_u5247&quot;&gt;&lt;a href=&quot;#u4E00_u822C_u547D_u540D_u6E96_u5247&quot; class=&quot;headerlink&quot; title=&quot;一般命名準則&quot;&gt;&lt;/a&gt;一般命名準則&lt;/h6&gt;&lt;p&gt;不要用單字母變量（特別是 &lt;code&gt;l&lt;/code&gt;, &lt;code&gt;O&lt;/code&gt;, &lt;code&gt;I&lt;/code&gt;）（譯註：容易與數字搞混）&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;例外：&lt;/strong&gt; 在非常短的塊裡，其含意從附近上下文很明顯時可以接受。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;這樣可以&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; e &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; elements:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    e.mutate()&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;不要無用的標籤&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;用&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; audio&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;core = audio.Core()&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;controller = audio.Controller()&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;不要&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; audio&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;core = audio.AudioCore()&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;controller = audio.AudioController()&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;偏好「倒裝命名法」&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;要&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;elements = ...&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;elements_active = ...&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;elements_defunct = ...&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;不要&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;elements = ...&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;active_elements = ...&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;defunct_elements ...&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;不要 getter、setter 方法。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;要&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;person.age = &lt;span class=&quot;number&quot;&gt;42&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;不要&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;person.set_age(&lt;span class=&quot;number&quot;&gt;42&lt;/span&gt;)&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;h4 id=&quot;u7E2E_u9032&quot;&gt;&lt;a href=&quot;#u7E2E_u9032&quot; class=&quot;headerlink&quot; title=&quot;縮進&quot;&gt;&lt;/a&gt;縮進&lt;/h4&gt;&lt;p&gt;用 4 個空格，絕對不要用 Tab。以上。&lt;/p&gt;
-&lt;h4 id=&quot;import&quot;&gt;&lt;a href=&quot;#import&quot; class=&quot;headerlink&quot; title=&quot;import&quot;&gt;&lt;/a&gt;import&lt;/h4&gt;&lt;p&gt;import 整個模塊而不是單獨的符號。例如如果頂層模組 &lt;code&gt;canteen&lt;/code&gt; 下有 &lt;code&gt;canteen/sessions.py&lt;/code&gt;，&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;要&lt;/strong&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; canteen&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; canteen.sessions&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; canteen &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; sessions&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;strong&gt;不要&lt;/strong&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; canteen &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; get_user  &lt;span class=&quot;comment&quot;&gt;# Symbol from canteen/__init__.py&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; canteen.sessions &lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; get_session  &lt;span class=&quot;comment&quot;&gt;# Symbol from canteen/sessions.py&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;strong&gt;例外：&lt;/strong&gt; 除非某些第三方代碼的文件中明確指示 import 單個符號。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;理由：&lt;/strong&gt; 這可以避免循環 import，見&lt;a href=&quot;https://sites.google.com/a/khanacademy.org/forge/for-developers/styleguide/python#TOC-Imports&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;這個例子&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;把所有 import 放在文件頂部，分三小節，每小節用一個空行隔開，三個小節分別是&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;系統 import&lt;/li&gt;
-&lt;li&gt;第三方 import&lt;/li&gt;
-&lt;li&gt;本地源 import&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;理由：&lt;/strong&gt; 容易看出模塊出自哪裡。&lt;/p&gt;
-&lt;h4 id=&quot;u6587_u6A94&quot;&gt;&lt;a href=&quot;#u6587_u6A94&quot; class=&quot;headerlink&quot; title=&quot;文檔&quot;&gt;&lt;/a&gt;文檔&lt;/h4&gt;&lt;p&gt;遵循 &lt;a href=&quot;http://www.python.org/dev/peps/pep-0257/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PEP 257&lt;/a&gt; 的文檔字串規範。 &lt;a href=&quot;http://docutils.sourceforge.net/docs/user/rst/quickref.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;reStructured Text&lt;/a&gt; 和 &lt;a href=&quot;http://sphinx-doc.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Sphinx&lt;/a&gt; 可以幫你強制這些規範。&lt;/p&gt;
-&lt;p&gt;功能明顯的函數只需要一行文檔字串。&lt;/p&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;&quot;&quot;&quot;Return the pathname of ``foo``.&quot;&quot;&quot;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;多行文檔字串應包括&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;一行總結&lt;/li&gt;
-&lt;li&gt;使用情境，若適合&lt;/li&gt;
-&lt;li&gt;參數&lt;/li&gt;
-&lt;li&gt;回傳值的類型與意思，除非回傳值是 &lt;code&gt;None&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;&quot;&quot;&quot;Train a model to classify Foos and Bars.&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Usage::&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;gt;&amp;gt;&amp;gt; import klassify&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;gt;&amp;gt;&amp;gt; data = [(&quot;green&quot;, &quot;foo&quot;), (&quot;orange&quot;, &quot;bar&quot;)]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;gt;&amp;gt;&amp;gt; classifier = klassify.train(data)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;:param train_data: A list of tuples of the form ``(color, label)``.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;:rtype: A :class:`Classifier &amp;lt;Classifier&amp;gt;`&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&quot;&quot;&quot;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;備註&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;使用命令體（”Return”）不要記敘體（”Returns”）&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;__init__&lt;/code&gt;方法的文檔放在類的文檔字串中&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(object)&lt;/span&gt;:&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&quot;&quot;&quot;A simple representation of a human being.&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    :param name: A string, the person&#39;s name.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    :param age: An int, the person&#39;s age.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &quot;&quot;&quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(self, name, age)&lt;/span&gt;:&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        self.name = name&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        self.age = age&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h5 id=&quot;u8A3B_u89E3&quot;&gt;&lt;a href=&quot;#u8A3B_u89E3&quot; class=&quot;headerlink&quot; title=&quot;註解&quot;&gt;&lt;/a&gt;註解&lt;/h5&gt;&lt;p&gt;謹慎使用。偏好可讀的代碼而不是依賴大量註解，短小的方法常常比註解更有用。&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;不要&lt;/em&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# If the sign is a stop sign&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; sign.color == &lt;span class=&quot;string&quot;&gt;&#39;red&#39;&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;and&lt;/span&gt; sign.sides == &lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    stop()&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;em&gt;要&lt;/em&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;is_stop_sign&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(sign)&lt;/span&gt;:&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; sign.color == &lt;span class=&quot;string&quot;&gt;&#39;red&#39;&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;and&lt;/span&gt; sign.sides == &lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; is_stop_sign(sign):&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    stop()&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;非得寫註解的時候，記得遵循「&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E8%8B%B1%E6%96%87%E5%86%99%E4%BD%9C%E6%8C%87%E5%8D%97&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;英文寫作指南&lt;/a&gt;」（&lt;a href=&quot;http://www.python.org/dev/peps/pep-0008/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PEP 8&lt;/a&gt;說的）&lt;/p&gt;
-&lt;h4 id=&quot;u884C_u9577_u5EA6&quot;&gt;&lt;a href=&quot;#u884C_u9577_u5EA6&quot; class=&quot;headerlink&quot; title=&quot;行長度&quot;&gt;&lt;/a&gt;行長度&lt;/h4&gt;&lt;p&gt;不要太在意，80-100 個字符在可接受範圍內。&lt;/p&gt;
-&lt;p&gt;用括號延續很長的行&lt;/p&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;wiki = (&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&quot;The Colt Python is a .357 Magnum caliber revolver formerly manufactured &quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&quot;by Colt&#39;s Manufacturing Company of Hartford, Connecticut. It is sometimes &quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&#39;referred to as a &quot;Combat Magnum&quot;. It was first introduced in 1955, the &#39;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&quot;same year as Smith &amp;amp; Wesson&#39;s M29 .44 Magnum.&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;)&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;u6E2C_u8A66&quot;&gt;&lt;a href=&quot;#u6E2C_u8A66&quot; class=&quot;headerlink&quot; title=&quot;測試&quot;&gt;&lt;/a&gt;測試&lt;/h3&gt;&lt;p&gt;追求 100% 覆蓋，但不要太執著。&lt;/p&gt;
-&lt;h4 id=&quot;u4E00_u822C_u6E2C_u8A66_u6E96_u5247&quot;&gt;&lt;a href=&quot;#u4E00_u822C_u6E2C_u8A66_u6E96_u5247&quot; class=&quot;headerlink&quot; title=&quot;一般測試準則&quot;&gt;&lt;/a&gt;一般測試準則&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;用長而描述性的名字命名用例。這樣通常就不需要在測試裡寫文檔字串。&lt;/li&gt;
-&lt;li&gt;用例應該彼此分離，不要在用例間共享一個資料庫或網路連接，為每個用例使用一個單獨的測試用資料庫並在用完後拆除，或是使用模擬。&lt;/li&gt;
-&lt;li&gt;偏好用&lt;a href=&quot;https://github.com/rbarrois/factory_boy&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;工廠&lt;/a&gt;來控制變量。&lt;/li&gt;
-&lt;li&gt;絕對不要讓沒寫完的用例通過，否則你可能會忘記他們。相反，預留一個 &lt;code&gt;assert False, &amp;quot;TODO: 完成我&amp;quot;&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;u55AE_u5143_u6E2C_u8A66&quot;&gt;&lt;a href=&quot;#u55AE_u5143_u6E2C_u8A66&quot; class=&quot;headerlink&quot; title=&quot;單元測試&quot;&gt;&lt;/a&gt;單元測試&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;每次關注一個小功能&lt;/li&gt;
-&lt;li&gt;最好很快完成，但一個跑得很慢的測試勝過沒測試&lt;/li&gt;
-&lt;li&gt;一個用例的類對應一個類或模型通常是合理的。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; unittest&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; factories&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;PersonTest&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(unittest.TestCase)&lt;/span&gt;:&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;setUp&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(self)&lt;/span&gt;:&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        self.person = factories.PersonFactory()&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;test_has_age_in_dog_years&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(self)&lt;/span&gt;:&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        self.assertEqual(self.person.dog_years, self.person.age / &lt;span class=&quot;number&quot;&gt;7&lt;/span&gt;)&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h4 id=&quot;u529F_u80FD_u6E2C_u8A66&quot;&gt;&lt;a href=&quot;#u529F_u80FD_u6E2C_u8A66&quot; class=&quot;headerlink&quot; title=&quot;功能測試&quot;&gt;&lt;/a&gt;功能測試&lt;/h4&gt;&lt;p&gt;功能測試是更高級的測試，接近使用者使用你的應用的方式。通常在網路跟圖形界面應用上使用。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;把用例寫成場景，用例跟測試方法應該描述場景中發生的事情。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;在寫測試代碼之前&lt;/strong&gt;先用註解講故事&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; unittest&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;TestAUser&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(unittest.TestCase)&lt;/span&gt;:&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;test_can_write_a_blog_post&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(self)&lt;/span&gt;:&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;# Goes to the her dashboard&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        ...&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;# Clicks &quot;New Post&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        ...&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;# Fills out the post form&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        ...&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;# Clicks &quot;Submit&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        ...&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;# Can see the new post&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        ...&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;注意測試用例跟測試方法合起來是一句話「Test A User can write a blog post」。&lt;/p&gt;
-&lt;h2 id=&quot;u9748_u611F_u4F86_u81EA_u2026&quot;&gt;&lt;a href=&quot;#u9748_u611F_u4F86_u81EA_u2026&quot; class=&quot;headerlink&quot; title=&quot;靈感來自…&quot;&gt;&lt;/a&gt;靈感來自…&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://wiki.python.org/moin/PythonZenChineseTranslate&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PEP 20（Python 之禪）&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.python.org/dev/peps/pep-0008/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;PEP 8（Python 風格指南）&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://docs.python-guide.org/en/latest/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;The Hitchiker’s Guide to Python&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://sites.google.com/a/khanacademy.org/forge/for-developers&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Khan Academy Development Docs&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://youtu.be/GZNUfkVIHAY&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Python Best Practice Patterns&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.nilunder.com/blog/2013/08/03/pythonic-sensibilities/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Pythonic Sensibilities&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.amazon.com/The-Pragmatic-Programmer-Journeyman-Master/dp/020161622X/ref=sr_1_1?ie=UTF8&amp;amp;qid=1381886835&amp;amp;sr=8-1&amp;amp;keywords=pragmatic+programmer&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;The Pragmatic Programmer&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;還有各種其他來源&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Python 的「最最佳作法」（the Best of Best Practices）指南。（&lt;a href=&quot;https://gist.github.com/sloria/7001839&quot;&gt;原文&lt;/a&gt; by @Sloria）&lt;/p&gt;
-&lt;h2 id=&quot;u6982_u8AD6&quot;&gt;&lt;a href=&quot;#u6982_u8AD6&quot; class=&quot;headerlink&quot; title=&quot;概論&quot;&gt;&lt;/a&gt;概論&lt;/h2&gt;&lt;h3 id=&quot;u50F9_u503C_u89C0&quot;&gt;&lt;a href=&quot;#u50F9_u503C_u89C0&quot; class=&quot;headerlink&quot; title=&quot;價值觀&quot;&gt;&lt;/a&gt;價值觀&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;「不要做己所不欲的工具給人用」 - Kenneth Reitz&lt;/li&gt;
-&lt;li&gt;「簡單永遠勝過多功能」 - Pieter Hintjens&lt;/li&gt;
-&lt;li&gt;「滿足 90% 的使用情境，不要管奧客」 - Kenneth Reitz&lt;/li&gt;
-&lt;li&gt;「優美勝過醜陋」 - &lt;a href=&quot;https://wiki.python.org/moin/PythonZenChineseTranslate&quot;&gt;PEP 20&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;「為開源貢獻」（即便最終是為了閉源項目）&lt;/li&gt;
 &lt;/ul&gt;
     
@@ -525,28 +521,28 @@
     <published>2016-03-31T03:36:50.000Z</published>
     <updated>2016-04-25T22:22:15.830Z</updated>
     
-    <content type="html">&lt;p&gt;Here is a way to run the CS224U notebooks without using Anaconda, especially if you already have python installed and don’t want to be bound to Anaconda.&lt;/p&gt;
- &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h2 id=&quot;Setup&quot;&gt;&lt;a href=&quot;#Setup&quot; class=&quot;headerlink&quot; title=&quot;Setup&quot;&gt;&lt;/a&gt;Setup&lt;/h2&gt;&lt;p&gt;First of all I run a 64bit &lt;strong&gt;*nix&lt;/strong&gt; system (Linux, Mac is proabably find too) and have Python2.7 preinstalled (which is why I don’t want to have to install Anaconda). This means we will be mostly using the &lt;code&gt;pip&lt;/code&gt; and &lt;code&gt;virtualenv&lt;/code&gt; cli tool of native python.&lt;/p&gt;
-&lt;p&gt;Python2.7 comes with &lt;code&gt;pip&lt;/code&gt; in the box. If you don’t have &lt;code&gt;virtualenv&lt;/code&gt;, install it via&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&amp;gt; sudo pip install virtualenv&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://realpython.com/blog/python/python-virtual-environments-a-primer/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Here&lt;/a&gt; is a good introduction to the idea of Virtual Environment for Python. Basically I use it because I primarily use Python3.5 and don’t want the packages used in this course to interfere with other use cases.&lt;/p&gt;
-&lt;h3 id=&quot;Open_a_virutal_environment&quot;&gt;&lt;a href=&quot;#Open_a_virutal_environment&quot; class=&quot;headerlink&quot; title=&quot;Open a virutal environment&quot;&gt;&lt;/a&gt;Open a virutal environment&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Clone&lt;/strong&gt; the project&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;git &lt;span class=&quot;built_in&quot;&gt;clone&lt;/span&gt; https://github.com/cgpotts/cs224u.git &amp;amp;&amp;amp; &lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; cs224u&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;We are now inside the &lt;code&gt;cs224u&lt;/code&gt; directory. Make a virtual environment, or &lt;strong&gt;&lt;em&gt;venv&lt;/em&gt;&lt;/strong&gt; here.&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&amp;gt; virtualenv .&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;This will create some additional files and directories, like &lt;code&gt;bin/&lt;/code&gt;, &lt;code&gt;lib/&lt;/code&gt; (where the packages will be installed). If you are bothered, add those files into the &lt;code&gt;.gitignore&lt;/code&gt; ignore list so &lt;code&gt;git&lt;/code&gt; won’t track them.&lt;/p&gt;
-&lt;p&gt;Now we can enter the virtual environment by&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&amp;gt; &lt;span class=&quot;built_in&quot;&gt;source&lt;/span&gt; bin/activate&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;activate&lt;/code&gt; is a script, by sourcing (running) it you change the python path and a few other properties to cut you away from the system global setting. You are now in a clean state, whatever you install in this environment won’t affect the system global &lt;code&gt;site_packages&lt;/code&gt;. Also notice your prompt will display the name of the venv to remind you you are now &lt;em&gt;virtual&lt;/em&gt;. To see for yourself&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;(venv) &amp;gt;&amp;gt; pip list&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;pip (8.1.1)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;setuptools (20.6.6)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;wheel (0.29.0)&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;Nothing else!&lt;/p&gt;
-&lt;h3 id=&quot;Install_required_packages&quot;&gt;&lt;a href=&quot;#Install_required_packages&quot; class=&quot;headerlink&quot; title=&quot;Install required packages&quot;&gt;&lt;/a&gt;Install required packages&lt;/h3&gt;&lt;p&gt;If you become lazy and just&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;(venv) &amp;gt;&amp;gt; pip install -r requirements.txt&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;You will run into problem while fetching. Apparently, this is because the package names in this file correspond to those on the &lt;strong&gt;Anaconda&lt;/strong&gt; package repository, and are different from PyPI repo, which &lt;code&gt;pip&lt;/code&gt; fetches from.&lt;/p&gt;
-&lt;p&gt;&lt;s&gt;After some trial and error&lt;/s&gt; Actually somebody pointed it out in &lt;a href=&quot;https://github.com/cgpotts/cs224u/pull/1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;this pull request&lt;/a&gt;, this file seems to be the correct list for &lt;code&gt;pip&lt;/code&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;python &amp;gt;= 2.7.10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;numpy &amp;gt;= 1.10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;scipy &amp;gt;= 0.11.0&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;matplotlib &amp;gt;= 1.5.1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;scikit-learn &amp;gt;= 0.17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;nltk &amp;gt;= 3.0&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;python-dateutil &amp;gt;= 2.4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;unicodecsv &amp;gt;= 0.14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;jupyter&amp;gt;=1.0.0&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;# tensorflow==0.7.1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;Overwrite &lt;code&gt;requirement.txt&lt;/code&gt; as above and it should install all the packages for you without problem. It might take a while though.&lt;/p&gt;
-&lt;h4 id=&quot;Install_tensorflow&quot;&gt;&lt;a href=&quot;#Install_tensorflow&quot; class=&quot;headerlink&quot; title=&quot;Install tensorflow&quot;&gt;&lt;/a&gt;Install &lt;code&gt;tensorflow&lt;/code&gt;&lt;/h4&gt;&lt;p&gt;You must have noticed how &lt;code&gt;tensorflow&lt;/code&gt; was commented out in &lt;code&gt;requirement.txt&lt;/code&gt;. This is because the package does not reside on PyPI for some reason. If you follow the link given in &lt;code&gt;setup.ipnb&lt;/code&gt; and try&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&amp;gt; pip install -i https://pypi.anaconda.org/jjhelmus/simple tensorflow&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;It will download the package, before failing to find a dependency called &lt;code&gt;protobuf&lt;/code&gt; and fails. Turns out, although the &lt;code&gt;tensorflow&lt;/code&gt; package resides on Anaconda, this &lt;code&gt;protobuf&lt;/code&gt; package is not hosted up to the required version, causing the fetching to fail.&lt;/p&gt;
-&lt;p&gt;I was able to bypass the problem by following &lt;a href=&quot;https://www.tensorflow.org/versions/r0.7/get_started/os_setup.html#pip-installation&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;a different instruction here&lt;/a&gt; on the TensorFlow official website. This fetches from the Google repo&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&amp;gt; pip install https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.7.1-cp27-none-linux_x86_64.whl&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;This &lt;code&gt;Wheel file&lt;/code&gt; probably comes with all the dependencies packaged in and thus bypassed the problem earlier.&lt;/p&gt;
-&lt;h3 id=&quot;Conclusion&quot;&gt;&lt;a href=&quot;#Conclusion&quot; class=&quot;headerlink&quot; title=&quot;Conclusion&quot;&gt;&lt;/a&gt;Conclusion&lt;/h3&gt;&lt;p&gt;This is able to run the first notebook without problem. I have not tried a notebook with &lt;strong&gt;TensorFlow&lt;/strong&gt;, but if there is any problem I will update accordingly. Until then.&lt;/p&gt;
-</content>
+    <content type="html"><![CDATA[<p>Here is a way to run the CS224U notebooks without using Anaconda, especially if you already have python installed and don’t want to be bound to Anaconda.</p>
+ <a id="more"></a>
+<h2 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h2><p>First of all I run a 64bit <strong>*nix</strong> system (Linux, Mac is proabably find too) and have Python2.7 preinstalled (which is why I don’t want to have to install Anaconda). This means we will be mostly using the <code>pip</code> and <code>virtualenv</code> cli tool of native python.</p>
+<p>Python2.7 comes with <code>pip</code> in the box. If you don’t have <code>virtualenv</code>, install it via<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt; sudo pip install virtualenv</div></pre></td></tr></table></figure></p>
+<p><a href="https://realpython.com/blog/python/python-virtual-environments-a-primer/" target="_blank" rel="external">Here</a> is a good introduction to the idea of Virtual Environment for Python. Basically I use it because I primarily use Python3.5 and don’t want the packages used in this course to interfere with other use cases.</p>
+<h3 id="Open-a-virutal-environment"><a href="#Open-a-virutal-environment" class="headerlink" title="Open a virutal environment"></a>Open a virutal environment</h3><p><strong>Clone</strong> the project<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> https://github.com/cgpotts/cs224u.git &amp;&amp; <span class="built_in">cd</span> cs224u</div></pre></td></tr></table></figure></p>
+<p>We are now inside the <code>cs224u</code> directory. Make a virtual environment, or <strong><em>venv</em></strong> here.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt; virtualenv .</div></pre></td></tr></table></figure></p>
+<p>This will create some additional files and directories, like <code>bin/</code>, <code>lib/</code> (where the packages will be installed). If you are bothered, add those files into the <code>.gitignore</code> ignore list so <code>git</code> won’t track them.</p>
+<p>Now we can enter the virtual environment by<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt; <span class="built_in">source</span> bin/activate</div></pre></td></tr></table></figure></p>
+<p><code>activate</code> is a script, by sourcing (running) it you change the python path and a few other properties to cut you away from the system global setting. You are now in a clean state, whatever you install in this environment won’t affect the system global <code>site_packages</code>. Also notice your prompt will display the name of the venv to remind you you are now <em>virtual</em>. To see for yourself<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(venv) &gt;&gt; pip list</div><div class="line">pip (8.1.1)</div><div class="line">setuptools (20.6.6)</div><div class="line">wheel (0.29.0)</div></pre></td></tr></table></figure></p>
+<p>Nothing else!</p>
+<h3 id="Install-required-packages"><a href="#Install-required-packages" class="headerlink" title="Install required packages"></a>Install required packages</h3><p>If you become lazy and just<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(venv) &gt;&gt; pip install -r requirements.txt</div></pre></td></tr></table></figure></p>
+<p>You will run into problem while fetching. Apparently, this is because the package names in this file correspond to those on the <strong>Anaconda</strong> package repository, and are different from PyPI repo, which <code>pip</code> fetches from.</p>
+<p><s>After some trial and error</s> Actually somebody pointed it out in <a href="https://github.com/cgpotts/cs224u/pull/1" target="_blank" rel="external">this pull request</a>, this file seems to be the correct list for <code>pip</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">python &gt;= 2.7.10</div><div class="line">numpy &gt;= 1.10</div><div class="line">scipy &gt;= 0.11.0</div><div class="line">matplotlib &gt;= 1.5.1</div><div class="line">scikit-learn &gt;= 0.17</div><div class="line">nltk &gt;= 3.0</div><div class="line">python-dateutil &gt;= 2.4</div><div class="line">unicodecsv &gt;= 0.14</div><div class="line">jupyter&gt;=1.0.0</div><div class="line"># tensorflow==0.7.1</div></pre></td></tr></table></figure>
+<p>Overwrite <code>requirement.txt</code> as above and it should install all the packages for you without problem. It might take a while though.</p>
+<h4 id="Install-tensorflow"><a href="#Install-tensorflow" class="headerlink" title="Install tensorflow"></a>Install <code>tensorflow</code></h4><p>You must have noticed how <code>tensorflow</code> was commented out in <code>requirement.txt</code>. This is because the package does not reside on PyPI for some reason. If you follow the link given in <code>setup.ipnb</code> and try<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt; pip install -i https://pypi.anaconda.org/jjhelmus/simple tensorflow</div></pre></td></tr></table></figure></p>
+<p>It will download the package, before failing to find a dependency called <code>protobuf</code> and fails. Turns out, although the <code>tensorflow</code> package resides on Anaconda, this <code>protobuf</code> package is not hosted up to the required version, causing the fetching to fail.</p>
+<p>I was able to bypass the problem by following <a href="https://www.tensorflow.org/versions/r0.7/get_started/os_setup.html#pip-installation" target="_blank" rel="external">a different instruction here</a> on the TensorFlow official website. This fetches from the Google repo<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt; pip install https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.7.1-cp27-none-linux_x86_64.whl</div></pre></td></tr></table></figure></p>
+<p>This <code>Wheel file</code> probably comes with all the dependencies packaged in and thus bypassed the problem earlier.</p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>This is able to run the first notebook without problem. I have not tried a notebook with <strong>TensorFlow</strong>, but if there is any problem I will update accordingly. Until then.</p>
+]]></content>
     
     <summary type="html">
     
@@ -568,21 +564,21 @@
     <published>2016-01-23T05:33:11.000Z</published>
     <updated>2016-01-23T05:50:24.186Z</updated>
     
-    <content type="html">&lt;p&gt;Test &lt;strong&gt;Markdown Features&lt;/strong&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&quot;Todos&quot;&gt;&lt;a href=&quot;#Todos&quot; class=&quot;headerlink&quot; title=&quot;Todos&quot;&gt;&lt;/a&gt;Todos&lt;/h2&gt;&lt;p&gt;Setting up the log is just the first step. I still need to&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;[x] deploy to the web&lt;/li&gt;
-&lt;li&gt;[ ] set up tool chain to write log using haroopad&lt;/li&gt;
-&lt;li&gt;[ ] add link to this log site&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2 id=&quot;Planned_contents&quot;&gt;&lt;a href=&quot;#Planned_contents&quot; class=&quot;headerlink&quot; title=&quot;Planned contents&quot;&gt;&lt;/a&gt;Planned contents&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;upload my notes for various courses and tech-talks.&lt;/li&gt;
-&lt;li&gt;keep track of paper reading progress&lt;/li&gt;
-&lt;li&gt;notes on Machine Learning&lt;/li&gt;
-&lt;/ol&gt;
-</content>
+    <content type="html"><![CDATA[<p>Test <strong>Markdown Features</strong></p>
+<hr>
+<h2 id="Todos"><a href="#Todos" class="headerlink" title="Todos"></a>Todos</h2><p>Setting up the log is just the first step. I still need to</p>
+<ul>
+<li>[x] deploy to the web</li>
+<li>[ ] set up tool chain to write log using haroopad</li>
+<li>[ ] add link to this log site</li>
+</ul>
+<hr>
+<h2 id="Planned-contents"><a href="#Planned-contents" class="headerlink" title="Planned contents"></a>Planned contents</h2><ol>
+<li>upload my notes for various courses and tech-talks.</li>
+<li>keep track of paper reading progress</li>
+<li>notes on Machine Learning</li>
+</ol>
+]]></content>
     
     <summary type="html">
     

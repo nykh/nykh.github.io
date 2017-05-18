@@ -47,7 +47,7 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="nykh :: log" type="application/atom+xml" />
+  <link rel="alternate" href="/atom.xml" title="nykh::log" type="application/atom+xml" />
 
 
 
@@ -59,34 +59,17 @@
 
 
 
-<meta name="description" content="Python 的「最最佳作法」（the Best of Best Practices）指南。（原文 by @Sloria）
-概論價值觀
-「不要做己所不欲的工具給人用」 - Kenneth Reitz
-「簡單永遠勝過多功能」 - Pieter Hintjens
-「滿足 90% 的使用情境，不要管奧客」 - Kenneth Reitz
-「優美勝過醜陋」 - PEP 20
-「為開源貢獻」（即便最終是為了">
+<meta name="description" content="Python 的「最最佳作法」（the Best of Best Practices）指南。（原文 by @Sloria） 概論價值觀 「不要做己所不欲的工具給人用」 - Kenneth Reitz 「簡單永遠勝過多功能」 - Pieter Hintjens 「滿足 90% 的使用情境，不要管奧客」 - Kenneth Reitz 「優美勝過醜陋」 - PEP 20 「為開源貢獻」（即便最終是為了">
+<meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python最最佳指南">
 <meta property="og:url" content="http://nykh.github.io/2016/03/31/Python-BoBP-guide-zh/index.html">
-<meta property="og:site_name" content="nykh :: log">
-<meta property="og:description" content="Python 的「最最佳作法」（the Best of Best Practices）指南。（原文 by @Sloria）
-概論價值觀
-「不要做己所不欲的工具給人用」 - Kenneth Reitz
-「簡單永遠勝過多功能」 - Pieter Hintjens
-「滿足 90% 的使用情境，不要管奧客」 - Kenneth Reitz
-「優美勝過醜陋」 - PEP 20
-「為開源貢獻」（即便最終是為了">
+<meta property="og:site_name" content="nykh::log">
+<meta property="og:description" content="Python 的「最最佳作法」（the Best of Best Practices）指南。（原文 by @Sloria） 概論價值觀 「不要做己所不欲的工具給人用」 - Kenneth Reitz 「簡單永遠勝過多功能」 - Pieter Hintjens 「滿足 90% 的使用情境，不要管奧客」 - Kenneth Reitz 「優美勝過醜陋」 - PEP 20 「為開源貢獻」（即便最終是為了">
 <meta property="og:updated_time" content="2016-04-25T22:23:06.672Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python最最佳指南">
-<meta name="twitter:description" content="Python 的「最最佳作法」（the Best of Best Practices）指南。（原文 by @Sloria）
-概論價值觀
-「不要做己所不欲的工具給人用」 - Kenneth Reitz
-「簡單永遠勝過多功能」 - Pieter Hintjens
-「滿足 90% 的使用情境，不要管奧客」 - Kenneth Reitz
-「優美勝過醜陋」 - PEP 20
-「為開源貢獻」（即便最終是為了">
+<meta name="twitter:description" content="Python 的「最最佳作法」（the Best of Best Practices）指南。（原文 by @Sloria） 概論價值觀 「不要做己所不欲的工具給人用」 - Kenneth Reitz 「簡單永遠勝過多功能」 - Pieter Hintjens 「滿足 90% 的使用情境，不要管奧客」 - Kenneth Reitz 「優美勝過醜陋」 - PEP 20 「為開源貢獻」（即便最終是為了">
 
 
 
@@ -104,10 +87,10 @@
   };
 </script>
 
-  <title> Python最最佳指南 | nykh :: log </title>
+  <title> Python最最佳指南 | nykh::log </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
 
   
 
@@ -133,11 +116,11 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">nykh :: log</span>
+      <span class="site-title">nykh::log</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle">Study, Thought, Discovery</p>
+  <p class="site-subtitle"></p>
 </div>
 
 <div class="site-nav-toggle">
@@ -263,7 +246,7 @@
 
       
         <p>Python 的「最最佳作法」（the Best of Best Practices）指南。（<a href="https://gist.github.com/sloria/7001839" target="_blank" rel="external">原文</a> by @Sloria）</p>
-<h2 id="u6982_u8AD6"><a href="#u6982_u8AD6" class="headerlink" title="概論"></a>概論</h2><h3 id="u50F9_u503C_u89C0"><a href="#u50F9_u503C_u89C0" class="headerlink" title="價值觀"></a>價值觀</h3><ul>
+<h2 id="概論"><a href="#概論" class="headerlink" title="概論"></a>概論</h2><h3 id="價值觀"><a href="#價值觀" class="headerlink" title="價值觀"></a>價值觀</h3><ul>
 <li>「不要做己所不欲的工具給人用」 - Kenneth Reitz</li>
 <li>「簡單永遠勝過多功能」 - Pieter Hintjens</li>
 <li>「滿足 90% 的使用情境，不要管奧客」 - Kenneth Reitz</li>
@@ -271,7 +254,7 @@
 <li>「為開源貢獻」（即便最終是為了閉源項目）</li>
 </ul>
 <a id="more"></a>
-<h3 id="u4E00_u822C_u958B_u767C_u6E96_u5247"><a href="#u4E00_u822C_u958B_u767C_u6E96_u5247" class="headerlink" title="一般開發準則"></a>一般開發準則</h3><ul>
+<h3 id="一般開發準則"><a href="#一般開發準則" class="headerlink" title="一般開發準則"></a>一般開發準則</h3><ul>
 <li>「顯明勝過隱含」 - <a href="https://wiki.python.org/moin/PythonZenChineseTranslate" target="_blank" rel="external">PEP 20</a></li>
 <li>「可讀性很重要」 - <a href="https://wiki.python.org/moin/PythonZenChineseTranslate" target="_blank" rel="external">PEP 20</a></li>
 <li>「所有人都可以解決所有問題」 - <a href="https://sites.google.com/a/khanacademy.org/forge/for-developers" target="_blank" rel="external">Khan Academy Development Docs</a></li>
@@ -281,8 +264,8 @@
 <li>比測試驅動開發更重要的是<strong>人類驅動開發</strong></li>
 <li>這些準則也許，很可能，會改變</li>
 </ul>
-<h2 id="u7279_u5225"><a href="#u7279_u5225" class="headerlink" title="特別"></a>特別</h2><h3 id="u98A8_u683C"><a href="#u98A8_u683C" class="headerlink" title="風格"></a>風格</h3><p>除非有適當理由，遵循 <a href="http://www.python.org/dev/peps/pep-0008/" target="_blank" rel="external">PEP 8</a>。</p>
-<h4 id="u547D_u540D"><a href="#u547D_u540D" class="headerlink" title="命名"></a>命名</h4><ul>
+<h2 id="特別"><a href="#特別" class="headerlink" title="特別"></a>特別</h2><h3 id="風格"><a href="#風格" class="headerlink" title="風格"></a>風格</h3><p>除非有適當理由，遵循 <a href="http://www.python.org/dev/peps/pep-0008/" target="_blank" rel="external">PEP 8</a>。</p>
+<h4 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h4><ul>
 <li>變量，函數，方法，包，模塊<ul>
 <li><code>lower_case_with_underscores</code></li>
 </ul>
@@ -304,7 +287,7 @@
 </ul>
 </li>
 </ul>
-<h6 id="u4E00_u822C_u547D_u540D_u6E96_u5247"><a href="#u4E00_u822C_u547D_u540D_u6E96_u5247" class="headerlink" title="一般命名準則"></a>一般命名準則</h6><p>不要用單字母變量（特別是 <code>l</code>, <code>O</code>, <code>I</code>）（譯註：容易與數字搞混）</p>
+<h6 id="一般命名準則"><a href="#一般命名準則" class="headerlink" title="一般命名準則"></a>一般命名準則</h6><p>不要用單字母變量（特別是 <code>l</code>, <code>O</code>, <code>I</code>）（譯註：容易與數字搞混）</p>
 <p><strong>例外：</strong> 在非常短的塊裡，其含意從附近上下文很明顯時可以接受。</p>
 <p><strong>這樣可以</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> e <span class="keyword">in</span> elements:</div><div class="line">    e.mutate()</div></pre></td></tr></table></figure></p>
 <p>不要無用的標籤</p>
@@ -316,7 +299,7 @@
 <p>不要 getter、setter 方法。</p>
 <p><strong>要</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">person.age = <span class="number">42</span></div></pre></td></tr></table></figure></p>
 <p><strong>不要</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">person.set_age(<span class="number">42</span>)</div></pre></td></tr></table></figure></p>
-<h4 id="u7E2E_u9032"><a href="#u7E2E_u9032" class="headerlink" title="縮進"></a>縮進</h4><p>用 4 個空格，絕對不要用 Tab。以上。</p>
+<h4 id="縮進"><a href="#縮進" class="headerlink" title="縮進"></a>縮進</h4><p>用 4 個空格，絕對不要用 Tab。以上。</p>
 <h4 id="import"><a href="#import" class="headerlink" title="import"></a>import</h4><p>import 整個模塊而不是單獨的符號。例如如果頂層模組 <code>canteen</code> 下有 <code>canteen/sessions.py</code>，</p>
 <p><strong>要</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> canteen</div><div class="line"><span class="keyword">import</span> canteen.sessions</div><div class="line"><span class="keyword">from</span> canteen <span class="keyword">import</span> sessions</div></pre></td></tr></table></figure>
@@ -331,7 +314,7 @@
 <li>本地源 import</li>
 </ol>
 <p><strong>理由：</strong> 容易看出模塊出自哪裡。</p>
-<h4 id="u6587_u6A94"><a href="#u6587_u6A94" class="headerlink" title="文檔"></a>文檔</h4><p>遵循 <a href="http://www.python.org/dev/peps/pep-0257/" target="_blank" rel="external">PEP 257</a> 的文檔字串規範。 <a href="http://docutils.sourceforge.net/docs/user/rst/quickref.html" target="_blank" rel="external">reStructured Text</a> 和 <a href="http://sphinx-doc.org/" target="_blank" rel="external">Sphinx</a> 可以幫你強制這些規範。</p>
+<h4 id="文檔"><a href="#文檔" class="headerlink" title="文檔"></a>文檔</h4><p>遵循 <a href="http://www.python.org/dev/peps/pep-0257/" target="_blank" rel="external">PEP 257</a> 的文檔字串規範。 <a href="http://docutils.sourceforge.net/docs/user/rst/quickref.html" target="_blank" rel="external">reStructured Text</a> 和 <a href="http://sphinx-doc.org/" target="_blank" rel="external">Sphinx</a> 可以幫你強制這些規範。</p>
 <p>功能明顯的函數只需要一行文檔字串。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">"""Return the pathname of ``foo``."""</span></div></pre></td></tr></table></figure>
 <p>多行文檔字串應包括</p>
@@ -348,36 +331,36 @@
 <li><code>__init__</code>方法的文檔放在類的文檔字串中</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="string">"""A simple representation of a human being.</span></div><div class="line"></div><div class="line">    :param name: A string, the person's name.</div><div class="line">    :param age: An int, the person's age.</div><div class="line">    """</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age)</span>:</span></div><div class="line">        self.name = name</div><div class="line">        self.age = age</div></pre></td></tr></table></figure>
-<h5 id="u8A3B_u89E3"><a href="#u8A3B_u89E3" class="headerlink" title="註解"></a>註解</h5><p>謹慎使用。偏好可讀的代碼而不是依賴大量註解，短小的方法常常比註解更有用。</p>
+<h5 id="註解"><a href="#註解" class="headerlink" title="註解"></a>註解</h5><p>謹慎使用。偏好可讀的代碼而不是依賴大量註解，短小的方法常常比註解更有用。</p>
 <p><em>不要</em></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># If the sign is a stop sign</span></div><div class="line"><span class="keyword">if</span> sign.color == <span class="string">'red'</span> <span class="keyword">and</span> sign.sides == <span class="number">8</span>:</div><div class="line">    stop()</div></pre></td></tr></table></figure>
 <p><em>要</em></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_stop_sign</span><span class="params">(sign)</span>:</span></div><div class="line">    <span class="keyword">return</span> sign.color == <span class="string">'red'</span> <span class="keyword">and</span> sign.sides == <span class="number">8</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> is_stop_sign(sign):</div><div class="line">    stop()</div></pre></td></tr></table></figure>
 <p>非得寫註解的時候，記得遵循「<a href="https://zh.wikipedia.org/wiki/%E8%8B%B1%E6%96%87%E5%86%99%E4%BD%9C%E6%8C%87%E5%8D%97" target="_blank" rel="external">英文寫作指南</a>」（<a href="http://www.python.org/dev/peps/pep-0008/" target="_blank" rel="external">PEP 8</a>說的）</p>
-<h4 id="u884C_u9577_u5EA6"><a href="#u884C_u9577_u5EA6" class="headerlink" title="行長度"></a>行長度</h4><p>不要太在意，80-100 個字符在可接受範圍內。</p>
+<h4 id="行長度"><a href="#行長度" class="headerlink" title="行長度"></a>行長度</h4><p>不要太在意，80-100 個字符在可接受範圍內。</p>
 <p>用括號延續很長的行</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">wiki = (</div><div class="line">    <span class="string">"The Colt Python is a .357 Magnum caliber revolver formerly manufactured "</span></div><div class="line">    <span class="string">"by Colt's Manufacturing Company of Hartford, Connecticut. It is sometimes "</span></div><div class="line">    <span class="string">'referred to as a "Combat Magnum". It was first introduced in 1955, the '</span></div><div class="line">    <span class="string">"same year as Smith &amp; Wesson's M29 .44 Magnum."</span></div><div class="line">)</div></pre></td></tr></table></figure>
-<h3 id="u6E2C_u8A66"><a href="#u6E2C_u8A66" class="headerlink" title="測試"></a>測試</h3><p>追求 100% 覆蓋，但不要太執著。</p>
-<h4 id="u4E00_u822C_u6E2C_u8A66_u6E96_u5247"><a href="#u4E00_u822C_u6E2C_u8A66_u6E96_u5247" class="headerlink" title="一般測試準則"></a>一般測試準則</h4><ul>
+<h3 id="測試"><a href="#測試" class="headerlink" title="測試"></a>測試</h3><p>追求 100% 覆蓋，但不要太執著。</p>
+<h4 id="一般測試準則"><a href="#一般測試準則" class="headerlink" title="一般測試準則"></a>一般測試準則</h4><ul>
 <li>用長而描述性的名字命名用例。這樣通常就不需要在測試裡寫文檔字串。</li>
 <li>用例應該彼此分離，不要在用例間共享一個資料庫或網路連接，為每個用例使用一個單獨的測試用資料庫並在用完後拆除，或是使用模擬。</li>
 <li>偏好用<a href="https://github.com/rbarrois/factory_boy" target="_blank" rel="external">工廠</a>來控制變量。</li>
 <li>絕對不要讓沒寫完的用例通過，否則你可能會忘記他們。相反，預留一個 <code>assert False, &quot;TODO: 完成我&quot;</code></li>
 </ul>
-<h4 id="u55AE_u5143_u6E2C_u8A66"><a href="#u55AE_u5143_u6E2C_u8A66" class="headerlink" title="單元測試"></a>單元測試</h4><ul>
+<h4 id="單元測試"><a href="#單元測試" class="headerlink" title="單元測試"></a>單元測試</h4><ul>
 <li>每次關注一個小功能</li>
 <li>最好很快完成，但一個跑得很慢的測試勝過沒測試</li>
 <li>一個用例的類對應一個類或模型通常是合理的。</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> unittest</div><div class="line"><span class="keyword">import</span> factories</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonTest</span><span class="params">(unittest.TestCase)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setUp</span><span class="params">(self)</span>:</span></div><div class="line">        self.person = factories.PersonFactory()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_has_age_in_dog_years</span><span class="params">(self)</span>:</span></div><div class="line">        self.assertEqual(self.person.dog_years, self.person.age / <span class="number">7</span>)</div></pre></td></tr></table></figure>
-<h4 id="u529F_u80FD_u6E2C_u8A66"><a href="#u529F_u80FD_u6E2C_u8A66" class="headerlink" title="功能測試"></a>功能測試</h4><p>功能測試是更高級的測試，接近使用者使用你的應用的方式。通常在網路跟圖形界面應用上使用。</p>
+<h4 id="功能測試"><a href="#功能測試" class="headerlink" title="功能測試"></a>功能測試</h4><p>功能測試是更高級的測試，接近使用者使用你的應用的方式。通常在網路跟圖形界面應用上使用。</p>
 <ul>
 <li>把用例寫成場景，用例跟測試方法應該描述場景中發生的事情。</li>
 <li><strong>在寫測試代碼之前</strong>先用註解講故事</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> unittest</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestAUser</span><span class="params">(unittest.TestCase)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_can_write_a_blog_post</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="comment"># Goes to the her dashboard</span></div><div class="line">        ...</div><div class="line">        <span class="comment"># Clicks "New Post"</span></div><div class="line">        ...</div><div class="line">        <span class="comment"># Fills out the post form</span></div><div class="line">        ...</div><div class="line">        <span class="comment"># Clicks "Submit"</span></div><div class="line">        ...</div><div class="line">        <span class="comment"># Can see the new post</span></div><div class="line">        ...</div></pre></td></tr></table></figure>
 <p>注意測試用例跟測試方法合起來是一句話「Test A User can write a blog post」。</p>
-<h2 id="u9748_u611F_u4F86_u81EA_u2026"><a href="#u9748_u611F_u4F86_u81EA_u2026" class="headerlink" title="靈感來自…"></a>靈感來自…</h2><ul>
+<h2 id="靈感來自…"><a href="#靈感來自…" class="headerlink" title="靈感來自…"></a>靈感來自…</h2><ul>
 <li><a href="https://wiki.python.org/moin/PythonZenChineseTranslate" target="_blank" rel="external">PEP 20（Python 之禪）</a></li>
 <li><a href="http://www.python.org/dev/peps/pep-0008/" target="_blank" rel="external">PEP 8（Python 風格指南）</a></li>
 <li><a href="http://docs.python-guide.org/en/latest/" target="_blank" rel="external">The Hitchiker’s Guide to Python</a></li>
@@ -516,7 +499,7 @@
           
             
               <span class="links-of-author-item">
-                <a href="http://web.stanford.edu/~nykh/portfolio/cv.html" target="_blank">
+                <a href="http://web.stanford.edu/~nykh/" target="_blank">
                   
                     <i class="fa fa-globe"></i> Main
                   
@@ -553,7 +536,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#u6982_u8AD6"><span class="nav-number">1.</span> <span class="nav-text">概論</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u50F9_u503C_u89C0"><span class="nav-number">1.1.</span> <span class="nav-text">價值觀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4E00_u822C_u958B_u767C_u6E96_u5247"><span class="nav-number">1.2.</span> <span class="nav-text">一般開發準則</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u7279_u5225"><span class="nav-number">2.</span> <span class="nav-text">特別</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u98A8_u683C"><span class="nav-number">2.1.</span> <span class="nav-text">風格</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#u547D_u540D"><span class="nav-number">2.1.1.</span> <span class="nav-text">命名</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#u4E00_u822C_u547D_u540D_u6E96_u5247"><span class="nav-number">2.1.1.0.1.</span> <span class="nav-text">一般命名準則</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u7E2E_u9032"><span class="nav-number">2.1.2.</span> <span class="nav-text">縮進</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#import"><span class="nav-number">2.1.3.</span> <span class="nav-text">import</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u6587_u6A94"><span class="nav-number">2.1.4.</span> <span class="nav-text">文檔</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#u8A3B_u89E3"><span class="nav-number">2.1.4.1.</span> <span class="nav-text">註解</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u884C_u9577_u5EA6"><span class="nav-number">2.1.5.</span> <span class="nav-text">行長度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u6E2C_u8A66"><span class="nav-number">2.2.</span> <span class="nav-text">測試</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#u4E00_u822C_u6E2C_u8A66_u6E96_u5247"><span class="nav-number">2.2.1.</span> <span class="nav-text">一般測試準則</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u55AE_u5143_u6E2C_u8A66"><span class="nav-number">2.2.2.</span> <span class="nav-text">單元測試</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u529F_u80FD_u6E2C_u8A66"><span class="nav-number">2.2.3.</span> <span class="nav-text">功能測試</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u9748_u611F_u4F86_u81EA_u2026"><span class="nav-number">3.</span> <span class="nav-text">靈感來自…</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概論"><span class="nav-number">1.</span> <span class="nav-text">概論</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#價值觀"><span class="nav-number">1.1.</span> <span class="nav-text">價值觀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一般開發準則"><span class="nav-number">1.2.</span> <span class="nav-text">一般開發準則</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特別"><span class="nav-number">2.</span> <span class="nav-text">特別</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#風格"><span class="nav-number">2.1.</span> <span class="nav-text">風格</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#命名"><span class="nav-number">2.1.1.</span> <span class="nav-text">命名</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#一般命名準則"><span class="nav-number">2.1.1.0.1.</span> <span class="nav-text">一般命名準則</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#縮進"><span class="nav-number">2.1.2.</span> <span class="nav-text">縮進</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#import"><span class="nav-number">2.1.3.</span> <span class="nav-text">import</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文檔"><span class="nav-number">2.1.4.</span> <span class="nav-text">文檔</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#註解"><span class="nav-number">2.1.4.1.</span> <span class="nav-text">註解</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#行長度"><span class="nav-number">2.1.5.</span> <span class="nav-text">行長度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#測試"><span class="nav-number">2.2.</span> <span class="nav-text">測試</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一般測試準則"><span class="nav-number">2.2.1.</span> <span class="nav-text">一般測試準則</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#單元測試"><span class="nav-number">2.2.2.</span> <span class="nav-text">單元測試</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#功能測試"><span class="nav-number">2.2.3.</span> <span class="nav-text">功能測試</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#靈感來自…"><span class="nav-number">3.</span> <span class="nav-text">靈感來自…</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

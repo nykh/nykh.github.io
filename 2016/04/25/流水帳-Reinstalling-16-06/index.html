@@ -47,7 +47,7 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="nykh :: log" type="application/atom+xml" />
+  <link rel="alternate" href="/atom.xml" title="nykh::log" type="application/atom+xml" />
 
 
 
@@ -60,10 +60,11 @@
 
 
 <meta name="description" content="記一次系統重裝">
+<meta name="keywords" content="python,ubuntu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[流水帳] Reinstalling 16.06">
 <meta property="og:url" content="http://nykh.github.io/2016/04/25/流水帳-Reinstalling-16-06/index.html">
-<meta property="og:site_name" content="nykh :: log">
+<meta property="og:site_name" content="nykh::log">
 <meta property="og:description" content="記一次系統重裝">
 <meta property="og:updated_time" content="2016-04-25T22:22:50.755Z">
 <meta name="twitter:card" content="summary">
@@ -86,10 +87,10 @@
   };
 </script>
 
-  <title> [流水帳] Reinstalling 16.06 | nykh :: log </title>
+  <title> [流水帳] Reinstalling 16.06 | nykh::log </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
 
   
 
@@ -115,11 +116,11 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">nykh :: log</span>
+      <span class="site-title">nykh::log</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle">Study, Thought, Discovery</p>
+  <p class="site-subtitle"></p>
 </div>
 
 <div class="site-nav-toggle">
@@ -268,8 +269,8 @@
 <li>Atom packages</li>
 <li>Atom snippets</li>
 </ul>
-<h1 id="Prepare_16-04_installation"><a href="#Prepare_16-04_installation" class="headerlink" title="Prepare 16.04 installation"></a>Prepare 16.04 installation</h1><p>I ended up wiping out the Windows installation.</p>
-<h1 id="Set_up_system"><a href="#Set_up_system" class="headerlink" title="Set up system"></a>Set up system</h1><ul>
+<h1 id="Prepare-16-04-installation"><a href="#Prepare-16-04-installation" class="headerlink" title="Prepare 16.04 installation"></a>Prepare 16.04 installation</h1><p>I ended up wiping out the Windows installation.</p>
+<h1 id="Set-up-system"><a href="#Set-up-system" class="headerlink" title="Set up system"></a>Set up system</h1><ul>
 <li><s>Firefox</s> (Comes prepackaged with it)</li>
 <li>Dropbox</li>
 <li>Atom (with packages)</li>
@@ -280,18 +281,18 @@
 <li>Skype</li>
 <li>KMPlayer</li>
 </ul>
-<h2 id="Input_method"><a href="#Input_method" class="headerlink" title="Input method"></a>Input method</h2><ul>
+<h2 id="Input-method"><a href="#Input-method" class="headerlink" title="Input method"></a>Input method</h2><ul>
 <li><p>fcitx<br><a href="https://blogs.fsfe.org/stefan.a/2014/09/23/set-up-fcitx-chinese-and-japanese-language-input-ubuntu-14-04/" target="_blank" rel="external">This page</a> talks about how to config system to use fcitx</p>
 </li>
 <li><p>Use emacs key<br>Use Tweak Tool (found at Software Store), go to Typing &gt; Caplocks Behavior &gt; select “as additional Ctrl”</p>
 </li>
 <li>in the System setting Keyboard &gt; shortcuts &gt; Typing, Disable Ctrl+Space for switching input methods, as this conflicts with emacs’ C-SPACE selection key-binding.</li>
 </ul>
-<h2 id="Switch_default_shell_from_bash__26gt_3B_zsh"><a href="#Switch_default_shell_from_bash__26gt_3B_zsh" class="headerlink" title="Switch default shell from bash &gt; zsh"></a>Switch default shell from bash &gt; zsh</h2><ol>
+<h2 id="Switch-default-shell-from-bash-gt-zsh"><a href="#Switch-default-shell-from-bash-gt-zsh" class="headerlink" title="Switch default shell from bash &gt; zsh"></a>Switch default shell from bash &gt; zsh</h2><ol>
 <li>install zsh in package manager</li>
 <li><code>sudo usermod -s /bin/zsh $USER</code></li>
 </ol>
-<h2 id="Python_environment"><a href="#Python_environment" class="headerlink" title="Python environment"></a>Python environment</h2><p>Turns out, most system modules are now in python3, unlike in Ubuntu 15.10 when they were under python2. So now it’s the pip3 that gets all the mess. Good thing is the system comes pre-packaged with python3.5.</p>
+<h2 id="Python-environment"><a href="#Python-environment" class="headerlink" title="Python environment"></a>Python environment</h2><p>Turns out, most system modules are now in python3, unlike in Ubuntu 15.10 when they were under python2. So now it’s the pip3 that gets all the mess. Good thing is the system comes pre-packaged with python3.5.</p>
 <p>Problem: The packaged python doesn’t contain</p>
 <ul>
 <li>pip (pip2, pip3)<br>go to pip website, download <code>get_pip.py</code> and run it with sudo for both python2 and python3. This will install pip2 and pip3 respectively. I don’t know whether the order matters, but I ran 2 and then 3.</li>
@@ -299,7 +300,7 @@
 <li>Also find <code>python-dev</code> and <code>python3-dev</code> package in Synaptic, because some python libraries require compiling with <code>Python.h</code>.</li>
 <li>Matplotlib requires the dev portions of <code>libfreetype</code> and <code>libpng</code> to be installed</li>
 </ul>
-<h1 id="Permission_Problem"><a href="#Permission_Problem" class="headerlink" title="Permission Problem"></a>Permission Problem</h1><p>Turns out the mobile hard drive I used to backup my files is NTFS or something and this messed up all the permission codes (All become <code>777</code>)…</p>
+<h1 id="Permission-Problem"><a href="#Permission-Problem" class="headerlink" title="Permission Problem"></a>Permission Problem</h1><p>Turns out the mobile hard drive I used to backup my files is NTFS or something and this messed up all the permission codes (All become <code>777</code>)…</p>
 <p>I wrote a script to recursively change all the directory and executable files permission to <code>755</code>, all the normal file permission to <code>644</code>. The way it differentiates executable files and non-executable is first by extension name: those ending in <code>bin</code>, <code>sh</code>, <code>exe</code> are usually executable files. The trickier part is those executables without extension, which is a norm under Linux. To tackle those types of files (and differentiatbe them from normal files without extension like <code>Makefile</code>) I leveraged the <code>file</code> system program, which will usually tell you whether something is an executable binary. However it also has the bad habbit of saying executalbe on python script file, even those without shebang. Therefore I can’t trust it completely.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python3.5</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> sys</div><div class="line"><span class="keyword">import</span> subprocess</div><div class="line"><span class="keyword">from</span> subprocess <span class="keyword">import</span> run <span class="comment"># &gt;= py3.5</span></div><div class="line"></div><div class="line">file_uuid = <span class="number">0o664</span></div><div class="line">exec_uuid = <span class="number">0o755</span></div><div class="line">dir_uuid  = <span class="number">0o755</span></div><div class="line"></div><div class="line">exec_file_types = [</div><div class="line">  <span class="string">"exe"</span>, <span class="string">"sh"</span>, <span class="string">"bin"</span>,</div><div class="line">]</div><div class="line"></div><div class="line">path = os.getcwd()</div><div class="line"><span class="keyword">if</span> len(sys.argv) &gt; <span class="number">1</span>:</div><div class="line">    path = sys.argv[<span class="number">1</span>]</div><div class="line"></div><div class="line"><span class="keyword">for</span> folder, dirs, files <span class="keyword">in</span> os.walk(path):</div><div class="line">    <span class="keyword">for</span> d <span class="keyword">in</span> dirs:</div><div class="line">        p = os.path.join(folder, d)</div><div class="line">        os.chmod(p, dir_uuid)</div><div class="line"></div><div class="line">    <span class="keyword">for</span> f <span class="keyword">in</span> files:</div><div class="line">        p = os.path.join(folder, f)</div><div class="line">        ext = os.path.splitext(f)[<span class="number">1</span>][<span class="number">1</span>:]  <span class="comment"># skip the dot</span></div><div class="line">        <span class="keyword">if</span> ext:</div><div class="line">            uuid = exec_uuid <span class="keyword">if</span> ext <span class="keyword">in</span> exec_file_types <span class="keyword">else</span> file_uuid</div><div class="line">        <span class="keyword">else</span>: <span class="comment"># there is no extension, this may be a executable file</span></div><div class="line">            res = run([<span class="string">"file"</span>, p], stdout=subprocess.PIPE)</div><div class="line">            res_str = res.stdout.decode()</div><div class="line">            uuid = exec_uuid <span class="keyword">if</span> <span class="string">"executable"</span> <span class="keyword">in</span> res_str <span class="keyword">else</span> file_uuid</div><div class="line"></div><div class="line">        os.chmod(p, uuid)</div></pre></td></tr></table></figure>
 
@@ -433,7 +434,7 @@
           
             
               <span class="links-of-author-item">
-                <a href="http://web.stanford.edu/~nykh/portfolio/cv.html" target="_blank">
+                <a href="http://web.stanford.edu/~nykh/" target="_blank">
                   
                     <i class="fa fa-globe"></i> Main
                   
@@ -470,7 +471,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Backup"><span class="nav-number">1.</span> <span class="nav-text">Backup</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Prepare_16-04_installation"><span class="nav-number">2.</span> <span class="nav-text">Prepare 16.04 installation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Set_up_system"><span class="nav-number">3.</span> <span class="nav-text">Set up system</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Input_method"><span class="nav-number">3.1.</span> <span class="nav-text">Input method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Switch_default_shell_from_bash__26gt_3B_zsh"><span class="nav-number">3.2.</span> <span class="nav-text">Switch default shell from bash > zsh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python_environment"><span class="nav-number">3.3.</span> <span class="nav-text">Python environment</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Permission_Problem"><span class="nav-number">4.</span> <span class="nav-text">Permission Problem</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Backup"><span class="nav-number">1.</span> <span class="nav-text">Backup</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Prepare-16-04-installation"><span class="nav-number">2.</span> <span class="nav-text">Prepare 16.04 installation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Set-up-system"><span class="nav-number">3.</span> <span class="nav-text">Set up system</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Input-method"><span class="nav-number">3.1.</span> <span class="nav-text">Input method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Switch-default-shell-from-bash-gt-zsh"><span class="nav-number">3.2.</span> <span class="nav-text">Switch default shell from bash > zsh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-environment"><span class="nav-number">3.3.</span> <span class="nav-text">Python environment</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Permission-Problem"><span class="nav-number">4.</span> <span class="nav-text">Permission Problem</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
